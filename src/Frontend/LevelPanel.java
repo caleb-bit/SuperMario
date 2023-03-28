@@ -1,5 +1,6 @@
 package Frontend;
 
-public class LevelPanel
-{
+import javax.swing.*;
+
+public class LevelPanel extends JPanel {
 }
