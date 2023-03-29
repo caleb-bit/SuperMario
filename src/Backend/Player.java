@@ -29,8 +29,8 @@ public class Player extends GameObject{
     public Powerup getPower(){
         return power;
     }
-    public void setPower(){
-
+    public void setPower(Powerup power){
+        this.power = power;
     }
     public int getCoins(){
         return coins;
