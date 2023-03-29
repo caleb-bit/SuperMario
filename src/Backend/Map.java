@@ -1,3 +1,8 @@
+package Backend;
+
+import Backend.Block;
+import Backend.Coin;
+
 public class Map {
     private GameObject[] allObjects;
     private Powerup[] powerups;

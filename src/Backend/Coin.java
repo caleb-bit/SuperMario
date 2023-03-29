@@ -1,3 +1,5 @@
+package Backend;
+
 public class Coin extends GameObject{
     private boolean taken;
     Coin(GamePosition position){

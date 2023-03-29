@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream:src/Backend/BackendManager.java
 package Backend;
-
-=======
 import java.util.*;
->>>>>>> Stashed changes:src/BackendManager.java
 public class BackendManager {
     private Player player;
     private Level[] levels;
