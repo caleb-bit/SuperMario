@@ -1,5 +1,7 @@
 package Frontend;
 
+import Backend.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,11 +10,13 @@ public class FrontendManager {
     private JFrame frame;
     private ArrayList<LevelPanel> levelPanels;
     private JPanel currPanel;
+    private GameAPI api;
 
-    FrontendManager() {
+    FrontendManager(GameAPI api) {
         levelPanels = new ArrayList<>();
-        levelPanels.add(new Level1Panel());
+        levelPanels.add(new Level1Panel(api.getGameObjects()));
         currPanel = levelPanels.get(0);
+        this.api = api;
     }
 
     public void openGame() {

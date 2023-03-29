@@ -1,4 +1,37 @@
 package Frontend;
 
-public class UIComponent {
+import Backend.GameObject;
+
+import java.awt.*;
+
+abstract public class UIComponent {
+    private UIPosition position;
+
+    // backend representation of the UI component, stores gamePosition
+    private GameObject backendObject;
+
+    UIComponent(GameObject backendObject) {
+        if (correctGameObjectType(backendObject))
+            this.backendObject = backendObject;
+        else
+            throw new IllegalArgumentException();
+    }
+
+    abstract public void paint(Graphics graphics);
+
+    abstract public boolean onComponent(UIPosition pos);
+
+    abstract boolean correctGameObjectType(GameObject gameObject);
+
+    public void setUIPosition(UIPosition uiPosition) {
+        this.position = uiPosition;
+    }
+
+    public UIPosition getUIPosition() {
+        return position;
+    }
+
+    public GameObject getBackendObject() {
+        return backendObject;
+    }
 }
