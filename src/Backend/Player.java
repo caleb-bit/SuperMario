@@ -1,3 +1,5 @@
+package Backend;
+
 public class Player extends GameObject{
     private int lives;
     private Powerup power;

@@ -1,3 +1,5 @@
+package Backend;
+
 public abstract class Powerup extends GameObject{
     boolean taken;
     int duration;

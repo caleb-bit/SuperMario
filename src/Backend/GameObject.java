@@ -1,3 +1,5 @@
+package Backend;
+
 public abstract class GameObject {
     private GamePosition position;
     private int velX;

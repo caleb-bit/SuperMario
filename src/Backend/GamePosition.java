@@ -1,3 +1,5 @@
+package Backend;
+
 public class GamePosition {
     private double posX;
     private double posY;

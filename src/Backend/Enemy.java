@@ -1,3 +1,5 @@
+package Backend;
+
 public abstract class Enemy extends GameObject{
     private boolean alive;
     Enemy(GamePosition position, int velX, int velY){
