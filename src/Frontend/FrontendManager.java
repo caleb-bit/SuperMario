@@ -14,7 +14,7 @@ public class FrontendManager {
 
     FrontendManager(GameAPI api) {
         levelPanels = new ArrayList<>();
-        levelPanels.add(new Level1Panel(api.getGameObjects()));
+        levelPanels.add(new Level1Panel(api.getGameObjects(1)));
         currPanel = levelPanels.get(0);
         this.api = api;
     }

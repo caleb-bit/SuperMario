@@ -8,11 +8,11 @@ abstract public class UIComponent {
     private UIPosition position;
 
     // backend representation of the UI component, stores gamePosition
-    private GameObject backendObject;
+    private GameObject gameObject;
 
-    UIComponent(GameObject backendObject) {
-        if (correctGameObjectType(backendObject))
-            this.backendObject = backendObject;
+    UIComponent(GameObject gameObject) {
+        if (correctGameObjectType(gameObject))
+            this.gameObject = gameObject;
         else
             throw new IllegalArgumentException();
     }
@@ -31,7 +31,7 @@ abstract public class UIComponent {
         return position;
     }
 
-    public GameObject getBackendObject() {
-        return backendObject;
+    public GameObject getGameObject() {
+        return gameObject;
     }
 }

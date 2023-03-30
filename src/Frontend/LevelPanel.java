@@ -12,15 +12,34 @@ import java.util.Map;
 
 abstract public class LevelPanel extends JPanel implements KeyListener {
     private ArrayList<UIComponent> components;
+    private GameAPI gameAPI;
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
-    LevelPanel(GameObject[] gameObjects) {
+    LevelPanel(GameObject[] gameObjects, GameAPI gameAPI) {
+        this.gameAPI = gameAPI;
         components = new ArrayList<>();
+
+        // create corresponding components for each game object in the level
         for (GameObject gameObject : gameObjects) {
-            if(gameObject instanceof Player)
+            if (gameObject instanceof Player)
                 components.add(new UIPlayer(gameObject));
-            //TODO: finish this
+            else if (gameObject instanceof Powerup)
+                components.add(new UIPowerup(gameObject));
+            else if (gameObject instanceof Mushroom)
+                components.add(new UIMushroom(gameObject));
+            else if (gameObject instanceof Yoshi)
+                components.add(new UIYoshi(gameObject));
+            else if (gameObject instanceof Flower)
+                components.add(new UIFlower(gameObject));
+            else if (gameObject instanceof Invincibility)
+                components.add(new UIInvincibility(gameObject));
+            else if (gameObject instanceof Cliff)
+                components.add(new UICliff(gameObject));
+            else if (gameObject instanceof Ledge)
+                components.add(new UILedge(gameObject));
+            else if (gameObject instanceof Trap)
+                components.add(new UITrap(gameObject));
         }
     }
 
@@ -31,7 +50,7 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-        eventHandler.keyPressed(e.getKeyCode());
+        gameAPI.keyPressed(e.getKeyCode());
     }
 
     public void keyReleased(KeyEvent e) {
@@ -43,18 +62,4 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
     public ArrayList<UIComponent> getUIComponents() {
         return components;
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public BackendManager getBackend() {
-        return backend;
-    }
-
-    public EventHandler getEventHandler() {
-        return eventHandler;
-    }
-
-
 }
