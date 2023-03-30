@@ -6,8 +6,9 @@ public class Level {
     private int score;
     private int time;
     private Map levelMap;
-    Level(int level){
+    Level(int level, Map map){
         this.level = level;
+        levelMap = map;
     }
     public int getLevel(){
         return level;
