@@ -24,8 +24,6 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
         for (GameObject gameObject : gameObjects) {
             if (gameObject instanceof Player)
                 components.add(new UIPlayer(gameObject));
-            else if (gameObject instanceof Powerup)
-                components.add(new UIPowerup(gameObject));
             else if (gameObject instanceof Mushroom)
                 components.add(new UIMushroom(gameObject));
             else if (gameObject instanceof Yoshi)

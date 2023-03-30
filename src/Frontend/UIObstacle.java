@@ -1,4 +1,9 @@
 package Frontend;
 
-public class UIObstacle {
+import Backend.GameObject;
+
+abstract public class UIObstacle extends UIComponent {
+    UIObstacle(GameObject gameObject) {
+        super(gameObject);
+    }
 }
