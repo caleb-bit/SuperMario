@@ -1,25 +1,32 @@
 package Backend;
+
 import java.util.*;
+
 public class BackendManager {
     private Player player;
     private Level[] levels;
     private Level currLevel;
-    private int timeLeft;
-    BackendManager(){
+    private double timeLeft;
+
+    BackendManager() {
         player = new Player(new GamePosition(0, 0), 0, 0);
         timer = new Timer();
     }
-    public Player getPlayer(){
+
+    public Player getPlayer() {
         return player;
     }
-    public int getTimeLeft(){
+
+    public double getTimeLeft() {
         return timeLeft;
     }
-    public void onKeyPressed(int codeKey){
+
+    public void onKeyPressed(int codeKey) {
 
     }
-    public void updateTime() throws InterruptedException {
-        while (timeLeft > 0){
+
+    public void updateTime(int increment) throws InterruptedException {
+        while (timeLeft > 0) {
             Thread.sleep(1000);
             timeLeft -= 1;
         }
