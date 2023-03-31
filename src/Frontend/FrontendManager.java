@@ -12,7 +12,7 @@ public class FrontendManager {
     private JPanel currPanel;
     private GameAPI api;
 
-    FrontendManager(GameAPI api) {
+    public FrontendManager(GameAPI api) {
         levelPanels = new ArrayList<>();
         levelPanels.add(new Level1Panel(api.getGameObjects(1)));
         currPanel = levelPanels.get(0);
