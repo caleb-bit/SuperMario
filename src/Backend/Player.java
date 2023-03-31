@@ -14,9 +14,9 @@ public class Player extends GameObject{
         power = null;
         coins = 0;
     }
-    public void move(Direction direction){
-
-    }
+//    public void move(Direction direction){
+//
+//    }
     public int getLives(){
         return lives;
     }

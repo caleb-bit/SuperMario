@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.BackendManager;
+import Backend.GameAPI;
 import Backend.GameObject;
 
 import java.awt.*;

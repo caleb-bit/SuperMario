@@ -3,13 +3,14 @@ package Backend;
 import java.util.*;
 
 public class BackendManager {
-    private Player player;
+    private final Player player;
     private Level[] levels;
     private Level currLevel;
     private double timeLeft;
 
     BackendManager() {
         player = new Player(new GamePosition(0, 0), 0, 0);
+        timeLeft = 300;
     }
 
     public Player getPlayer() {
@@ -24,10 +25,7 @@ public class BackendManager {
 
     }
 
-    public void updateTime(int increment) throws InterruptedException {
-        while (timeLeft > 0) {
-            Thread.sleep(1000);
-            timeLeft -= 1;
-        }
+    public void updateTime(double increment) throws InterruptedException {
+        timeLeft -= increment;
     }
 }
