@@ -47,4 +47,7 @@ public abstract class Map {
     public void setPoints(GamePosition[] checkPoints){
         this.checkPoints = checkPoints;
     }
+    public GameObject[] getAllGameObjects() {
+        return allObjects;
+    }
 }

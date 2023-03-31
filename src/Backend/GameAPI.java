@@ -46,7 +46,23 @@ public class GameAPI {
         }, delay, delay);
     }
 
+    public void keyPressed(int keyCode) {
+        backend.onKeyPressed(keyCode);
+    }
+
+    public void updateScreen(){
+        frontend.updateScreen();
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
     public GameState getGameState() {
         return gameState;
+    }
+
+    public GameObject[] getGameObjects(int level) {
+        return backend.getLevel(level).getMap().getAllGameObjects();
     }
 }

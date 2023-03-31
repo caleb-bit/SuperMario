@@ -28,4 +28,8 @@ public class BackendManager {
     public void updateTime(double increment) throws InterruptedException {
         timeLeft -= increment;
     }
+
+    public Level getLevel(int level) {
+        return levels[level-1];
+    }
 }

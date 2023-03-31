@@ -34,5 +34,8 @@ public class Level {
     public void playLevel(){
 
     }
+    public Map getMap() {
+        return levelMap;
+    }
 
 }
