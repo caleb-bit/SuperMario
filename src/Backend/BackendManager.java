@@ -10,7 +10,6 @@ public class BackendManager {
 
     BackendManager() {
         player = new Player(new GamePosition(0, 0), 0, 0);
-        timer = new Timer();
     }
 
     public Player getPlayer() {
