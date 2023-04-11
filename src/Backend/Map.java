@@ -26,7 +26,7 @@ public abstract class Map {
     public Enemy[] getEnemies(){
         return enemies;
     }
-    public void setEnemeis(Enemy[] enemies){
+    public void setEnemies(Enemy[] enemies){
         this.enemies = enemies;
     }
     public Coin[] getCoins(){
@@ -38,7 +38,7 @@ public abstract class Map {
     public Block[] getBlocks(){
         return blocks;
     }
-    public void setblocks(Block[] blocks){
+    public void setBlocks(Block[] blocks){
         this.blocks = blocks;
     }
     public GamePosition[] getPoints(){
