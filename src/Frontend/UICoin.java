@@ -8,14 +8,14 @@ import java.awt.*;
 public class UICoin extends UIComponent {
     private int radius;
 
-    UICoin(GameObject gameObject, int radius) {
+    public UICoin(GameObject gameObject, int radius) {
         super(gameObject);
         this.radius = radius;
     }
 
     @Override
     public void paint(Graphics graphics) {
-        graphics.setColor(new Color(215,190,105));
+        graphics.setColor(new Color(248, 234, 107));
         graphics.fillOval((int) getUIPosition().getX(), (int) getUIPosition().getY(), radius, radius);
     }
 

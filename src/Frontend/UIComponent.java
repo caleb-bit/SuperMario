@@ -11,9 +11,12 @@ abstract public class UIComponent {
     private GameObject gameObject;
 
     UIComponent(GameObject gameObject) {
-        if (correctGameObjectType(gameObject))
+        if (correctGameObjectType(gameObject)) {
             this.gameObject = gameObject;
-        else
+            //TODO: update this to use formula for GamePosition --> UIPosition
+            position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
+            System.out.println(position.getX() + " " + position.getY());
+        } else
             throw new IllegalArgumentException();
     }
 

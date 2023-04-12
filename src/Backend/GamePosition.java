@@ -3,7 +3,7 @@ package Backend;
 public class GamePosition {
     private double posX;
     private double posY;
-    GamePosition(double posX, double posY){
+    public GamePosition(double posX, double posY){
         this.posX = posX;
         this.posY = posY;
     }

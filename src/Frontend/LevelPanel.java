@@ -24,20 +24,20 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
         for (GameObject gameObject : gameObjects) {
             if (gameObject instanceof Player)
                 components.add(new UIPlayer(gameObject));
-            else if (gameObject instanceof Mushroom)
-                components.add(new UIMushroom(gameObject));
-            else if (gameObject instanceof Yoshi)
-                components.add(new UIYoshi(gameObject));
-            else if (gameObject instanceof Flower)
-                components.add(new UIFlower(gameObject));
-            else if (gameObject instanceof Invincibility)
-                components.add(new UIInvincibility(gameObject));
-            else if (gameObject instanceof Cliff)
-                components.add(new UICliff(gameObject));
-            else if (gameObject instanceof Ledge)
-                components.add(new UILedge(gameObject));
-            else if (gameObject instanceof Trap)
-                components.add(new UITrap(gameObject));
+//            else if (gameObject instanceof Mushroom)
+//                components.add(new UIMushroom(gameObject));
+//            else if (gameObject instanceof Yoshi)
+//                components.add(new UIYoshi(gameObject));
+//            else if (gameObject instanceof Flower)
+//                components.add(new UIFlower(gameObject));
+//            else if (gameObject instanceof Invincibility)
+//                components.add(new UIInvincibility(gameObject));
+//            else if (gameObject instanceof Cliff)
+//                components.add(new UICliff(gameObject));
+//            else if (gameObject instanceof Ledge)
+//                components.add(new UILedge(gameObject));
+//            else if (gameObject instanceof Trap)
+//                components.add(new UITrap(gameObject));
         }
     }
 

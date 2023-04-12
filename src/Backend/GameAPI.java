@@ -30,12 +30,8 @@ public class GameAPI {
         Timer timer = new Timer();
         int delay = 1_000;
         timer.schedule(new TimerTask() {
-            int i = 0;
-
             @Override
             public void run() {
-                i++;
-                System.out.println(i);
                 try {
                     backend.updateTime(delay);
                     frontend.updateScreen();
