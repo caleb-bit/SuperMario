@@ -6,7 +6,7 @@ public class Map1 extends Map{
         Powerup[] powerups = new Powerup[4];
         Obstacle[] obstacles = new Obstacle[3];
         Coin[] coins = new Coin[5];
-        Block[] blocks = new Block[3];
+        Block[] blocks = new Block[1];
         GamePosition[] checkPoints = new GamePosition[2];
         enemies[0] = new Goomba(new GamePosition(5, 0));
         enemies[1] = new Goomba(new GamePosition(15, 0));
@@ -23,9 +23,7 @@ public class Map1 extends Map{
         coins[1] = new Coin(new GamePosition(21, 4));
         coins[2] = new Coin(new GamePosition(32, 0));
         coins[3] = new Coin(new GamePosition(47, 0));
-        blocks[0] = new Block(new GamePosition(8, 4));
-        blocks[1] = new PropellerBlock(new GamePosition(9, 4));
-        blocks[2] = new Block(new GamePosition(10, 4));
+        blocks[0] = new PropellerBlock(new GamePosition(9, 4));
         checkPoints[0] = new GamePosition(20, 0);
         checkPoints[1] = new GamePosition(40, 0);
         setEnemies(enemies);

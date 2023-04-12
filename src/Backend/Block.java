@@ -1,6 +1,6 @@
 package Backend;
 
-public class Block extends GameObject{
+public abstract class Block extends GameObject{
     Block(GamePosition position){
         super(position, 0, 0);
     }

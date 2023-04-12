@@ -3,10 +3,6 @@ package Backend;
 public class Player extends GameObject{
     private int lives;
     private Powerup power;
-    private double accelX;
-    private double accelY;
-    private double maxVelX;
-    private double maxVelY;
     private int coins;
     Player(GamePosition position, int velX, int velY){
         super(position, velX, velY);
@@ -14,9 +10,6 @@ public class Player extends GameObject{
         power = null;
         coins = 0;
     }
-//    public void move(Direction direction){
-//
-//    }
     public int getLives(){
         return lives;
     }
