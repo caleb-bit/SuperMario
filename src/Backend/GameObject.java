@@ -9,6 +9,11 @@ public abstract class GameObject {
         this.velX = velX;
         this.velY = velY;
     }
+    GameObject(int xPos, int yPos, int velX, int velY) {
+        this.position = new GamePosition(xPos, yPos);
+        this.velX = velX;
+        this.velY = velY;
+    }
     public GamePosition getPosition(){
         return position;
     }

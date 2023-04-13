@@ -2,8 +2,10 @@ package Testers;
 
 import Backend.Coin;
 import Backend.GamePosition;
+import Backend.Player;
 import Frontend.UICoin;
 import Frontend.UIComponent;
+import Frontend.UIPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,9 +22,9 @@ public class FrontendTester {
         frame.pack();
         frame.setVisible(true);
 
-        Coin coin = new Coin(new GamePosition(100,100));
-        UICoin uiCoin = new UICoin(coin);
-        components.add(uiCoin);
+        components.add(new UICoin(new Coin(new GamePosition(100,100))));
+        components.add(new UIPlayer(new Player(200,300, 0,0)));
+
         frame.getContentPane().repaint();
     }
 }

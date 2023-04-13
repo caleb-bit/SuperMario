@@ -15,12 +15,11 @@ abstract public class UIComponent {
             this.gameObject = gameObject;
             //TODO: update this to use formula for GamePosition --> UIPosition
             position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
-            System.out.println(position.getX() + " " + position.getY());
         } else
             throw new IllegalArgumentException();
     }
 
-    abstract public void paint(Graphics graphics);
+    abstract public void paint(Graphics g);
 
     abstract public boolean onComponent(UIPosition pos);
 
