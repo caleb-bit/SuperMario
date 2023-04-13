@@ -34,6 +34,22 @@ abstract public class UIComponent {
         return position;
     }
 
+    public double getX() {
+        return position.getX();
+    }
+
+    public double getY() {
+        return position.getY();
+    }
+
+    public int getIntX() {
+        return (int) getX();
+    }
+
+    public int getIntY() {
+        return (int) getY();
+    }
+
     public GameObject getGameObject() {
         return gameObject;
     }

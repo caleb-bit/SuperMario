@@ -21,10 +21,9 @@ public class FrontendTester {
         frame.setVisible(true);
 
         Coin coin = new Coin(new GamePosition(100,100));
-        UICoin uiCoin = new UICoin(coin, 100);
+        UICoin uiCoin = new UICoin(coin);
         components.add(uiCoin);
         frame.getContentPane().repaint();
-
     }
 }
 
