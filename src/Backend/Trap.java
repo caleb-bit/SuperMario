@@ -1,7 +1,7 @@
 package Backend;
 
 public class Trap extends Obstacle{
-    Trap(GamePosition position){
-        super(position);
+    Trap(GamePosition position, int length){
+        super(position, length);
     }
 }

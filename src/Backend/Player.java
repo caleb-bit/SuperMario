@@ -4,6 +4,7 @@ public class Player extends GameObject{
     private int lives;
     private Powerup power;
     private int coins;
+    private GamePosition last;
     Player(GamePosition position, int velX, int velY){
         super(position, velX, velY);
         lives = 3;
@@ -21,6 +22,7 @@ public class Player extends GameObject{
     }
     public void die(){
         lives--;
+        setPosition(last);
         if (lives == 0){
 
         }
