@@ -12,6 +12,9 @@ public abstract class GameObject {
     public GamePosition getPosition(){
         return position;
     }
+    public void setPosition(GamePosition position){
+        this.position = position;
+    }
     public int getVelX(){
         return velX;
     }

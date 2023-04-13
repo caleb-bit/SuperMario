@@ -1,8 +1,10 @@
 package Backend;
 
 public class Obstacle extends GameObject{
-    Obstacle(GamePosition position){
+    private int length;
+    Obstacle(GamePosition position, int length){
         super(position, 0, 0);
+        this.length = length;
     }
     public void move() {
     }
