@@ -6,8 +6,8 @@ import Backend.GameObject;
 import java.awt.*;
 
 public class UICoin extends UIComponent {
-    private final int width = 30;
-    private final int height = 60;
+    private final int width = 20;
+    private final int height = 40;
 
     public UICoin(GameObject gameObject) {
         super(gameObject);
