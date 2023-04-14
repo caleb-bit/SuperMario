@@ -17,7 +17,7 @@ public class UIYoshi extends UIPowerup {
     public void paint(Graphics g) {
         //shoes
         g.setColor(new Color(173, 95, 0));
-        g.fillRect(getIntX() - width / 3, getIntY() + height / 2 - height / 10, width * 3 / 5, height / 4);
+        g.fillRect(getIntX() - width / 3, getIntY() + height / 2 , width * 3 / 5, height *3/20);
         g.setColor(Color.green);
         //body
         g.fillRect(getIntX() - width / 2, getIntY(), width, height / 2);
@@ -37,7 +37,12 @@ public class UIYoshi extends UIPowerup {
 
     @Override
     public boolean onComponent(UIPosition pos) {
-        return false;
+        int x = (int) pos.getX();
+        int y = (int) pos.getY();
+        return getIntX()-width*3/4 < x
+                && x < getIntX()+width/2+width/6
+                && getIntY()-height/2 < y
+                && y < getIntY() + height/2-height/10+height/4;
     }
 
     @Override
