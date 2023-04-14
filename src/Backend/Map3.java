@@ -1,4 +1,67 @@
 package Backend;
 
 public class Map3 extends Map{
+    Map3(){
+        Enemy[] enemies = new Enemy[6];
+        Powerup[] powerups = new Powerup[0];
+        Obstacle[] obstacles = new Obstacle[21];
+        Coin[] coins = new Coin[20];
+        Block[] blocks = new Block[0];
+        GamePosition[] checkPoints = new GamePosition[2];
+        enemies[0] = new Koopa(new GamePosition(13, 11));
+        enemies[1] = new Goomba(new GamePosition(20, 11));
+        enemies[2] = new Goomba(new GamePosition(21, 11));
+        enemies[3] = new Goomba(new GamePosition(35, 11));
+        enemies[4] = new Koopa(new GamePosition(50, 6));
+        enemies[5] = new Koopa(new GamePosition(62, 0));
+        obstacles[0] = new Cliff(new GamePosition(5, 0), 33);
+        obstacles[1] = new Ledge(new GamePosition(7, 0), 2);
+        obstacles[2] = new Ledge(new GamePosition(10, 5), 4);
+        obstacles[3] = new Ledge(new GamePosition(11, 10), 3);
+        obstacles[4] = new Ledge(new GamePosition(14, 0), 1);
+        obstacles[5] = new Ledge(new GamePosition(16, 5), 2);
+        obstacles[6] = new Ledge(new GamePosition(18, 10), 4);
+        obstacles[7] = new Ledge(new GamePosition(22, 0), 2);
+        obstacles[8] = new Ledge(new GamePosition(24, 10), 2);
+        obstacles[9] = new Ledge(new GamePosition(25, 0), 2);
+        obstacles[10] = new Ledge(new GamePosition(26, 10), 2);
+        obstacles[11] = new Ledge(new GamePosition(28, 0), 2);
+        obstacles[12] = new Ledge(new GamePosition(30, 5), 1);
+        obstacles[13] = new Ledge(new GamePosition(32, 10), 4);
+        obstacles[14] = new Ledge(new GamePosition(38, 5), 2);
+        obstacles[15] = new Ledge(new GamePosition(41, 5), 2);
+        obstacles[16] = new Ledge(new GamePosition(44, 0), 2);
+        obstacles[17] = new Ledge(new GamePosition(47, 5), 4);
+        obstacles[18] = new Ledge(new GamePosition(51, 0), 2);
+        obstacles[19] = new Ledge(new GamePosition(54, 5), 2);
+        obstacles[20] = new Ledge(new GamePosition(57, 5), 2);
+        coins[0] = new Coin(new GamePosition(10, 11));
+        coins[1] = new Coin(new GamePosition(11, 11));
+        coins[2] = new Coin(new GamePosition(12, 11));
+        coins[3] = new Coin(new GamePosition(14, 1));
+        coins[4] = new Coin(new GamePosition(16, 11));
+        coins[5] = new Coin(new GamePosition(17, 11));
+        coins[6] = new Coin(new GamePosition(22, 6));
+        coins[7] = new Coin(new GamePosition(23, 6));
+        coins[8] = new Coin(new GamePosition(26, 11));
+        coins[9] = new Coin(new GamePosition(27, 11));
+        coins[10] = new Coin(new GamePosition(38, 6));
+        coins[11] = new Coin(new GamePosition(39, 6));
+        coins[12] = new Coin(new GamePosition(41, 6));
+        coins[13] = new Coin(new GamePosition(42, 6));
+        coins[14] = new Coin(new GamePosition(44, 6));
+        coins[15] = new Coin(new GamePosition(45, 6));
+        coins[16] = new Coin(new GamePosition(51, 1));
+        coins[17] = new Coin(new GamePosition(52, 1));
+        coins[18] = new Coin(new GamePosition(56, 10));
+        coins[19] = new Coin(new GamePosition(57, 10));
+        checkPoints[0] = new GamePosition(30, 0);
+        checkPoints[1] = new GamePosition(65, 0);
+        setEnemies(enemies);
+        setPowerups(powerups);
+        setObstacles(obstacles);
+        setCoins(coins);
+        setBlocks(blocks);
+        setPoints(checkPoints);
+    }
 }
