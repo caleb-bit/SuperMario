@@ -1,7 +1,7 @@
 package Backend;
 
 public class Yoshi extends Powerup{
-    Yoshi(GamePosition position){
+    public Yoshi(GamePosition position){
         super(position);
         setDuration(15);
     }

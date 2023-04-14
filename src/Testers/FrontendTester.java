@@ -3,9 +3,11 @@ package Testers;
 import Backend.Coin;
 import Backend.GamePosition;
 import Backend.Player;
+import Backend.Yoshi;
 import Frontend.UICoin;
 import Frontend.UIComponent;
 import Frontend.UIPlayer;
+import Frontend.UIYoshi;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +26,7 @@ public class FrontendTester {
 
         components.add(new UICoin(new Coin(new GamePosition(100,100))));
         components.add(new UIPlayer(new Player(200,300, 0,0)));
-
+        components.add(new UIYoshi(new Yoshi(new GamePosition(300,100))));
         frame.getContentPane().repaint();
     }
 }

@@ -31,7 +31,7 @@ public class UIPlayer extends UIComponent {
         //face
         g.setColor(Color.black);
         g.fillRect(getIntX() + width / 8, getIntY() - height * 9 / 8, width / 8, height / 6);
-        g.fillRect(getIntX()+width/5, getIntY()-height*7/8, width*3/10+width/6, height/10);
+        g.fillRect(getIntX() + width / 5, getIntY() - height * 7 / 8, width * 3 / 10 + width / 6, height / 10);
     }
 
     @Override
