@@ -11,6 +11,7 @@ public class BackendManager {
     BackendManager() {
         player = new Player(new GamePosition(0, 0), 0, 0);
         timeLeft = 300;
+        levels = new Level[]{new Level1(), new Level2(), new Level3(), new Level4()};
     }
 
     public Player getPlayer() {

@@ -1,15 +1,11 @@
 package Backend;
 
-import Backend.Block;
-import Backend.Coin;
-
 public abstract class Map {
     private GameObject[] allObjects;
     private Powerup[] powerups;
     private Obstacle[] obstacles;
     private Enemy[] enemies;
     private Coin[] coins;
-    private Block[] blocks;
     private GamePosition[] checkPoints;
     public Powerup[] getPowerups(){
         return powerups;
@@ -34,12 +30,6 @@ public abstract class Map {
     }
     public void setCoins(Coin[] coins){
         this.coins = coins;
-    }
-    public Block[] getBlocks(){
-        return blocks;
-    }
-    public void setBlocks(Block[] blocks){
-        this.blocks = blocks;
     }
     public GamePosition[] getPoints(){
         return checkPoints;

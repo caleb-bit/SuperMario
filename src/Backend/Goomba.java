@@ -4,7 +4,4 @@ public class Goomba extends Enemy{
     Goomba(GamePosition position){
         super(position, 0, 0);
     }
-    public void move() {
-
-    }
 }
