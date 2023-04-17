@@ -1,7 +1,7 @@
 package Backend;
 
 public class Flower extends Powerup{
-    Flower(GamePosition position){
+    public Flower(GamePosition position){
         super(position);
         setDuration(15);
     }
