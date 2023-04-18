@@ -1,20 +1,27 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Player;
 
 import java.awt.*;
 
 abstract public class UIComponent {
-    private UIPosition position;
+    private UIPosition uiPosition;
 
     // backend representation of the UI component, stores gamePosition
     private GameObject gameObject;
 
     UIComponent(GameObject gameObject) {
         if (correctGameObjectType(gameObject)) {
-            this.gameObject = gameObject;
-            //TODO: update this to use formula for GamePosition --> UIPosition
-            position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
+            if (gameObject instanceof Player) {
+                this.gameObject = gameObject;
+                // default position for player
+                uiPosition = new UIPosition(250, 250);
+            } else {
+                this.gameObject = gameObject;
+//                TODO: update this to use formula for GamePosition --> UIPosition
+//                position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
+            }
         } else
             throw new IllegalArgumentException();
     }
@@ -26,19 +33,19 @@ abstract public class UIComponent {
     abstract boolean correctGameObjectType(GameObject gameObject);
 
     public void setUIPosition(UIPosition uiPosition) {
-        this.position = uiPosition;
+        this.uiPosition = uiPosition;
     }
 
     public UIPosition getUIPosition() {
-        return position;
+        return uiPosition;
     }
 
     public double getX() {
-        return position.getX();
+        return uiPosition.getX();
     }
 
     public double getY() {
-        return position.getY();
+        return uiPosition.getY();
     }
 
     public int getIntX() {
@@ -48,6 +55,15 @@ abstract public class UIComponent {
     public int getIntY() {
         return (int) getY();
     }
+
+    public void setX(double x) {
+        uiPosition.setX(x);
+    }
+
+    public void setY(double y) {
+        uiPosition.setY(y);
+    }
+
 
     public GameObject getGameObject() {
         return gameObject;

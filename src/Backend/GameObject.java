@@ -20,6 +20,8 @@ public abstract class GameObject {
     public void setPosition(GamePosition position){
         this.position = position;
     }
+    public double getX(){return position.getX();}
+    public double getY(){return position.getY();}
     public int getVelX(){
         return velX;
     }

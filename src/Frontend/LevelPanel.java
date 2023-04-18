@@ -7,11 +7,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.*;
-import java.util.Map;
 
 
 abstract public class LevelPanel extends JPanel implements KeyListener {
     private ArrayList<UIComponent> components;
+    private UIPlayer uiPlayer;
     private GameAPI gameAPI;
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
@@ -22,31 +22,52 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
         // create corresponding components for each game object in the level
         for (GameObject gameObject : gameObjects) {
-            if (gameObject instanceof Player)
-                components.add(new UIPlayer(gameObject));
-
-
-            else if (gameObject instanceof Mushroom)
-                components.add(new UIMushroom(gameObject));
+            UIComponent uiComponent = null;
+            if (gameObject instanceof Player) {
+                uiComponent = new UIPlayer(gameObject);
+                uiPlayer = (UIPlayer) uiComponent;
+            } else if (gameObject instanceof Mushroom)
+                uiComponent = new UIMushroom(gameObject);
             else if (gameObject instanceof Yoshi)
-                components.add(new UIYoshi(gameObject));
+                uiComponent = new UIYoshi(gameObject);
             else if (gameObject instanceof Flower)
-                components.add(new UIFlower(gameObject));
+                uiComponent = new UIFlower(gameObject);
             else if (gameObject instanceof Invincibility)
-                components.add(new UIInvincibility(gameObject));
+                uiComponent = new UIInvincibility(gameObject);
             else if (gameObject instanceof Cliff)
-                components.add(new UICliff(gameObject));
+                uiComponent = new UICliff(gameObject);
             else if (gameObject instanceof Ledge)
-                components.add(new UILedge(gameObject));
+                uiComponent = new UILedge(gameObject);
             else if (gameObject instanceof Trap)
-                components.add(new UITrap(gameObject));
+                uiComponent = new UITrap(gameObject);
+            components.add(uiComponent);
         }
     }
 
     public void paintComponent(Graphics g) {
         for (UIComponent component : components) {
+//            component.setUIPosition(relToPlayer(component));
             component.paint(g);
         }
+    }
+
+    public void updateUIPositions() {
+        for (UIComponent component : components) {
+            if (component instanceof UIPlayer) {
+                // TODO: deal with moving player on screen
+            } else {
+                UIPosition relPos = relToPlayer(component);
+                component.setUIPosition(relPos);
+            }
+        }
+    }
+
+    private UIPosition relToPlayer(UIComponent uiComponent) {
+        GamePosition playerGamePos = gameAPI.getPlayerGamePos();
+        UIPosition playerUIPos = gameAPI.getPlayerUIPos();
+        GameObject gameObject = uiComponent.getGameObject();
+        return new UIPosition((int) (gameObject.getX() - playerGamePos.getX() + playerUIPos.getX()),
+                (int) (gameObject.getY() - playerGamePos.getY() + playerUIPos.getY()));
     }
 
     public void keyPressed(KeyEvent e) {
@@ -61,5 +82,9 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
     public ArrayList<UIComponent> getUIComponents() {
         return components;
+    }
+
+    public UIPlayer getUiPlayer() {
+        return uiPlayer;
     }
 }

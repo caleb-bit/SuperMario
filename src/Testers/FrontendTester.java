@@ -14,8 +14,10 @@ public class FrontendTester {
         ArrayList<UIComponent> components = new ArrayList<>();
         TestPanel currPanel = new TestPanel(components);
         frame.setContentPane(currPanel);
-        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+//        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+        frame.setPreferredSize(new Dimension(500,500));
         frame.pack();
+
         frame.setVisible(true);
 
         components.add(new UICoin(new Coin(new GamePosition(100,100))));

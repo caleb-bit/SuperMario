@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class FrontendManager {
     private JFrame frame;
     private ArrayList<LevelPanel> levelPanels;
-    private JPanel currPanel;
+    private LevelPanel currPanel;
     private GameAPI api;
 
     public FrontendManager(GameAPI api) {
@@ -22,12 +22,19 @@ public class FrontendManager {
     public void openGame() {
         frame = new JFrame("SuperMario");
         frame.setContentPane(currPanel);
-        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+//        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
+        frame.setPreferredSize(new Dimension(500,500));
         frame.pack();
+
         frame.setVisible(true);
     }
 
     public void updateScreen() {
+        currPanel.updateUIPositions();
         frame.repaint();
+    }
+
+    public UIPosition getPlayerUIPos() {
+        return currPanel.getUiPlayer().getUIPosition();
     }
 }

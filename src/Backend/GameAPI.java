@@ -1,6 +1,7 @@
 package Backend;
 
 import Frontend.FrontendManager;
+import Frontend.UIPosition;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -60,5 +61,13 @@ public class GameAPI {
 
     public GameObject[] getGameObjects(int level) {
         return backend.getLevel(level).getMap().getAllGameObjects();
+    }
+
+    public GamePosition getPlayerGamePos() {
+        return backend.getPlayer().getPosition();
+    }
+
+    public UIPosition getPlayerUIPos() {
+        return frontend.getPlayerUIPos();
     }
 }

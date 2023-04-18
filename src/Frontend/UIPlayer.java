@@ -10,8 +10,16 @@ public class UIPlayer extends UIComponent {
     private int width = 20;
     private int height = 35;
 
+    // determines if the UIPlayer itself can move in these directions
+    // if true, then the UIposition changes when player moves
+    // if false, then background changes while player stays at same UIposition
+    private boolean isMovableX;
+    private boolean isMovableY;
+
     public UIPlayer(GameObject backendObject) {
         super(backendObject);
+        isMovableX = false;
+        isMovableY = true;
     }
 
     @Override
@@ -47,5 +55,21 @@ public class UIPlayer extends UIComponent {
     @Override
     boolean correctGameObjectType(GameObject gameObject) {
         return gameObject instanceof Player;
+    }
+
+    public boolean isMovableX(){
+        return isMovableX;
+    }
+
+    public boolean isMovableY() {
+        return isMovableY;
+    }
+
+    public void setMovableX(boolean isMovableX) {
+        this.isMovableX = isMovableX;
+    }
+
+    public void setMovableY(boolean isMovableY) {
+        this.isMovableY = isMovableY;
     }
 }
