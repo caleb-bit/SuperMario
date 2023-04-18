@@ -1,7 +1,10 @@
 package Backend;
 
+import java.util.Arrays;
+
 public class Map4 extends Map{
     Map4(){
+        GameObject[] objects = new GameObject[19];
         Enemy[] enemies = new Enemy[0];
         Powerup[] powerups = new Powerup[1];
         Obstacle[] obstacles = new Obstacle[15];
@@ -28,6 +31,11 @@ public class Map4 extends Map{
         coins[2] = new Coin(new GamePosition(74, 4));
         checkPoints[0] = new GamePosition(23, 0);
         checkPoints[1] = new GamePosition(85, 0);
+        System.arraycopy(enemies, 0, objects, 0, enemies.length);
+        System.arraycopy(powerups, 0, objects, enemies.length, powerups.length);
+        System.arraycopy(coins, 0, objects, enemies.length + powerups.length, coins.length);
+        Arrays.sort(objects);
+        setAllGameObjects(objects);
         setEnemies(enemies);
         setPowerups(powerups);
         setObstacles(obstacles);
