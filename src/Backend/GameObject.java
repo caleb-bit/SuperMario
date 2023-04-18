@@ -2,9 +2,9 @@ package Backend;
 
 public abstract class GameObject {
     private GamePosition position;
-    private int velX;
-    private int velY;
-    GameObject(GamePosition position, int velX, int velY){
+    private double velX;
+    private double velY;
+    GameObject(GamePosition position, double velX, double velY){
         this.position = position;
         this.velX = velX;
         this.velY = velY;
@@ -20,18 +20,16 @@ public abstract class GameObject {
     public void setPosition(GamePosition position){
         this.position = position;
     }
-    public double getX(){return position.getX();}
-    public double getY(){return position.getY();}
-    public int getVelX(){
+    public double getVelX(){
         return velX;
     }
-    public int getVelY(){
+    public double getVelY(){
         return velY;
     }
-    public void setVelX(int velX){
+    public void setVelX(double velX){
         this.velX = velX;
     }
-    public void setVelY(int velY){
+    public void setVelY(double velY){
         this.velY = velY;
     }
     public abstract void move();

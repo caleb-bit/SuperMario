@@ -40,7 +40,7 @@ public abstract class Map {
     public GameObject[] getAllGameObjects() {
         return allObjects;
     }
-    public void setAllGameObjects(GameObject[] objects) {
+    public void setAllGameObjects(GameObject[] objects){
         allObjects = objects;
     }
 }

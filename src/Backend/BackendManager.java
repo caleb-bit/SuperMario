@@ -3,7 +3,7 @@ package Backend;
 import java.util.*;
 
 public class BackendManager {
-    private final Player player;
+    private Player player;
     private Level[] levels;
     private Level currLevel;
     private double timeLeft;
@@ -13,7 +13,9 @@ public class BackendManager {
         timeLeft = 300;
         levels = new Level[]{new Level1(), new Level2(), new Level3(), new Level4()};
     }
-
+    public void setPlayer(Player player){
+        this.player = player;
+    }
     public Player getPlayer() {
         return player;
     }
