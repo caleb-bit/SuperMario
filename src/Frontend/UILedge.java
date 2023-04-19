@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Ledge;
 
 import java.awt.*;
 
@@ -21,6 +22,6 @@ public class UILedge extends UIObstacle {
 
     @Override
     boolean correctGameObjectType(GameObject gameObject) {
-        return false;
+        return gameObject instanceof Ledge;
     }
 }

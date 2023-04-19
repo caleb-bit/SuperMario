@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Invincibility;
 
 import java.awt.*;
 
@@ -21,6 +22,6 @@ public class UIInvincibility extends UIPowerup{
 
     @Override
     boolean correctGameObjectType(GameObject gameObject) {
-        return false;
+        return gameObject instanceof Invincibility;
     }
 }

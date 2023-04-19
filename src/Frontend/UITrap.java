@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Trap;
 
 import java.awt.*;
 
@@ -22,6 +23,6 @@ public class UITrap extends UIObstacle{
 
     @Override
     boolean correctGameObjectType(GameObject gameObject) {
-        return false;
+        return gameObject instanceof Trap;
     }
 }

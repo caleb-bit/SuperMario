@@ -1,5 +1,6 @@
 package Frontend;
 
+import Backend.Cliff;
 import Backend.GameObject;
 
 import java.awt.*;
@@ -21,6 +22,6 @@ public class UICliff extends UIObstacle{
 
     @Override
     boolean correctGameObjectType(GameObject gameObject) {
-        return false;
+        return gameObject instanceof Cliff;
     }
 }
