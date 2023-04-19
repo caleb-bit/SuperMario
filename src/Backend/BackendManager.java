@@ -24,7 +24,7 @@ public class BackendManager {
         return timeLeft;
     }
 
-    public void onKeyPressed(int codeKey) {
+    public void onKeyPressed(int keyCode) {
 
     }
 
