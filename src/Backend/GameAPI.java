@@ -3,6 +3,7 @@ package Backend;
 import Frontend.FrontendManager;
 import Frontend.UIPosition;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -59,7 +60,7 @@ public class GameAPI {
         return gameState;
     }
 
-    public GameObject[] getGameObjects(int level) {
+    public ArrayList<GameObject> getGameObjects(int level) {
         return backend.getLevel(level).getMap().getAllGameObjects();
     }
 

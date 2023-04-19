@@ -5,9 +5,10 @@ import Backend.GameAPI;
 import Backend.GameObject;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Level1Panel extends LevelPanel{
-    public Level1Panel(GameObject[] gameObjects, GameAPI gameAPI) {
+    public Level1Panel(ArrayList<GameObject> gameObjects, GameAPI gameAPI) {
         super(gameObjects, gameAPI);
     }
 

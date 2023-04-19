@@ -1,45 +1,34 @@
 package Backend;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Map4 extends Map{
     Map4(){
-        GameObject[] objects = new GameObject[19];
-        Enemy[] enemies = new Enemy[0];
-        Powerup[] powerups = new Powerup[1];
-        Obstacle[] obstacles = new Obstacle[15];
-        Coin[] coins = new Coin[3];
-        GamePosition[] checkPoints = new GamePosition[2];
-        powerups[0] = new Yoshi(new GamePosition(19, 5));
-        obstacles[0] = new Cliff(new GamePosition(5, 0), 2);
-        obstacles[1] = new Cliff(new GamePosition(16, 0), 2);
-        obstacles[2] = new Trap(new GamePosition(19, 0), 3);
-        obstacles[3] = new Cliff(new GamePosition(21, 0), 2);
-        obstacles[4] = new Trap(new GamePosition(32, 5), 3);
-        obstacles[5] = new Trap(new GamePosition(38, 5), 3);
-        obstacles[6] = new Trap(new GamePosition(42, 5), 3);
-        obstacles[7] = new Trap(new GamePosition(47, 0), 3);
-        obstacles[8] = new Trap(new GamePosition(53, 0), 3);
-        obstacles[9] = new Trap(new GamePosition(56, 5), 3);
-        obstacles[10] = new Cliff(new GamePosition(65, 0), 10);
-        obstacles[11] = new Ledge(new GamePosition(68, 3), 1);
-        obstacles[12] = new Ledge(new GamePosition(71, 3), 1);
-        obstacles[13] = new Ledge(new GamePosition(74, 3), 1);
-        obstacles[14] = new Cliff(new GamePosition(80, 0), 3);
-        coins[0] = new Coin(new GamePosition(68, 4));
-        coins[1] = new Coin(new GamePosition(71, 4));
-        coins[2] = new Coin(new GamePosition(74, 4));
-        checkPoints[0] = new GamePosition(23, 0);
-        checkPoints[1] = new GamePosition(85, 0);
-        System.arraycopy(enemies, 0, objects, 0, enemies.length);
-        System.arraycopy(powerups, 0, objects, enemies.length, powerups.length);
-        System.arraycopy(coins, 0, objects, enemies.length + powerups.length, coins.length);
-        Arrays.sort(objects);
-        setAllGameObjects(objects);
-        setEnemies(enemies);
-        setPowerups(powerups);
-        setObstacles(obstacles);
-        setCoins(coins);
-        setPoints(checkPoints);
+        ArrayList<GameObject> gameObjects = new ArrayList<>();
+        ArrayList<GamePosition> gamePositions = new ArrayList<>();
+
+        gameObjects.add(new Yoshi(new GamePosition(19, 5)));
+        gameObjects.add(new Cliff(new GamePosition(5, 0), 2));
+        gameObjects.add(new Cliff(new GamePosition(16, 0), 2));
+        gameObjects.add(new Trap(new GamePosition(19, 0), 3));
+        gameObjects.add(new Cliff(new GamePosition(21, 0), 2));
+        gameObjects.add(new Trap(new GamePosition(32, 5), 3));
+        gameObjects.add(new Trap(new GamePosition(38, 5), 3));
+        gameObjects.add(new Trap(new GamePosition(42, 5), 3));
+        gameObjects.add(new Trap(new GamePosition(47, 0), 3));
+        gameObjects.add(new Trap(new GamePosition(53, 0), 3));
+        gameObjects.add(new Trap(new GamePosition(56, 5), 3));
+        gameObjects.add(new Cliff(new GamePosition(65, 0), 10));
+        gameObjects.add(new Ledge(new GamePosition(68, 3), 1));
+        gameObjects.add(new Ledge(new GamePosition(71, 3), 1));
+        gameObjects.add(new Ledge(new GamePosition(74, 3), 1));
+        gameObjects.add(new Cliff(new GamePosition(80, 0), 3));
+        gameObjects.add(new Coin(new GamePosition(68, 4)));
+        gameObjects.add(new Coin(new GamePosition(71, 4)));
+        gameObjects.add(new Coin(new GamePosition(74, 4)));
+        gamePositions.add(new GamePosition(23, 0));
+        gamePositions.add(new GamePosition(85, 0));
+
     }
 }

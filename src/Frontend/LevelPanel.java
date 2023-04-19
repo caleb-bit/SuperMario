@@ -16,7 +16,7 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
-    LevelPanel(GameObject[] gameObjects, GameAPI gameAPI) {
+    LevelPanel(ArrayList<GameObject> gameObjects, GameAPI gameAPI) {
         this.gameAPI = gameAPI;
         components = new ArrayList<>();
 

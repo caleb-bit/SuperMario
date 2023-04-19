@@ -14,6 +14,12 @@ public abstract class GameObject {
         this.velX = velX;
         this.velY = velY;
     }
+    public double getX() {
+        return position.getX();
+    }
+    public double getY() {
+        return position.getY();
+    }
     public GamePosition getPosition(){
         return position;
     }

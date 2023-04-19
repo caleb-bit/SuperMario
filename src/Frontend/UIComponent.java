@@ -19,7 +19,7 @@ abstract public class UIComponent {
                 uiPosition = new UIPosition(250, 250);
             } else {
                 this.gameObject = gameObject;
-//                TODO: update this to use formula for GamePosition --> UIPosition
+//                update this to use formula for GamePosition --> UIPosition
 //                position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
             }
         } else
