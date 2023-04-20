@@ -1,12 +1,13 @@
 package Backend;
 
 public abstract class Powerup extends GameObject{
-    boolean taken;
-    int duration;
-    String name;
-    Powerup(GamePosition position){
+    private boolean taken;
+    private int duration;
+    private String name;
+    Powerup(GamePosition position, String name){
         super(position, 0, 0);
         taken = false;
+        this.name = name;
     }
     public String getName(){
         return name;

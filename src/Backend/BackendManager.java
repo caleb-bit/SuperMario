@@ -34,7 +34,7 @@ public class BackendManager {
         if (keyCode == 38){
             player.setVelY(1);
         }
-        if (keyCode == 32 && player.getPower().getName().equals("Fire")){
+        if (keyCode == 32 && player.getPower().getName().equals("Flower")){
 
         }
     }
