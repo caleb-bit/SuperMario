@@ -31,11 +31,11 @@ public class BackendManager {
         if (keyCode == 37){
             player.setVelX(-1);
         }
-        if (keyCode == 38){
+        if (keyCode == 38 && (player.getVelY() == 0 || player.getPower().getName().equals("Yoshi"))){
             player.setVelY(1);
         }
         if (keyCode == 32 && player.getPower().getName().equals("Flower")){
-
+            Fireball fire = new Fireball(player.getPosition());
         }
     }
     public void updateTime(double increment) throws InterruptedException {
