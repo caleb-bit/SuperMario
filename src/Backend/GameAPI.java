@@ -25,6 +25,7 @@ public class GameAPI {
         backend = new BackendManager();
         frontend = new FrontendManager(this);
         frontend.openGame();
+        gameState = GameState.MENU;
     }
 
     public void startGame() {
@@ -39,6 +40,9 @@ public class GameAPI {
                     frontend.updateScreen();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                }
+                if (backend.getPlayer().getLives() == 0){
+                    gameState = GameState.DEAD;
                 }
             }
         }, delay, delay);
