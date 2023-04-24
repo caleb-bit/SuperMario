@@ -25,9 +25,19 @@ public class BackendManager {
     }
 
     public void onKeyPressed(int keyCode) {
+        if (keyCode == 39){
+            player.setVelX(1);
+        }
+        if (keyCode == 37){
+            player.setVelX(-1);
+        }
+        if (keyCode == 38){
+            player.setVelY(1);
+        }
+        if (keyCode == 32 && player.getPower().getName().equals("Flower")){
 
+        }
     }
-
     public void updateTime(double increment) throws InterruptedException {
         timeLeft -= increment;
     }
