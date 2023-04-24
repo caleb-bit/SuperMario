@@ -19,14 +19,12 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
     LevelPanel(ArrayList<GameObject> gameObjects, GameAPI gameAPI) {
         this.gameAPI = gameAPI;
         components = new ArrayList<>();
+        uiPlayer = new UIPlayer(gameAPI.getPlayer());
 
         // create corresponding components for each game object in the level
         for (GameObject gameObject : gameObjects) {
             UIComponent uiComponent = null;
-            if (gameObject instanceof Player) {
-                uiComponent = new UIPlayer(gameObject);
-                uiPlayer = (UIPlayer) uiComponent;
-            } else if (gameObject instanceof Mushroom)
+            if (gameObject instanceof Mushroom)
                 uiComponent = new UIMushroom(gameObject);
             else if (gameObject instanceof Yoshi)
                 uiComponent = new UIYoshi(gameObject);

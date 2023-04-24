@@ -64,6 +64,10 @@ public class GameAPI {
         return backend.getLevel(level).getMap().getAllGameObjects();
     }
 
+    public Player getPlayer() {
+        return backend.getPlayer();
+    }
+
     public GamePosition getPlayerGamePos() {
         return backend.getPlayer().getPosition();
     }

@@ -3,21 +3,31 @@ package Backend;
 import java.util.*;
 
 public class BackendManager {
-    private Player player;
-    private Level[] levels;
-    private Level currLevel;
+    private ArrayList<Player> players;
+    private ArrayList<Level> levels;
+    private ArrayList<Map> maps;
+    private int currLevel;
     private double timeLeft;
 
     BackendManager() {
-        player = new Player(new GamePosition(0, 0), 0, 0);
         timeLeft = 300;
-        levels = new Level[]{new Level1(), new Level2(), new Level3(), new Level4()};
+        players = new ArrayList<>();
+        for (int i=0; i<4; i++) {
+            players.add(new Player(0,0,0,0));
+        }
+        maps = new ArrayList<>();
+        maps.add(new Map1());
+        maps.add(new Map2());
+        maps.add(new Map3());
+        maps.add(new Map4());
+        levels = new ArrayList<>();
+        for (int i=1; i<=4; i++) {
+            levels.add(new Level(i,maps.get(0),players.get(0)));
+        }
+        currLevel = 1;
     }
-    public void setPlayer(Player player){
-        this.player = player;
-    }
-    public Player getPlayer() {
-        return player;
+    public Player getPlayer(){
+        return players.get(currLevel-1);
     }
 
     public double getTimeLeft() {
@@ -26,15 +36,15 @@ public class BackendManager {
 
     public void onKeyPressed(int keyCode) {
         if (keyCode == 39){
-            player.setVelX(1);
+            getPlayer().setVelX(1);
         }
         if (keyCode == 37){
-            player.setVelX(-1);
+            getPlayer().setVelX(-1);
         }
         if (keyCode == 38){
-            player.setVelY(1);
+            getPlayer().setVelY(1);
         }
-        if (keyCode == 32 && player.getPower().getName().equals("Flower")){
+        if (keyCode == 32 && getPlayer().getPower().getName().equals("Flower")){
 
         }
     }
@@ -43,6 +53,6 @@ public class BackendManager {
     }
 
     public Level getLevel(int level) {
-        return levels[level-1];
+        return levels.get(level-1);
     }
 }
