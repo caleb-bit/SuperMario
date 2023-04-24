@@ -44,8 +44,6 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
                 uiComponent = new UIGoomba(gameObject);
             else if (gameObject instanceof Koopa)
                 uiComponent = new UIKoopa(gameObject);
-            else if (gameObject instanceof Piranha)
-                uiComponent = new UIPiranha(gameObject);
             else {
                 if(gameObject == null) {
                     throw new NullPointerException("GameObject null");
