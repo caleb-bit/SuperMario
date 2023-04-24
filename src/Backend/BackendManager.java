@@ -46,4 +46,7 @@ public class BackendManager {
     public Level getLevel(int level) {
         return levels[level-1];
     }
+    public void playGame(){
+        
+    }
 }
