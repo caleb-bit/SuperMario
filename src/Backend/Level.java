@@ -6,9 +6,11 @@ public class Level {
     private int score;
     private int time;
     private Map levelMap;
-    Level(int level, Map map){
+    private Player player;
+    Level(int level, Map map, Player player){
         this.level = level;
         levelMap = map;
+        this.player = player;
     }
     public int getLevel(){
         return level;

@@ -21,6 +21,7 @@ abstract public class UIComponent {
                 this.gameObject = gameObject;
 //                update this to use formula for GamePosition --> UIPosition
 //                position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
+
             }
         } else
             throw new IllegalArgumentException();
