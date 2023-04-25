@@ -57,4 +57,7 @@ public class BackendManager {
     public Level getLevel(int level) {
         return levels.get(level-1);
     }
+    public int getCurr(){
+        return currLevel;
+    }
 }
