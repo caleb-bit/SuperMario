@@ -65,7 +65,6 @@ abstract public class UIComponent {
         uiPosition.setY(y);
     }
 
-
     public GameObject getGameObject() {
         return gameObject;
     }
