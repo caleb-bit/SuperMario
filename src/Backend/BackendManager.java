@@ -42,10 +42,12 @@ public class BackendManager {
             getPlayer().setVelX(-1);
         }
         if (keyCode == 38){
-            getPlayer().setVelY(1);
+            if (getPlayer().getVelY() == 0 || getPlayer().getPower().getName().equals("Yoshi")) {
+                getPlayer().setVelY(1);
+            }
         }
         if (keyCode == 32 && getPlayer().getPower().getName().equals("Flower")){
-
+            Fireball fire = new Fireball(getPlayer().getPosition());
         }
     }
     public void updateTime(double increment) throws InterruptedException {
