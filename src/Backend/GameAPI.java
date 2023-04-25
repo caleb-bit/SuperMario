@@ -11,7 +11,7 @@ public class GameAPI {
     private BackendManager backend;
     private FrontendManager frontend;
 
-    enum GameState {MENU, GAME, DEAD, GAMEOVER}
+    enum GameState {MENU, GAME, GAMEOVER}
 
     private GameState gameState;
 
@@ -42,7 +42,7 @@ public class GameAPI {
                     e.printStackTrace();
                 }
                 if (backend.getPlayer().getLives() == 0){
-                    gameState = GameState.DEAD;
+                    gameState = GameState.GAMEOVER;
                 }
             }
         }, delay, delay);

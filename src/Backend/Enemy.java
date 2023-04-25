@@ -13,6 +13,6 @@ public abstract class Enemy extends GameObject{
         this.alive = alive;
     }
     public void move(){
-        setVelX(0.5);
+        setPosition(new GamePosition(getPosition().getX() + getVelX(), getPosition().getY()));
     }
 }

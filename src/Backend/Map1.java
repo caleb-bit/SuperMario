@@ -7,7 +7,6 @@ public class Map1 extends Map {
     Map1() {
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
-
         gameObjects.add(new Goomba(new GamePosition(5, 1)));
         gameObjects.add(new Goomba(new GamePosition(15, 1)));
         gameObjects.add(new Koopa(new GamePosition(30, 1)));
@@ -23,6 +22,7 @@ public class Map1 extends Map {
         gameObjects.add(new Coin(new GamePosition(21, 4)));
         gameObjects.add(new Coin(new GamePosition(32, 1)));
         gameObjects.add(new Coin(new GamePosition(47, 1)));
+        gamePositions.add(new GamePosition(0, 0));
         gamePositions.add(new GamePosition(20, 0));
         gamePositions.add(new GamePosition(40, 0));
         gamePositions.add(new GamePosition(55, 0));
