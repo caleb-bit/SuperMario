@@ -42,15 +42,18 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
                 uiComponent = new UIGoomba(gameObject);
             else if (gameObject instanceof Koopa)
                 uiComponent = new UIKoopa(gameObject);
+            else if (gameObject instanceof Coin)
+                uiComponent = new UICoin(gameObject);
             else {
                 if(gameObject == null) {
                     throw new NullPointerException("GameObject null");
                 } else {
-                    System.out.println("gameObject wrong type");
+                    throw new IllegalArgumentException("gameObject wrong type");
                 }
             }
             components.add(uiComponent);
         }
+        updateUIPositions();
     }
 
     public void paintComponent(Graphics g) {
@@ -65,6 +68,9 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
             if (component instanceof UIPlayer) {
                 // TODO: deal with moving player on screen
             } else {
+                if (component == null) {
+                    throw new NullPointerException("component is null");
+                }
                 UIPosition relPos = relToPlayer(component);
                 component.setUIPosition(relPos);
             }
@@ -73,7 +79,8 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
     private UIPosition relToPlayer(UIComponent uiComponent) {
         GamePosition playerGamePos = gameAPI.getPlayerGamePos();
-        UIPosition playerUIPos = gameAPI.getPlayerUIPos();
+//        UIPosition playerUIPos = gameAPI.getPlayerUIPos();
+        UIPosition playerUIPos = uiPlayer.getUIPosition();
         GameObject gameObject = uiComponent.getGameObject();
         return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX() + playerUIPos.getX()),
                 (int) (gameObject.getPosition().getY() - playerGamePos.getY() + playerUIPos.getY()));

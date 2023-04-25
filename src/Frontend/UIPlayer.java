@@ -20,6 +20,7 @@ public class UIPlayer extends UIComponent {
         super(backendObject);
         isMovableX = false;
         isMovableY = true;
+        setUIPosition(new UIPosition(250,250));
     }
 
     @Override
