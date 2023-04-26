@@ -42,7 +42,7 @@ public class UIFlower extends UIPowerup {
     @Override
     public boolean onComponent(UIPosition pos) {
         return getIntX() <= (int) pos.getX()
-                && (int) pos.getX() <= getIntX() + width
+                && (int) pos.getX() <= getIntX() + width*6/5
                 && getIntY() - height <= (int) pos.getY()
                 && (int) pos.getY() <= getIntY();
     }
