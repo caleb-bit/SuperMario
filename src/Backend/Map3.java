@@ -55,7 +55,6 @@ public class Map3 extends Map{
         gameObjects.add(new Coin(new GamePosition(52, 1)));
         gameObjects.add(new Coin(new GamePosition(56, 10)));
         gameObjects.add(new Coin(new GamePosition(57, 10)));
-        gamePositions.add(new GamePosition(0, 0));
         gamePositions.add(new GamePosition(30, 0));
         gamePositions.add(new GamePosition(65, 0));
 

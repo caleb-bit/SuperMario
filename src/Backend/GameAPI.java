@@ -41,30 +41,73 @@ public class GameAPI {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (backend.getPlayer().getLives() == 0){
+                if (getPlayer().getLives() == 0){
                     gameState = GameState.GAMEOVER;
                 }
-                for (Enemy enem: backend.getLevel(backend.getCurr()).getMap().getEnemies()){
-                    for (Obstacle obs: backend.getLevel(backend.getCurr()).getMap().getObstacles()){
-                        if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() <= obs.getX() + obs.getLength()
-                         && enem.getY() == obs.getY() + 1){
-                            if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5){
-                                enem.setVelX(-0.5);
+                if (getPlayer().getPower() != null){
+                    getPlayer().getPower().setDuration(getPlayer().getPower().getDuration() - delay);
+                    if (getPlayer().getPower().getDuration() == 0){
+                        getPlayer().setPower(null);
+                    }
+                }
+                for (Enemy enem: backend.getLevel(backend.getCurr() - 1).getMap().getEnemies()){
+                    if (enem.getAlive()) {
+                        for (Obstacle obs : backend.getLevel(backend.getCurr() - 1).getMap().getObstacles()) {
+                            if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
+                                    && enem.getY() == obs.getY() + 1) {
+                                if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
+                                    enem.setVelX(-0.5);
+                                }
+                                if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5) {
+                                    enem.setVelX(0.5);
+                                }
                             }
-                            if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5){
-                                enem.setVelX(0.5);
+                            if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() >= obs.getX() + obs.getLength())) {
+                                if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
+                                    enem.setVelX(-0.5);
+                                }
+                                if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
+                                    enem.setVelX(0.5);
+                                }
                             }
                         }
-                        if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() > obs.getX() + obs.getLength())){
-                            if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5){
-                                enem.setVelX(-0.5);
+                        enem.move();
+                    }
+                }
+                for (GameObject obj: backend.getLevel(backend.getCurr() - 1).getMap().getAllGameObjects()){
+                    if (obj instanceof Enemy){
+                        if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
+                            if (getPlayer().getVelY() < 0){
+                                ((Enemy) obj).setAlive(false);
                             }
-                            if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5){
-                                enem.setVelX(0.5);
+                            else{
+                                getPlayer().die(backend.getLevel(backend.getCurr() - 1).getMap().getPoints());
                             }
                         }
                     }
-                    enem.move();
+                    if (obj instanceof Powerup){
+                        if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Powerup) obj).getTaken()){
+                            getPlayer().setPower((Powerup) obj);
+                        }
+                    }
+                    if (obj instanceof Cliff){
+                        if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Cliff) obj).getLength()){
+                            if (getPlayer().getY() == 0){
+                                getPlayer().die(backend.getLevel(backend.getCurr() - 1).getMap().getPoints());
+                            }
+                        }
+                    }
+                    if (obj instanceof Ledge){
+                        if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Ledge) obj).getLength()){
+                            if (getPlayer().getY() == obj.getY()){
+                                getPlayer().setVelY(-1);
+                            }
+                            if (getPlayer().getY() == obj.getY() + 1){
+                                getPlayer().setVelY(0);
+                            }
+                        }
+                    }
+
                 }
             }
         }, delay, delay);
