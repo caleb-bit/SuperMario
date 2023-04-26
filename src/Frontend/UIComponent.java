@@ -6,6 +6,7 @@ import Backend.Player;
 import java.awt.*;
 
 abstract public class UIComponent {
+    // bottom left
     private UIPosition uiPosition;
 
     // backend representation of the UI component, stores gamePosition
@@ -19,9 +20,6 @@ abstract public class UIComponent {
                 uiPosition = new UIPosition(250, 250);
             } else {
                 this.gameObject = gameObject;
-//                update this to use formula for GamePosition --> UIPosition
-//                position = new UIPosition(gameObject.getPosition().getX(), gameObject.getPosition().getY());
-
             }
         } else
             throw new IllegalArgumentException();

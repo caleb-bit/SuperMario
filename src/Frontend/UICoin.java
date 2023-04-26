@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class UICoin extends UIComponent {
     private final int width = 20;
-    private final int height = 40;
+    private final int height = 30;
 
     public UICoin(GameObject gameObject) {
         super(gameObject);
@@ -16,11 +16,11 @@ public class UICoin extends UIComponent {
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.black);
-        fillOval(g, getIntX(), getIntY(), width + 10, height + 10);
+        fillOval(g, centerX(), centerY(), width, height);
         g.setColor(Color.yellow);
-        fillOval(g, getIntX(), getIntY(), width, height);
+        fillOval(g, centerX(), centerY(), width-10, height-10);
         g.setColor(Color.yellow.darker());
-        fillOval(g, getIntX(), getIntY(), width / 2, height / 2);
+        fillOval(g, centerX(), centerY(), (width-10) / 2, (height-10) / 2);
     }
 
     // more convenient fillOval (takes in center pos, not top left)
@@ -30,8 +30,8 @@ public class UICoin extends UIComponent {
 
     @Override
     public boolean onComponent(UIPosition pos) {
-        double x1 = getUIPosition().getX();
-        double y1 = getUIPosition().getY();
+        double x1 = centerX();
+        double y1 = centerY();
         double x2 = pos.getX();
         double y2 = pos.getY();
         return squared((x1 - x2) / width) + squared((y1 - y2) / height) <= 1;
@@ -44,5 +44,12 @@ public class UICoin extends UIComponent {
 
     private double squared(double x) {
         return x * x;
+    }
+
+    private int centerX() {
+        return getIntX()+width/2;
+    }
+    private int centerY() {
+        return getIntY() - height/2;
     }
 }

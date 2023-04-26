@@ -58,11 +58,12 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
     public void paintComponent(Graphics g) {
         for (UIComponent component : components) {
-//            component.setUIPosition(relToPlayer(component));
             component.paint(g);
         }
+        uiPlayer.paint(g);
     }
 
+    // updates UI positions of components
     public void updateUIPositions() {
         for (UIComponent component : components) {
             if (component instanceof UIPlayer) {
@@ -82,8 +83,8 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 //        UIPosition playerUIPos = gameAPI.getPlayerUIPos();
         UIPosition playerUIPos = uiPlayer.getUIPosition();
         GameObject gameObject = uiComponent.getGameObject();
-        return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX() + playerUIPos.getX()),
-                (int) (gameObject.getPosition().getY() - playerGamePos.getY() + playerUIPos.getY()));
+        return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX())*5 + playerUIPos.getX(),
+                (int) -1*(gameObject.getPosition().getY() - playerGamePos.getY())*5+ playerUIPos.getY());
     }
 
     public void keyPressed(KeyEvent e) {
