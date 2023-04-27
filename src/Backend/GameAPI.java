@@ -102,12 +102,14 @@ public class GameAPI {
                             if (getPlayer().getY() == obj.getY()){
                                 getPlayer().setVelY(-1);
                             }
-                            if (getPlayer().getY() == obj.getY() + 1){
+                            if (getPlayer().getY() == obj.getY() + 1 && getPlayer().getVelY() < 0){
                                 getPlayer().setVelY(0);
                             }
                         }
                     }
-
+                    if (obj instanceof Trap){
+                        
+                    }
                 }
             }
         }, delay, delay);
