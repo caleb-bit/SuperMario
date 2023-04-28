@@ -13,9 +13,9 @@ public class Trap extends Obstacle{
         return angle;
     }
     public double getXMax(){
-        return getPosition.getX() + Math.cos(getLength());
+        return getX() + Math.cos(getLength());
     }
     public double getYMax(){
-        return getPosition.getY() + Math.sin(getLength());
+        return getY() + Math.sin(getLength());
     }
 }
