@@ -108,7 +108,7 @@ public class GameAPI {
                         }
                     }
                     if (obj instanceof Trap){
-                        
+                        obj.setAngle(getAngle() + 20);
                     }
                 }
             }
