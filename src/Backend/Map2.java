@@ -50,7 +50,6 @@ public class Map2 extends Map{
         gameObjects.add(new Coin(new GamePosition(38, 5)));
         gameObjects.add(new Coin(new GamePosition(48, 11)));
         gameObjects.add(new Coin(new GamePosition(57, 6)));
-        gamePositions.add(new GamePosition(0, 0));
         gamePositions.add(new GamePosition(19, 0));
         gamePositions.add(new GamePosition(65, 0));
         initObjects(gameObjects, gamePositions);

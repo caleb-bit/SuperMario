@@ -2,7 +2,7 @@ package Backend;
 
 public abstract class Powerup extends GameObject{
     private boolean taken;
-    private int duration;
+    private double duration;
     private String name;
     Powerup(GamePosition position, String name){
         super(position, 0, 0);
@@ -18,10 +18,10 @@ public abstract class Powerup extends GameObject{
     public void setTaken(boolean taken){
         this.taken = taken;
     }
-    public int getDuration(){
+    public double getDuration(){
         return duration;
     }
-    public void setDuration(int duration){
+    public void setDuration(double duration){
         this.duration = duration;
     }
 }

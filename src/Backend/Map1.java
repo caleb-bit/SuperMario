@@ -21,7 +21,6 @@ public class Map1 extends Map {
         gameObjects.add(new Coin(new GamePosition(21, 4)));
         gameObjects.add(new Coin(new GamePosition(32, 1)));
         gameObjects.add(new Coin(new GamePosition(47, 1)));
-        gamePositions.add(new GamePosition(0, 0));
         gamePositions.add(new GamePosition(20, 0));
         gamePositions.add(new GamePosition(40, 0));
         gamePositions.add(new GamePosition(55, 0));
