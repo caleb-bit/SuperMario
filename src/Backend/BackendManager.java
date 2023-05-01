@@ -61,9 +61,9 @@ public class BackendManager {
         return currLevel;
     }
     public void play(){
-        for (Enemy enem: getLevel(getCurr() - 1).getMap().getEnemies()){
+        for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
             if (enem.getAlive()) {
-                for (Obstacle obs : getLevel(getCurr() - 1).getMap().getObstacles()) {
+                for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
                     if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
                             && enem.getY() == obs.getY() + 1) {
                         if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
@@ -85,26 +85,27 @@ public class BackendManager {
                 enem.move();
             }
         }
-        for (GameObject obj: getLevel(getCurr() - 1).getMap().getAllGameObjects()){
+        for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
             if (obj instanceof Enemy){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
                     if (getPlayer().getVelY() < 0 || getPlayer().getPower().getName().equals("Invincibility")){
                         ((Enemy) obj).setAlive(false);
                     }
                     else{
-                        getPlayer().die(getLevel(getCurr() - 1).getMap().getPoints());
+                        getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                     }
                 }
             }
             if (obj instanceof Powerup){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Powerup) obj).getTaken()){
                     getPlayer().setPower((Powerup) obj);
+                    ((Powerup) obj).setTaken(true);
                 }
             }
             if (obj instanceof Cliff){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Cliff) obj).getLength()){
                     if (getPlayer().getY() == 0){
-                        getPlayer().die(getLevel(getCurr() - 1).getMap().getPoints());
+                        getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                     }
                 }
             }
@@ -123,9 +124,15 @@ public class BackendManager {
                         (getPlayer().getX() <= obj.getX() && getPlayer().getX() > ((Trap) obj).getXMax())) &&
                         ((getPlayer().getY() >= obj.getY() && getPlayer().getY() < ((Trap) obj).getYMax()) ||
                         (getPlayer().getY() <= obj.getY() && getPlayer().getY() > ((Trap) obj).getYMax()))){
-                    getPlayer().die(getLevel(getCurr() - 1).getMap().getPoints());
+                    getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                 }
                 ((Trap)obj).setAngle(((Trap) obj).getAngle() + 20);
+            }
+            if (obj instanceof Coin){
+                if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
+                    getPlayer().setCoins(getPlayer().getCoins() + 1);
+                    ((Coin) obj).setTaken(true);
+                }
             }
         }
     }

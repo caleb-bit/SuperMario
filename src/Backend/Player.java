@@ -45,7 +45,7 @@ public class Player extends GameObject{
     public int getCoins(){
         return coins;
     }
-    private void setCoins(int coins){
+    public void setCoins(int coins){
         this.coins = coins;
     }
     public void move(){

@@ -45,6 +45,10 @@ public class GameAPI {
                 if (getPlayer().getLives() == 0){
                     gameState = GameState.GAMEOVER;
                 }
+                if (getPlayer().getX() == backend.getLevel(backend.getCurr()).getMap().getPoints().get(
+                        backend.getLevel(backend.getCurr()).getMap().getPoints().size() - 1).getX()){
+                    gameState = GameState.MENU;
+                }
                 if (getPlayer().getPower() != null){
                     getPlayer().getPower().setDuration(getPlayer().getPower().getDuration() - delay);
                     if (getPlayer().getPower().getDuration() == 0){
