@@ -1,5 +1,6 @@
 package Backend;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public abstract class Map {
@@ -9,6 +10,7 @@ public abstract class Map {
     private ArrayList<Enemy> enemies;
     private ArrayList<Coin> coins;
     private ArrayList<GamePosition> checkPoints;
+    private ArrayList<Land> lands;
 
     public void initObjects(ArrayList<GameObject> objects, ArrayList<GamePosition> checkPoints) {
         allObjects = objects;
@@ -16,6 +18,7 @@ public abstract class Map {
         obstacles = new ArrayList<>();
         enemies = new ArrayList<>();
         coins = new ArrayList<>();
+        lands = new ArrayList<>();
         for (GameObject object : objects) {
             if (object instanceof Powerup)
                 powerups.add((Powerup) object);
@@ -25,6 +28,10 @@ public abstract class Map {
                 enemies.add((Enemy) object);
             else if (object instanceof Coin)
                 coins.add((Coin) object);
+            else if (object instanceof Land)
+                lands.add((Land) object);
+            else
+                throw new IllegalArgumentException("object not classified");
         }
         this.checkPoints = checkPoints;
     }
@@ -75,5 +82,9 @@ public abstract class Map {
 
     public void setAllGameObjects(ArrayList<GameObject> objects) {
         allObjects = objects;
+    }
+
+    public ArrayList<Land> getLands() {
+        return lands;
     }
 }

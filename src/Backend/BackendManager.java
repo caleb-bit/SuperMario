@@ -38,12 +38,13 @@ public class BackendManager {
 
     public void onKeyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_RIGHT) {
-            getPlayer().setVelX(1);
+            getPlayer().setVelX(3);
         } else if (keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(-1);
+            getPlayer().setVelX(-3);
         } else if (keyCode == KeyEvent.VK_UP) {
             if (getPlayer().getVelY() == 0 || getPlayer().getPower().getName().equals("Yoshi")) {
-                getPlayer().setVelY(1);
+                getPlayer().setVelY(3);
+                getPlayer().setAccelY(-0.5);
             }
         } else if (keyCode == KeyEvent.VK_SPACE && getPlayer().getPower().getName().equals("Flower")) {
             Fireball fire = new Fireball(getPlayer().getPosition());
@@ -53,9 +54,10 @@ public class BackendManager {
     public void onKeyReleased(int keyCode) {
         if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
             getPlayer().setVelX(0);
-        } else if (keyCode == KeyEvent.VK_UP) {
-            getPlayer().setAccelY(0);
         }
+//        else if (keyCode == KeyEvent.VK_UP) {
+////            getPlayer().setAccelY();
+//        }
     }
 
     public void updateTime(double increment) throws InterruptedException {
@@ -70,33 +72,32 @@ public class BackendManager {
         return currLevel;
     }
 
-    public void updatePositions() {
-        getPlayer().move();
-        updateEnemies();
+    public Land getCurrLand() {
+        ArrayList<Land> lands = getLevel(currLevel).getMap().getLands();
+        Land correctLand = null;
+        for (Land land : lands) {
+            if (land.getStartX() < getPlayer().getX()
+                    && getPlayer().getX() < land.getEndX()
+                    && land.getY() >= getPlayer().getY()) {
+                if (correctLand == null)
+                    correctLand = land;
+                else if (land.getY() > correctLand.getY())
+                    correctLand = land;
+            }
+        }
+        return correctLand;
     }
 
-    private void updateEnemies() {
-        for (Enemy enem : getLevel(getCurr()).getMap().getEnemies()) {
-            for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
-                if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() <= obs.getX() + obs.getLength()
-                        && enem.getY() == obs.getY() + 1) {
-                    if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
-                        enem.setVelX(-0.5);
-                    }
-                    if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5) {
-                        enem.setVelX(0.5);
-                    }
-                }
-                if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() > obs.getX() + obs.getLength())) {
-                    if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
-                        enem.setVelX(-0.5);
-                    }
-                    if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
-                        enem.setVelX(0.5);
-                    }
-                }
-            }
-            enem.move();
-        }
+    public boolean playerOnGround() {
+        return getPlayer().getY() == getCurrLand().getY();
     }
+
+    public void updatePlayerPos() {
+//        if(playerOnGround()) {
+//            getPlayer().setAccelY(0);
+//            getPlayer().setVelY(0);
+//        }
+        getPlayer().move();
+    }
+
 }
