@@ -22,14 +22,19 @@ public class Player extends GameObject{
         return lives;
     }
     public void die(ArrayList<GamePosition> points){
-        lives--;
-        GamePosition returnPoint = new GamePosition(0, 0);
-        for (GamePosition pos: points){
-            if (pos.getX() < getX()){
-                returnPoint = pos;
-            }
+        if (getPower().getName().equals("Mushroom")){
+            setPower(null);
         }
-        setPosition(returnPoint);
+        else {
+            lives--;
+            GamePosition returnPoint = new GamePosition(0, 0);
+            for (GamePosition pos : points) {
+                if (pos.getX() < getX()) {
+                    returnPoint = pos;
+                }
+            }
+            setPosition(returnPoint);
+        }
     }
     public Powerup getPower(){
         return power;
