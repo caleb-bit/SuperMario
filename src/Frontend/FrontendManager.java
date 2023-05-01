@@ -25,8 +25,8 @@ public class FrontendManager {
 //        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         frame.setPreferredSize(new Dimension(500,500));
         frame.pack();
+
         frame.setVisible(true);
-        frame.addKeyListener(currPanel);
     }
 
     public void updateScreen() {

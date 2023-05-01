@@ -23,7 +23,7 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
         // create corresponding components for each game object in the level
         for (GameObject gameObject : gameObjects) {
-            UIComponent uiComponent;
+            UIComponent uiComponent = null;
             if (gameObject instanceof Mushroom)
                 uiComponent = new UIMushroom(gameObject);
             else if (gameObject instanceof Yoshi)
@@ -44,10 +44,8 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
                 uiComponent = new UIKoopa(gameObject);
             else if (gameObject instanceof Coin)
                 uiComponent = new UICoin(gameObject);
-            else if (gameObject instanceof Land)
-                uiComponent = new UILand(gameObject);
             else {
-                if (gameObject == null) {
+                if(gameObject == null) {
                     throw new NullPointerException("GameObject null");
                 } else {
                     throw new IllegalArgumentException("gameObject wrong type");
@@ -55,7 +53,6 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
             }
             components.add(uiComponent);
         }
-//        components.add(new )
         updateUIPositions();
     }
 
@@ -83,15 +80,11 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
 
     private UIPosition relToPlayer(UIComponent uiComponent) {
         GamePosition playerGamePos = gameAPI.getPlayerGamePos();
+//        UIPosition playerUIPos = gameAPI.getPlayerUIPos();
         UIPosition playerUIPos = uiPlayer.getUIPosition();
         GameObject gameObject = uiComponent.getGameObject();
-        return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX()) * 5 + playerUIPos.getX(),
-                (int) -1 * (gameObject.getPosition().getY() - playerGamePos.getY()) * 5 + playerUIPos.getY());
-    }
-
-    public static UIPosition gamePosToUiPos(GamePosition objectPos, GamePosition playerPos) {
-        return new UIPosition((int) (objectPos.getX() - playerPos.getX()) * 5 + playerPos.getX(),
-                -5 * (objectPos.getY() - playerPos.getY()) + playerPos.getY());
+        return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX())*5 + playerUIPos.getX(),
+                (int) -1*(gameObject.getPosition().getY() - playerGamePos.getY())*5+ playerUIPos.getY());
     }
 
     public void keyPressed(KeyEvent e) {
@@ -99,7 +92,6 @@ abstract public class LevelPanel extends JPanel implements KeyListener {
     }
 
     public void keyReleased(KeyEvent e) {
-        gameAPI.keyReleased(e.getKeyCode());
     }
 
     public void keyTyped(KeyEvent e) {

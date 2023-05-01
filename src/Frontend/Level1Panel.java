@@ -5,7 +5,6 @@ import Backend.GameAPI;
 import Backend.GameObject;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Level1Panel extends LevelPanel{

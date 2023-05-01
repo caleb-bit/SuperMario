@@ -31,7 +31,7 @@ public class GameAPI {
     public void startGame() {
         gameState = GameState.GAME;
         Timer timer = new Timer();
-        int delay = 60;
+        int delay = 1_000;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -44,7 +44,28 @@ public class GameAPI {
                 if (backend.getPlayer().getLives() == 0){
                     gameState = GameState.GAMEOVER;
                 }
-                backend.updatePositions();
+                for (Enemy enem: backend.getLevel(backend.getCurr()).getMap().getEnemies()){
+                    for (Obstacle obs: backend.getLevel(backend.getCurr()).getMap().getObstacles()){
+                        if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() <= obs.getX() + obs.getLength()
+                         && enem.getY() == obs.getY() + 1){
+                            if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5){
+                                enem.setVelX(-0.5);
+                            }
+                            if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5){
+                                enem.setVelX(0.5);
+                            }
+                        }
+                        if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() > obs.getX() + obs.getLength())){
+                            if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5){
+                                enem.setVelX(-0.5);
+                            }
+                            if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5){
+                                enem.setVelX(0.5);
+                            }
+                        }
+                    }
+                    enem.move();
+                }
             }
         }, delay, delay);
     }
@@ -52,11 +73,6 @@ public class GameAPI {
     public void keyPressed(int keyCode) {
         backend.onKeyPressed(keyCode);
     }
-
-    public void keyReleased(int keyCode) {
-        backend.onKeyReleased(keyCode);
-    }
-
 
     public void updateScreen(){
         frontend.updateScreen();
