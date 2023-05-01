@@ -1,7 +1,6 @@
 package Backend;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Map1 extends Map {
     Map1() {
@@ -26,6 +25,7 @@ public class Map1 extends Map {
         gamePositions.add(new GamePosition(20, 0));
         gamePositions.add(new GamePosition(40, 0));
         gamePositions.add(new GamePosition(55, 0));
+        gameObjects.add(new Land(-100,100,0,-100));
         initObjects(gameObjects, gamePositions);
     }
 }

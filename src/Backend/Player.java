@@ -1,40 +1,51 @@
 package Backend;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
     private int lives;
     private Powerup power;
     private int coins;
-    Player(GamePosition position, int velX, int velY){
+
+    Player(GamePosition position, int velX, int velY) {
         super(position, velX, velY);
         lives = 3;
         power = null;
         coins = 0;
     }
+
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
         power = null;
         coins = 0;
     }
-    public int getLives(){
+
+    public int getLives() {
         return lives;
     }
-    public void die(){
+
+    public void die() {
         lives--;
     }
-    public Powerup getPower(){
+
+    public Powerup getPower() {
         return power;
     }
-    public void setPower(Powerup power){
+
+    public void setPower(Powerup power) {
         this.power = power;
     }
-    public int getCoins(){
+
+    public int getCoins() {
         return coins;
     }
-    private void setCoins(int coins){
+
+    private void setCoins(int coins) {
         this.coins = coins;
     }
-    public void move(){
 
+    public void move() {
+        setVelY(getVelY()+getAccelY());
+        setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
+
 }
