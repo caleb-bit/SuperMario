@@ -3,6 +3,7 @@ package Backend;
 import Frontend.FrontendManager;
 import Frontend.UIPosition;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -56,17 +57,17 @@ public class GameAPI {
                         getPlayer().setPower(null);
                     }
                 }
-                backend.updatePlayerPos();
+                backend.updatePlayerPos(frontend.getKeysPressed());
             }
         }, delay, delay);
     }
 
     public void keyPressed(int keyCode) {
-        backend.onKeyPressed(keyCode);
+        frontend.keyPressed(keyCode);
     }
 
     public void keyReleased(int keyCode) {
-        backend.onKeyReleased(keyCode);
+        frontend.keyReleased(keyCode);
     }
 
 

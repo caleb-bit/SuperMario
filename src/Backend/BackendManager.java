@@ -55,9 +55,6 @@ public class BackendManager {
         if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
             getPlayer().setVelX(0);
         }
-//        else if (keyCode == KeyEvent.VK_UP) {
-////            getPlayer().setAccelY();
-//        }
     }
 
     public void updateTime(double increment) throws InterruptedException {
@@ -92,12 +89,8 @@ public class BackendManager {
         return getPlayer().getY() == getCurrLand().getY();
     }
 
-    public void updatePlayerPos() {
-//        if(playerOnGround()) {
-//            getPlayer().setAccelY(0);
-//            getPlayer().setVelY(0);
-//        }
-        getPlayer().move();
+    public void updatePlayerPos(HashMap<Integer, Boolean> keysPressed) {
+        getPlayer().move(keysPressed);
     }
     public void play(){
         for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
