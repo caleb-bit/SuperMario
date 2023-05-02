@@ -1,6 +1,8 @@
 package Backend;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player extends GameObject{
     private int lives;
@@ -18,11 +20,17 @@ public class Player extends GameObject{
         power = null;
         coins = 0;
     }
+
+    @Override
+    public void move() {
+
+    }
+
     public int getLives(){
         return lives;
     }
     public void die(ArrayList<GamePosition> points){
-        if (getPower().getName().equals("Mushroom")){
+        if (power != null && getPower().getName().equals("Mushroom")){
             setPower(null);
         }
         else {
@@ -49,7 +57,24 @@ public class Player extends GameObject{
         this.coins = coins;
     }
 
-    public void move() {
+    public void move(HashMap<Integer, Boolean> keysPressed) {
+        // update speeds
+        if (keysPressed.get(KeyEvent.VK_RIGHT)) {
+            setVelX(3);
+        } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
+            setVelX(-3);
+        } else if (keysPressed.get(KeyEvent.VK_UP)) {
+            if (getVelY() == 0 || (power != null && getPower().getName().equals("Yoshi"))) {
+                setVelY(3);
+                setAccelY(-0.5);
+            }
+        } else if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
+            Fireball fire = new Fireball(getPosition());
+        }
+
+        if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
+            setVelX(0);
+
         setVelY(getVelY()+getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
