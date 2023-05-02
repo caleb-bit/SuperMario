@@ -1,17 +1,11 @@
 package Backend;
 
 public class Fireball extends GameObject{
-    private boolean active;
     Fireball(GamePosition position) {
         super(position, 1, 0);
-    }
-    public boolean getActive(){
-        return active;
-    }
-    public void setActive(boolean active){
-        this.active = active;
+        setVelX(1);
     }
     public void move() {
-        setVelX(1);
+        setPosition(new GamePosition(getPosition().getX() + getVelX(), getPosition().getY()));
     }
 }

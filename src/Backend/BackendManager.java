@@ -85,6 +85,10 @@ public class BackendManager {
         return correctLand;
     }
 
+    public boolean playerOnGround() {
+        return getPlayer().getY() == getCurrLand().getY();
+    }
+
     public void updatePlayerPos(HashMap<Integer, Boolean> keysPressed) {
         getPlayer().move(keysPressed, getCurrLand());
     }

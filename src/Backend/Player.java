@@ -9,7 +9,16 @@ public class Player extends GameObject {
     private Powerup power;
     private int coins;
     private double acceleration;
+    private ArrayList<Fireball> fireballs;
+    Player(GamePosition position, int velX, int velY){
+        super(position, velX, velY);
+        lives = 3;
+        power = null;
+        coins = 0;
+        acceleration = 0;
+        fireballs = new ArrayList<>();
 
+    }
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
@@ -44,11 +53,15 @@ public class Player extends GameObject {
 
     public void move(HashMap<Integer, Boolean> keysPressed, Land land) {
         updateSpeeds(keysPressed, land);
-        if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
-            Fireball fire = new Fireball(getPosition());
-        }
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
+
+        if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
+            fireballs.add(new Fireball(getPosition()));
+        }
+        for (Fireball fire: fireballs){
+            fire.move();
+        }
 
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
@@ -99,5 +112,27 @@ public class Player extends GameObject {
         this.acceleration = acceleration;
     }
 
-
+    public void move(HashMap<Integer, Boolean> keysPressed) {
+        // update speeds
+        if (keysPressed.get(KeyEvent.VK_RIGHT)) {
+            setVelX(3);
+        } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
+            setVelX(-3);
+        } else if (keysPressed.get(KeyEvent.VK_UP)) {
+            if (getVelY() == 0 || (power != null && getPower().getName().equals("Yoshi"))) {
+                setVelY(3);
+                setAccelY(-0.5);
+            }
+        } else if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
+            fireballs.add(new Fireball(getPosition()));
+        }
+        if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
+            setVelX(0);
+        }
+        setVelY(getVelY()+getAccelY());
+        setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
+        for (Fireball fire: fireballs){
+            fire.move();
+        }
+    }
 }
