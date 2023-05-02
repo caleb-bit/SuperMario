@@ -7,7 +7,7 @@ public class Map4 extends Map{
     Map4(){
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
-
+        gameObjects.add(new Land(0,90,0,-5));
         gameObjects.add(new Yoshi(new GamePosition(19, 5)));
         gameObjects.add(new Cliff(new GamePosition(5, 0), 2));
         gameObjects.add(new Cliff(new GamePosition(16, 0), 2));
@@ -29,6 +29,6 @@ public class Map4 extends Map{
         gameObjects.add(new Coin(new GamePosition(74, 4)));
         gamePositions.add(new GamePosition(23, 0));
         gamePositions.add(new GamePosition(85, 0));
-
+        initObjects(gameObjects, gamePositions);
     }
 }

@@ -7,7 +7,7 @@ public class Map3 extends Map{
     Map3(){
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
-
+        gameObjects.add(new Land(0,70,0,-5));
         gameObjects.add(new Koopa(new GamePosition(13, 11)));
         gameObjects.add(new Goomba(new GamePosition(20, 11)));
         gameObjects.add(new Goomba(new GamePosition(21, 11)));
@@ -57,6 +57,6 @@ public class Map3 extends Map{
         gameObjects.add(new Coin(new GamePosition(57, 10)));
         gamePositions.add(new GamePosition(30, 0));
         gamePositions.add(new GamePosition(65, 0));
-
+        initObjects(gameObjects, gamePositions);
     }
 }

@@ -12,10 +12,7 @@ public class Land extends GameObject{
         this.startY = startY;
         this.endY = endY;
     }
-
-    @Override
     public void move() {
-        //TODO
     }
 
     public int getStartX() {

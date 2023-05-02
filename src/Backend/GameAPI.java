@@ -48,6 +48,7 @@ public class GameAPI {
                 }
                 if (getPlayer().getX() == backend.getLevel(backend.getCurr()).getMap().getPoints().get(
                         backend.getLevel(backend.getCurr()).getMap().getPoints().size() - 1).getX()){
+                    backend.getLevel(backend.getCurr()).setComplete(true);
                     gameState = GameState.MENU;
                 }
                 if (getPlayer().getPower() != null) {
