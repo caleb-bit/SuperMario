@@ -99,9 +99,6 @@ public class BackendManager {
 //        }
         getPlayer().move();
     }
-
-
-
     public void play(){
         for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
             if (enem.getAlive()) {

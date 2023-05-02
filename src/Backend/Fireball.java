@@ -4,6 +4,7 @@ public class Fireball extends GameObject{
     private boolean active;
     Fireball(GamePosition position) {
         super(position, 1, 0);
+        setVelX(1);
     }
     public boolean getActive(){
         return active;
@@ -12,6 +13,6 @@ public class Fireball extends GameObject{
         this.active = active;
     }
     public void move() {
-        setVelX(1);
+        setPosition(new GamePosition(getPosition().getX() + getVelX(), getPosition().getY()));
     }
 }
