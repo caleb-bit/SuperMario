@@ -6,17 +6,20 @@ public class Player extends GameObject{
     private int lives;
     private Powerup power;
     private int coins;
+    private double acceleration;
     Player(GamePosition position, int velX, int velY){
         super(position, velX, velY);
         lives = 3;
         power = null;
         coins = 0;
+        acceleration = 0;
     }
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
         power = null;
         coins = 0;
+        acceleration = 0;
     }
     public int getLives(){
         return lives;
@@ -47,6 +50,12 @@ public class Player extends GameObject{
     }
     public void setCoins(int coins){
         this.coins = coins;
+    }
+    public double getAccelY(){
+        return acceleration;
+    }
+    public void setAccelY(double acceleration){
+        this.acceleration = acceleration;
     }
 
     public void move() {
