@@ -37,6 +37,7 @@ public class FrontendManager {
         frame.pack();
         frame.setVisible(true);
         frame.addKeyListener(currPanel);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void updateScreen() {

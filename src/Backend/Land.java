@@ -23,6 +23,8 @@ public class Land extends GameObject{
         return endX;
     }
 
+    public int getStartY() {return startY;}
+
     public int getMaxHeight() {
         return Math.abs(endY-startY);
     }

@@ -73,9 +73,9 @@ public class BackendManager {
         ArrayList<Land> lands = getLevel(currLevel).getMap().getLands();
         Land correctLand = null;
         for (Land land : lands) {
-            if (land.getStartX() < getPlayer().getX()
+            if (land.getStartX() <= getPlayer().getX()
                     && getPlayer().getX() < land.getEndX()
-                    && land.getY() >= getPlayer().getY()) {
+                    && land.getY() <= getPlayer().getY()) {
                 if (correctLand == null)
                     correctLand = land;
                 else if (land.getY() > correctLand.getY())
@@ -85,15 +85,9 @@ public class BackendManager {
         return correctLand;
     }
 
-    public boolean playerOnGround() {
-        return getPlayer().getY() == getCurrLand().getY();
-    }
-
     public void updatePlayerPos(HashMap<Integer, Boolean> keysPressed) {
-        getPlayer().move(keysPressed);
+        getPlayer().move(keysPressed, getCurrLand());
     }
-
-
 
     public void play(){
         for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
