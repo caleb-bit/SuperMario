@@ -89,9 +89,9 @@ public class LevelPanel extends JPanel implements KeyListener {
                 (int) -1 * (gameObject.getPosition().getY() - playerGamePos.getY()) * 5 + playerUIPos.getY());
     }
 
-    public static UIPosition gamePosToUiPos(GamePosition objectPos, GamePosition playerPos) {
-        return new UIPosition((int) (objectPos.getX() - playerPos.getX()) * 5 + playerPos.getX(),
-                -5 * (objectPos.getY() - playerPos.getY()) + playerPos.getY());
+    public static UIPosition gamePosToUiPos(GamePosition objectPos, GamePosition playerPos, UIPosition playerUIPos) {
+        return new UIPosition((int) (objectPos.getX() - playerPos.getX()) * 5 + playerUIPos.getX(),
+                -5 * (objectPos.getY() - playerPos.getY()) + playerUIPos.getY());
     }
 
     public void keyPressed(KeyEvent e) {

@@ -12,7 +12,8 @@ public class UIMushroom extends UIPowerup{
 
     @Override
     public void paint(Graphics g) {
-
+        g.setColor(Color.black);
+//        g.drawOval();
     }
 
     @Override

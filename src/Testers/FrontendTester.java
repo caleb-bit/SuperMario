@@ -15,15 +15,24 @@ public class FrontendTester {
         TestPanel currPanel = new TestPanel(components);
         frame.setContentPane(currPanel);
 //        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
-        frame.setPreferredSize(new Dimension(500,500));
+        frame.setPreferredSize(new Dimension(500, 500));
         frame.pack();
 
         frame.setVisible(true);
 
-        components.add(new UICoin(new Coin(new GamePosition(100,100))));
-        components.add(new UIPlayer(new Player(200,300, 0,0)));
-        components.add(new UIYoshi(new Yoshi(new GamePosition(300,100))));
-        components.add(new UIFlower(new Flower(new GamePosition(400,100))));
+        components.add(new UICoin(new Coin(new GamePosition(5, 5))));
+        components.add(new UIPlayer(new Player(0, 0, 0, 0)));
+        components.add(new UIYoshi(new Yoshi(new GamePosition(15, 0))));
+        components.add(new UIFlower(new Flower(new GamePosition(30, 0))));
+        components.add(new UILand(new Land(-60, 60, 0, -5)));
+//        components.add()
+        for (UIComponent component : components) {
+            if (!(component instanceof UIPlayer)) {
+                GamePosition pos = component.getGameObject().getPosition();
+                GamePosition playerPos = new GamePosition(0, 0);
+                component.setUIPosition(LevelPanel.gamePosToUiPos(pos, playerPos, new UIPosition(250, 250)));
+            }
+        }
         frame.getContentPane().repaint();
     }
 }

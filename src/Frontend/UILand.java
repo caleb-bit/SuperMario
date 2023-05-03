@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class UILand extends UIComponent{
 
-    UILand(GameObject gameObject) {
+    public UILand(GameObject gameObject) {
         super(gameObject);
     }
 

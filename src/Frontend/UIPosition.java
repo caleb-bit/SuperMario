@@ -4,7 +4,7 @@ public class UIPosition {
     private double x;
     private double y;
 
-    UIPosition(double x, double y) {
+    public UIPosition(double x, double y) {
         this.x = x;
         this.y = y;
     }

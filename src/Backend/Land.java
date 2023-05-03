@@ -5,7 +5,7 @@ public class Land extends GameObject{
     private int endX;
     private int startY;
     private int endY;
-    Land(int startX, int endX, int startY, int endY) {
+    public Land(int startX, int endX, int startY, int endY) {
         super(new GamePosition(startX, startY),0,0);
         this.startX = startX;
         this.endX = endX;
