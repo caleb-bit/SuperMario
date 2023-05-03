@@ -24,7 +24,7 @@ public class FrontendManager {
         keysPressed.put(KeyEvent.VK_UP, false);
         keysPressed.put(KeyEvent.VK_DOWN, false);
         keysPressed.put(KeyEvent.VK_SPACE, false);
-        levelPanels.add(new Level1Panel(api.getGameObjects(1), api));
+        levelPanels.add(new LevelPanel(api.getGameObjects(1), api));
         currPanel = levelPanels.get(0);
         this.api = api;
     }

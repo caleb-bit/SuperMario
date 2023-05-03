@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import java.util.*;
 
 
-abstract public class LevelPanel extends JPanel implements KeyListener {
+public class LevelPanel extends JPanel implements KeyListener {
     private ArrayList<UIComponent> components;
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;

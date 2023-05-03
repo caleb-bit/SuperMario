@@ -25,6 +25,7 @@ public class Player extends GameObject {
         power = null;
         coins = 0;
         acceleration = 0;
+        fireballs = new ArrayList<>();
     }
 
     @Override
@@ -75,17 +76,19 @@ public class Player extends GameObject {
             setVelX(-3);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (getY() == land.getStartY() || (power != null && getPower().getName().equals("Yoshi"))) {
+            if (land != null&& getY() == land.getStartY() || (power != null && getPower().getName().equals("Yoshi"))) {
                 setVelY(3);
                 setAccelY(-0.5);
             }
         }
         // if player will sink into ground, bring it up.
-        if (getY() + getVelY() < land.getStartY()) {
+        if (land != null && getY() + getVelY() < land.getStartY()) {
             setAccelY(0);
             setVelY(land.getStartY() - getY());
         }
-
+        if (land == null) {
+            setAccelY(-0.5);
+        }
     }
 
     public Powerup getPower() {
