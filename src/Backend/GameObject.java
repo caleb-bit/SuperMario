@@ -15,7 +15,7 @@ public abstract class GameObject {
         this.position = new GamePosition(xPos, yPos);
         this.velX = velX;
         this.velY = velY;
-        accelY =0;
+        accelY = 0;
     }
     public double getX() {
         return position.getX();

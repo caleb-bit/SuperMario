@@ -131,7 +131,7 @@ public class Player extends GameObject {
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
             setVelX(0);
         }
-        setVelY(getVelY()+getAccelY());
+        setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
 }
