@@ -1,7 +1,7 @@
 package Backend;
 
 public class Mushroom extends Powerup{
-    Mushroom(GamePosition position){
+    public Mushroom(GamePosition position){
         super(position, "Mushroom");
         setDuration(15);
 
