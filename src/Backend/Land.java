@@ -25,10 +25,6 @@ public class Land extends GameObject{
 
     public int getStartY() {return startY;}
 
-    public int getMaxHeight() {
-        return Math.abs(endY-startY);
-    }
-
     public int getUIWidth() {
         return (endX-startX)*5;
     }
