@@ -38,7 +38,7 @@ public class Player extends GameObject {
     }
 
     public void die(ArrayList<GamePosition> points) {
-        if (power != null && getPower().getName().equals("Mushroom")) {
+        if (getPower() != null && getPower().getName().equals("Mushroom")) {
             setPower(null);
         } else {
             lives--;
@@ -57,13 +57,9 @@ public class Player extends GameObject {
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
 
-        if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
+        if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
             fireballs.add(new Fireball(getPosition()));
         }
-        for (Fireball fire: fireballs){
-            fire.move();
-        }
-
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
@@ -76,7 +72,7 @@ public class Player extends GameObject {
             setVelX(-3);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (land != null&& getY() == land.getStartY() || (power != null && getPower().getName().equals("Yoshi"))) {
+            if (land != null&& getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
                 setVelY(3);
                 setAccelY(-0.5);
             }
@@ -114,6 +110,9 @@ public class Player extends GameObject {
     public void setAccelY(double acceleration) {
         this.acceleration = acceleration;
     }
+    public ArrayList<Fireball> getBalls(){
+        return fireballs;
+    }
 
     public void move(HashMap<Integer, Boolean> keysPressed) {
         // update speeds
@@ -122,11 +121,11 @@ public class Player extends GameObject {
         } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
             setVelX(-3);
         } else if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (getVelY() == 0 || (power != null && getPower().getName().equals("Yoshi"))) {
+            if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
                 setVelY(3);
                 setAccelY(-0.5);
             }
-        } else if (keysPressed.get(KeyEvent.VK_SPACE) && getPower().getName().equals("Flower")) {
+        } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
             fireballs.add(new Fireball(getPosition()));
         }
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
@@ -134,8 +133,5 @@ public class Player extends GameObject {
         }
         setVelY(getVelY()+getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
-        for (Fireball fire: fireballs){
-            fire.move();
-        }
     }
 }

@@ -42,11 +42,13 @@ public class BackendManager {
         } else if (keyCode == KeyEvent.VK_LEFT) {
             getPlayer().setVelX(-3);
         } else if (keyCode == KeyEvent.VK_UP) {
-            if (getPlayer().getVelY() == 0 || getPlayer().getPower().getName().equals("Yoshi")) {
+            if (getPlayer().getVelY() == 0 || (getPlayer().getPower() != null &&
+                    getPlayer().getPower().getName().equals("Yoshi"))) {
                 getPlayer().setVelY(3);
                 getPlayer().setAccelY(-0.5);
             }
-        } else if (keyCode == KeyEvent.VK_SPACE && getPlayer().getPower().getName().equals("Flower")) {
+        } else if (keyCode == KeyEvent.VK_SPACE && (getPlayer().getPower() != null &&
+                getPlayer().getPower().getName().equals("Flower"))) {
             Fireball fire = new Fireball(getPlayer().getPosition());
         }
     }
@@ -94,6 +96,22 @@ public class BackendManager {
     }
 
     public void play(){
+        for (int i = 0; i < getPlayer().getBalls().size(); i++){
+            getPlayer().getBalls().get(i).move();
+            for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
+                if (obj.getX() == getPlayer().getBalls().get(i).getX() && obj.getY() == getPlayer().getBalls().get(i).getY()){
+                    if (obj instanceof Enemy && ((Enemy) obj).getAlive()){
+                        ((Enemy)obj).setAlive(false);
+                        getPlayer().getBalls().remove(i);
+                        i--;
+                    }
+                    if (obj instanceof Obstacle){
+                        getPlayer().getBalls().remove(i);
+                        i--;
+                    }
+                }
+            }
+        }
         for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
             if (enem.getAlive()) {
                 for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
