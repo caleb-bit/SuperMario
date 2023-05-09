@@ -15,7 +15,8 @@ public class UITrap extends UIObstacle{
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(255, 0, 0));
-        g.drawLine(getIntX(),getIntY(), (int)(((Trap) getGameObject()).getXMax()), (int)(((Trap) getGameObject()).getYMax()));
+        System.out.println(getIntX() + " " + ((Trap) getGameObject()).getXMax());
+        g.drawLine(getIntX(),getIntY(), ((Trap) getGameObject()).getXMax(), ((Trap) getGameObject()).getYMax());
     }
 
     @Override

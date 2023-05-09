@@ -12,10 +12,10 @@ public class Trap extends Obstacle{
     public int getAngle(){
         return angle;
     }
-    public double getXMax(){
-        return getX() + Math.cos(getLength());
+    public int getXMax(){
+        return (int)(getX() + Math.cos(getLength()));
     }
-    public double getYMax(){
-        return getY() + Math.sin(getLength());
+    public int getYMax(){
+        return (int)(getY() + Math.sin(getLength()));
     }
 }
