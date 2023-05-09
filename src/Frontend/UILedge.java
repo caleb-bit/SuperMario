@@ -14,7 +14,7 @@ public class UILedge extends UIObstacle {
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(170, 74, 68));
-        g.drawLine(getIntX(),getIntY(), getIntX() + ((Ledge) getGameObject()).getLength() * 5, getIntY());
+        g.fillRect(getIntX(),getIntY(), ((Ledge) getGameObject()).getLength() * 5, 1);
     }
 
     @Override
