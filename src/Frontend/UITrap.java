@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Ledge;
 import Backend.Trap;
 
 import java.awt.*;
@@ -13,7 +14,8 @@ public class UITrap extends UIObstacle{
 
     @Override
     public void paint(Graphics g) {
-
+        g.setColor(new Color(255, 0, 0));
+        g.drawLine(getIntX(),getIntY(), (int)(((Trap) getGameObject()).getXMax()) * 5, (int)(((Trap) getGameObject()).getYMax() * 5));
     }
 
     @Override
