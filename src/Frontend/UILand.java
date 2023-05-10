@@ -7,6 +7,9 @@ import java.awt.*;
 
 public class UILand extends UIComponent{
 
+    private int width;
+    private int height;
+
     public UILand(GameObject gameObject) {
         super(gameObject);
     }

@@ -19,6 +19,7 @@ public class FrontendTester {
         components.add(new UIFlower(new Flower(new GamePosition(30, 0))));
         components.add(new UILand(new Land(-60, 60, 0, -5)));
         components.add(new UIMushroom(new Mushroom(new GamePosition(-10, 0))));
+        components.add(new UIInvincibility(new Invincibility(new GamePosition(-20,0))));
         for (UIComponent component : components) {
             if (!(component instanceof UIPlayer)) {
                 GamePosition pos = component.getGameObject().getPosition();

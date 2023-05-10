@@ -1,7 +1,7 @@
 package Backend;
 
 public class Invincibility extends Powerup{
-    Invincibility(GamePosition position){
+    public Invincibility(GamePosition position){
         super(position, "Invincibility");
         setDuration(15);
     }

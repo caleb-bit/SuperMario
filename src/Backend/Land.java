@@ -30,11 +30,11 @@ public class Land extends GameObject{
     }
 
     public int getUIWidth() {
-        return (endX-startX)*5;
+        return (endX-startX)*30;
     }
 
     public int getUIHeight() {
-        return Math.abs(endY-startY)*5;
+        return Math.abs(endY-startY)*20;
     }
 
 }
