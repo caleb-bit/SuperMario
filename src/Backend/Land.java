@@ -1,5 +1,7 @@
 package Backend;
 
+import Frontend.FrontendManager;
+
 public class Land extends GameObject{
     private int startX;
     private int endX;
@@ -26,11 +28,11 @@ public class Land extends GameObject{
     public int getStartY() {return startY;}
 
     public int getUIWidth() {
-        return (endX-startX)*30;
+        return (endX-startX)* FrontendManager.SCALE;
     }
 
     public int getUIHeight() {
-        return Math.abs(endY-startY)*20;
+        return Math.abs(endY-startY)* FrontendManager.SCALE;
     }
 
 }

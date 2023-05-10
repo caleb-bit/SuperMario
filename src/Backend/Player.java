@@ -10,7 +10,8 @@ public class Player extends GameObject {
     private int coins;
     private double acceleration;
     private ArrayList<Fireball> fireballs;
-    Player(GamePosition position, int velX, int velY){
+
+    Player(GamePosition position, int velX, int velY) {
         super(position, velX, velY);
         lives = 3;
         power = null;
@@ -19,6 +20,7 @@ public class Player extends GameObject {
         fireballs = new ArrayList<>();
 
     }
+
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
@@ -71,8 +73,8 @@ public class Player extends GameObject {
             setVelX(-1);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (land != null&& getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
-                setVelY(3);
+            if (land != null && getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
+                setVelY(2);
                 setAccelY(-0.5);
             }
         }
@@ -109,7 +111,8 @@ public class Player extends GameObject {
     public void setAccelY(double acceleration) {
         this.acceleration = acceleration;
     }
-    public ArrayList<Fireball> getBalls(){
+
+    public ArrayList<Fireball> getBalls() {
         return fireballs;
     }
 
@@ -121,7 +124,7 @@ public class Player extends GameObject {
             setVelX(-1);
         } else if (keysPressed.get(KeyEvent.VK_UP)) {
             if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
-                setVelY(3);
+                setVelY(2);
                 setAccelY(-0.5);
             }
         } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
