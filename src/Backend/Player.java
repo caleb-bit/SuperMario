@@ -20,7 +20,6 @@ public class Player extends GameObject {
         fireballs = new ArrayList<>();
 
     }
-
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
