@@ -44,7 +44,7 @@ public class BackendManager {
         } else if (keyCode == KeyEvent.VK_UP) {
             if (getPlayer().getVelY() == 0 || (getPlayer().getPower() != null &&
                     getPlayer().getPower().getName().equals("Yoshi"))) {
-                getPlayer().setVelY(3);
+                getPlayer().setVelY(2.5);
                 getPlayer().setAccelY(-0.5);
             }
         } else if (keyCode == KeyEvent.VK_SPACE && (getPlayer().getPower() != null &&
@@ -162,7 +162,7 @@ public class BackendManager {
             }
             if (obj instanceof Ledge){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Ledge) obj).getLength()){
-                    if (getPlayer().getY() == obj.getY()){
+                    if (getPlayer().getY() == obj.getY() && getPlayer().getVelY() >= 0){
                         getPlayer().setVelY(-1);
                     }
                     if (getPlayer().getY() == obj.getY() + 1 && getPlayer().getVelY() < 0){

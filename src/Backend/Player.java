@@ -74,7 +74,7 @@ public class Player extends GameObject {
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
             if (land != null && getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
-                setVelY(2);
+                setVelY(2.5);
                 setAccelY(-0.5);
             }
         }
@@ -124,7 +124,7 @@ public class Player extends GameObject {
             setVelX(-1);
         } else if (keysPressed.get(KeyEvent.VK_UP)) {
             if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
-                setVelY(2);
+                setVelY(2.5);
                 setAccelY(-0.5);
             }
         } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
