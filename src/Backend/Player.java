@@ -56,7 +56,6 @@ public class Player extends GameObject {
         updateSpeeds(keysPressed, land);
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
-
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
             fireballs.add(new Fireball(getPosition()));
         }
@@ -66,10 +65,10 @@ public class Player extends GameObject {
 
     private void updateSpeeds(HashMap<Integer, Boolean> keysPressed, Land land) {
         if (keysPressed.get(KeyEvent.VK_RIGHT)) {
-            setVelX(3);
+            setVelX(1);
         }
         if (keysPressed.get(KeyEvent.VK_LEFT)) {
-            setVelX(-3);
+            setVelX(-1);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
             if (land != null&& getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
@@ -117,9 +116,9 @@ public class Player extends GameObject {
     public void move(HashMap<Integer, Boolean> keysPressed) {
         // update speeds
         if (keysPressed.get(KeyEvent.VK_RIGHT)) {
-            setVelX(3);
+            setVelX(1);
         } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
-            setVelX(-3);
+            setVelX(-1);
         } else if (keysPressed.get(KeyEvent.VK_UP)) {
             if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
                 setVelY(3);

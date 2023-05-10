@@ -38,9 +38,9 @@ public class BackendManager {
 
     public void onKeyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_RIGHT) {
-            getPlayer().setVelX(3);
+            getPlayer().setVelX(1);
         } else if (keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(-3);
+            getPlayer().setVelX(-1);
         } else if (keyCode == KeyEvent.VK_UP) {
             if (getPlayer().getVelY() == 0 || (getPlayer().getPower() != null &&
                     getPlayer().getPower().getName().equals("Yoshi"))) {
