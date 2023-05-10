@@ -13,6 +13,7 @@ public class LevelPanel extends JPanel implements KeyListener {
     private ArrayList<UIComponent> components;
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;
+    public static Color BACKGROUND_COLOR = new Color(48, 220, 255);
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
@@ -61,18 +62,16 @@ public class LevelPanel extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         drawBackground(g);
         for (UIComponent component : components) {
-            if (component instanceof UIPowerup){
-                if (((Powerup)component.getGameObject()).getTaken()){
+            if (component instanceof UIPowerup) {
+                if (((Powerup) component.getGameObject()).getTaken()) {
                     continue;
                 }
-            }
-            else if (component instanceof UIEnemy){
-                if (!((Enemy)component.getGameObject()).getAlive()){
+            } else if (component instanceof UIEnemy) {
+                if (!((Enemy) component.getGameObject()).getAlive()) {
                     continue;
                 }
-            }
-            else if (component instanceof UICoin){
-                if (((Coin)component.getGameObject()).getTaken()){
+            } else if (component instanceof UICoin) {
+                if (((Coin) component.getGameObject()).getTaken()) {
                     continue;
                 }
             }
@@ -82,9 +81,9 @@ public class LevelPanel extends JPanel implements KeyListener {
     }
 
     private void drawBackground(Graphics g) {
-        g.setColor(new Color(48, 220, 255));
+        g.setColor(BACKGROUND_COLOR);
         int[] screenSize = gameAPI.getScreenSize();
-        g.fillRect(0,0,screenSize[0], screenSize[1]);
+        g.fillRect(0, 0, screenSize[0], screenSize[1]);
     }
 
     // updates UI positions of components
@@ -92,8 +91,7 @@ public class LevelPanel extends JPanel implements KeyListener {
         for (int i = 0; i < components.size(); i++) {
             if (components.get(i) instanceof UIPlayer) {
                 // TODO: deal with moving player on screen
-            }
-            else {
+            } else {
                 if (components.get(i) == null) {
                     throw new NullPointerException("component is null");
                 }

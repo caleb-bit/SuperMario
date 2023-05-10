@@ -6,8 +6,8 @@ import Backend.Yoshi;
 import java.awt.*;
 
 public class UIYoshi extends UIPowerup {
-    private final int width = 30;
-    private final int height = 50;
+    private final int width = 25;
+    private final int height = 37;
 
     public UIYoshi(GameObject gameObject) {
         super(gameObject);

@@ -77,4 +77,8 @@ public class FrontendManager {
     public int[] getScreenSize() {
         return screenSize;
     }
+
+    public static int convertGameToUI(int x) {
+        return x * SCALE;
+    }
 }

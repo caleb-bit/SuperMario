@@ -13,8 +13,8 @@ public class UICliff extends UIObstacle{
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(new Color(255, 255, 255));
-        g.fillRect(getIntX(),getIntY(), ((Cliff) getGameObject()).getLength() * 5, -25);
+        g.setColor(LevelPanel.BACKGROUND_COLOR);
+        g.fillRect(getIntX(),getIntY(), FrontendManager.convertGameToUI(((Cliff) getGameObject()).getLength()), 300);
     }
 
     @Override
