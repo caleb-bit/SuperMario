@@ -139,7 +139,7 @@ public class BackendManager {
         for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
             if (obj instanceof Enemy){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
-                    if (getPlayer().getVelY() < 0 || getPlayer().getPower().getName().equals("Invincibility")){
+                    if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))){
                         ((Enemy) obj).setAlive(false);
                     }
                     else{
@@ -162,10 +162,10 @@ public class BackendManager {
             }
             if (obj instanceof Ledge){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Ledge) obj).getLength()){
-                    if (getPlayer().getY() == obj.getY() && getPlayer().getVelY() >= 0){
+                    if (getPlayer().getY() == obj.getY() - 1 && getPlayer().getVelY() >= 0){
                         getPlayer().setVelY(-1);
                     }
-                    if (getPlayer().getY() == obj.getY() + 1 && getPlayer().getVelY() < 0){
+                    if (getPlayer().getY() == obj.getY() && getPlayer().getVelY() < 0){
                         getPlayer().setVelY(0);
                     }
                 }
