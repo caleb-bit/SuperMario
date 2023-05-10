@@ -58,7 +58,6 @@ public class Player extends GameObject {
         updateSpeeds(keysPressed, land);
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
-
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
             fireballs.add(new Fireball(getPosition()));
         }
