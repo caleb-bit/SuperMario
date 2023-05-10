@@ -157,7 +157,7 @@ public class BackendManager {
             if (enem.getAlive()) {
                 for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
                     if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
-                            && enem.getY() == obs.getY() + 1) {
+                            && enem.getY() == obs.getY()) {
                         if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
                             enem.setVelX(-0.5);
                         }
