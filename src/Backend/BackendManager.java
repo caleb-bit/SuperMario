@@ -100,7 +100,8 @@ public class BackendManager {
         moveEnemies();
         for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
             if (obj instanceof Enemy){
-                if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
+                if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 1
+                        && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
                     if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))){
                         ((Enemy) obj).setAlive(false);
                     }
@@ -110,7 +111,8 @@ public class BackendManager {
                 }
             }
             if (obj instanceof Powerup){
-                if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Powerup) obj).getTaken()){
+                if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 0.5
+                        && getPlayer().getY() == obj.getY() && !((Powerup) obj).getTaken()){
                     getPlayer().setPower((Powerup) obj);
                     ((Powerup) obj).setTaken(true);
                 }
@@ -143,7 +145,8 @@ public class BackendManager {
                 ((Trap)obj).setAngle(((Trap) obj).getAngle() + 5*Math.PI/180);
             }
             if (obj instanceof Coin){
-                if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
+                if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 0.5
+                        && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
                     System.out.println("yes");
                     getPlayer().setCoins(getPlayer().getCoins() + 1);
                     ((Coin) obj).setTaken(true);
