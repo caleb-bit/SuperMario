@@ -3,15 +3,15 @@ package Backend;
 import Frontend.FrontendManager;
 
 public class Trap extends Obstacle{
-    int angle;
+    double angle;
     Trap(GamePosition position, int length){
         super(position, length);
         angle = 0;
     }
-    public void setAngle(int angle){
+    public void setAngle(double angle){
         this.angle = angle;
     }
-    public int getAngle(){
+    public double getAngle(){
         return angle;
     }
     public int getXMax(){
