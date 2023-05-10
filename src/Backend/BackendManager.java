@@ -177,7 +177,7 @@ public class BackendManager {
                         (getPlayer().getY() <= obj.getY() && getPlayer().getY() > ((Trap) obj).getYMax()))){
                     getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                 }
-                ((Trap)obj).setAngle(((Trap) obj).getAngle() + 0.52);
+                ((Trap)obj).setAngle(((Trap) obj).getAngle() + 0.1);
             }
             if (obj instanceof Coin){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
