@@ -10,6 +10,7 @@ public class Player extends GameObject {
     private int coins;
     private double acceleration;
     private ArrayList<Fireball> fireballs;
+    private static double Y_ACCEL = 0.4;
 
     Player(GamePosition position, int velX, int velY) {
         super(position, velX, velY);
@@ -73,8 +74,8 @@ public class Player extends GameObject {
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
             if (land != null && getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
-                setVelY(2.5);
-                setAccelY(-0.5);
+                setVelY(2);
+                setAccelY(-Y_ACCEL);
             }
         }
         // if player will sink into ground, bring it up.
@@ -83,7 +84,7 @@ public class Player extends GameObject {
             setVelY(land.getStartY() - getY());
         }
         if (land == null) {
-            setAccelY(-0.5);
+            setAccelY(-Y_ACCEL);
         }
     }
 

@@ -6,46 +6,50 @@ import Backend.Invincibility;
 import java.awt.*;
 
 public class UIInvincibility extends UIPowerup {
-    private int outerR;
-    private int innerR;
+    private double outerR;
+    private double innerR;
 
     public UIInvincibility(GameObject gameObject) {
         super(gameObject);
-        outerR = 100;
-        innerR = 50;
+        outerR = 25;
+        innerR = 12;
     }
 
     @Override
     public void paint(Graphics g) {
-//        g.setColor(Color.yellow);
-//        int x = getIntX() - (int) (outerR * Math.cos(162.0/180*Math.PI));
-//        int y = getIntY() - outerR;
-//        int[] xCoords = new int[]{(int) (x + outerR * Math.cos(18.0/180*Math.PI)),
-//                (int) (x + innerR * Math.cos(54.0/180*Math.PI)),
-//                x,
-//                (int) (x + innerR * Math.cos(126.0/180*Math.PI)),
-//                (int) (x + outerR * Math.cos(162.0/180*Math.PI)),
-//                (int) (x + innerR * Math.cos(198.0/180*Math.PI)),
-//                (int) (x + outerR * Math.cos(234.0/180*Math.PI)),
-//                x,
-//                (int) (x + outerR * Math.cos(306.0/180*Math.PI)),
-//                (int) (x + innerR * Math.cos(342.0/180*Math.PI)), (int)(x+outerR*Math.cos(18.0/180*Math.PI))};
-//        int[] yCoords = new int[]{(int) (y - outerR * Math.sin(18)),
-//                (int) (y - innerR * Math.sin(54.0/180*Math.PI)),
-//                y,
-//                (int) (y - innerR * Math.sin(126.0/180*Math.PI)),
-//                (int) (y - outerR * Math.sin(162.0/180*Math.PI)),
-//                (int) (y - innerR * Math.sin(198.0/180*Math.PI)),
-//                (int) (y - outerR * Math.sin(234.0/180*Math.PI)),
-//                y,
-//                (int) (y - outerR * Math.sin(306.0/180*Math.PI)),
-//                (int) (y - innerR * Math.sin(342.0/180*Math.PI)), (int)(y-outerR*Math.sin(18.0/180*Math.PI))};
-//        System.out.println("center: " + x +" "+y);
-//        System.out.println("coordinates: ");
-//        for (int i=0; i<11; i++){
-//            System.out.println(xCoords[i] + " " + yCoords[i]);
-//        }
-//        g.fillPolygon(new Polygon(xCoords, yCoords, 11));
+        double x = getIntX() - (int) (outerR * Math.cos(162.0 / 180 * Math.PI));
+        double y = getIntY() - outerR;
+        int[] xCoords = new int[]{
+                (int) (x + outerR * Math.cos(degToRad(18.0))),
+                (int) (x + innerR * Math.cos(degToRad(54.0))),
+                (int) (x + outerR * Math.cos(degToRad(90.0))),
+                (int) (x + innerR * Math.cos(degToRad(126.0))),
+                (int) (x + outerR * Math.cos(degToRad(162.0))),
+                (int) (x + innerR * Math.cos(degToRad(198.0))),
+                (int) (x + outerR * Math.cos(degToRad(234.0))),
+                (int) (x + innerR * Math.cos(degToRad(270.0))),
+                (int) (x + outerR * Math.cos(degToRad(306.0))),
+                (int) (x + innerR * Math.cos(degToRad(342.0)))};
+        int[] yCoords = new int[]{
+                (int) (y - outerR * Math.sin(degToRad(18.0))),
+                (int) (y - innerR * Math.sin(degToRad(54.0))),
+                (int) (y - outerR * Math.sin(degToRad(90.0))),
+                (int) (y - innerR * Math.sin(degToRad(126.0))),
+                (int) (y - outerR * Math.sin(degToRad(162.0))),
+                (int) (y - innerR * Math.sin(degToRad(198.0))),
+                (int) (y - outerR * Math.sin(degToRad(234.0))),
+                (int) (y - innerR * Math.sin(degToRad(270.0))),
+                (int) (y - outerR * Math.sin(degToRad(306.0))),
+                (int) (y - innerR * Math.sin(degToRad(342.0)))};
+        Polygon p = new Polygon(xCoords, yCoords, 10);
+        g.setColor(Color.black);
+        g.drawPolygon(p);
+        g.setColor(Color.yellow);
+        g.fillPolygon(p);
+    }
+
+    private double degToRad(double deg) {
+        return deg * Math.PI / 180;
     }
 
     @Override

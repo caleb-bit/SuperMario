@@ -17,11 +17,11 @@ public class Trap extends Obstacle{
     public double getAngle(){
         return angle;
     }
-    public int getXMax(){
-        return (int)(getX() + getLength() * Math.cos(getAngle()));
+    public double getXMax(){
+        return (getX() + getLength() * Math.cos(getAngle()));
     }
-    public int getYMax(){
-        return (int)(getY() + getLength() * Math.sin(getAngle()));
+    public double getYMax(){
+        return (getY() + getLength() * Math.sin(getAngle()));
     }
     public int getUIWidth() {
         return (int) ((getXMax()-getX())* FrontendManager.SCALE);
