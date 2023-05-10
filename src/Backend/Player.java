@@ -42,16 +42,15 @@ public class Player extends GameObject {
     public void die(ArrayList<GamePosition> points) {
         if (getPower() != null && getPower().getName().equals("Mushroom")) {
             setPower(null);
-        } else {
-            lives--;
-            GamePosition returnPoint = new GamePosition(0, 0);
-            for (GamePosition pos : points) {
-                if (pos.getX() < getX()) {
-                    returnPoint = pos;
-                }
-            }
-            setPosition(returnPoint);
         }
+        lives--;
+        GamePosition returnPoint = new GamePosition(0, 0);
+        for (GamePosition pos : points) {
+            if (pos.getX() < getX()) {
+                returnPoint = pos;
+            }
+        }
+        setPosition(returnPoint);
     }
 
     public void move(HashMap<Integer, Boolean> keysPressed, Land land) {
