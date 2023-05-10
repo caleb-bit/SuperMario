@@ -2,6 +2,7 @@ package Frontend;
 
 import Backend.Cliff;
 import Backend.GameObject;
+import Backend.Land;
 
 import java.awt.*;
 
@@ -12,7 +13,8 @@ public class UICliff extends UIObstacle{
 
     @Override
     public void paint(Graphics g) {
-
+        g.setColor(new Color(255, 255, 255));
+        g.fillRect(getIntX(),getIntY(), ((Cliff) getGameObject()).getLength() * 5, -25);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameObject;
+import Backend.Land;
 import Backend.Ledge;
 
 import java.awt.*;
@@ -12,7 +13,8 @@ public class UILedge extends UIObstacle {
 
     @Override
     public void paint(Graphics g) {
-
+        g.setColor(new Color(170, 74, 68));
+        g.fillRect(getIntX(),getIntY(), ((Ledge) getGameObject()).getLength() * 5, 1);
     }
 
     @Override

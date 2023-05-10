@@ -53,7 +53,7 @@ public class GameAPI {
                 }
                 if (getPlayer().getPower() != null) {
                     getPlayer().getPower().setDuration(getPlayer().getPower().getDuration() - delay);
-                    if (getPlayer().getPower().getDuration() == 0) {
+                    if (getPlayer().getPower().getDuration() <= 0) {
                         getPlayer().setPower(null);
                     }
                 }
