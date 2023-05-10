@@ -13,13 +13,13 @@ public class FrontendTester {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ArrayList<UIComponent> components = new ArrayList<>();
         TestPanel currPanel = new TestPanel(components);
-        components.add(new UICoin(new Coin(new GamePosition(5, 5))));
+        components.add(new UICoin(new Coin(new GamePosition(3, 3))));
         components.add(new UIPlayer(new Player(0, 0, 0, 0)));
-        components.add(new UIYoshi(new Yoshi(new GamePosition(15, 0))));
-        components.add(new UIFlower(new Flower(new GamePosition(30, 0))));
-        components.add(new UILand(new Land(-60, 60, 0, -5)));
-        components.add(new UIMushroom(new Mushroom(new GamePosition(-10, 0))));
-        components.add(new UIInvincibility(new Invincibility(new GamePosition(-20,0))));
+        components.add(new UIYoshi(new Yoshi(new GamePosition(6, 0))));
+        components.add(new UIFlower(new Flower(new GamePosition(10, 0))));
+        components.add(new UILand(new Land(-60, 60, 0, -50)));
+        components.add(new UIMushroom(new Mushroom(new GamePosition(-3, 0))));
+        components.add(new UIInvincibility(new Invincibility(new GamePosition(-5,0))));
         for (UIComponent component : components) {
             if (!(component instanceof UIPlayer)) {
                 GamePosition pos = component.getGameObject().getPosition();

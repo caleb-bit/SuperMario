@@ -47,7 +47,7 @@ public class GameAPI {
                     gameState = GameState.GAMEOVER;
                 }
                 if (getPlayer().getX() == backend.getLevel(backend.getCurr()).getMap().getPoints().get(
-                        backend.getLevel(backend.getCurr()).getMap().getPoints().size() - 1).getX()){
+                        backend.getLevel(backend.getCurr()).getMap().getPoints().size() - 1).getX()) {
                     backend.getLevel(backend.getCurr()).setComplete(true);
                     gameState = GameState.MENU;
                 }
