@@ -11,6 +11,8 @@ public class Player extends GameObject {
     private double acceleration;
     private ArrayList<Fireball> fireballs;
     private static double Y_ACCEL = 0.4;
+    private double width;
+    private double height;
 
     Player(GamePosition position, int velX, int velY) {
         super(position, velX, velY);
@@ -19,8 +21,10 @@ public class Player extends GameObject {
         coins = 0;
         acceleration = 0;
         fireballs = new ArrayList<>();
-
+        width = 0.75;
+        height = 1.25;
     }
+
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
         lives = 3;
@@ -136,4 +140,13 @@ public class Player extends GameObject {
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
 }
