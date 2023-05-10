@@ -136,7 +136,8 @@ public class BackendManager {
                 if (((getPlayer().getX() >= obj.getX() && getPlayer().getX() < ((Trap) obj).getXMax()) ||
                         (getPlayer().getX() <= obj.getX() && getPlayer().getX() > ((Trap) obj).getXMax())) &&
                         ((getPlayer().getY() >= obj.getY() && getPlayer().getY() < ((Trap) obj).getYMax()) ||
-                        (getPlayer().getY() <= obj.getY() && getPlayer().getY() > ((Trap) obj).getYMax()))){
+                        (getPlayer().getY() <= obj.getY() && getPlayer().getY() > ((Trap) obj).getYMax())) &&
+                        (getPlayer().getPower() != null && !getPlayer().getPower().getName().equals("Invincibility"))){
                     getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                 }
                 ((Trap)obj).setAngle(((Trap) obj).getAngle() + 10*Math.PI/180);
