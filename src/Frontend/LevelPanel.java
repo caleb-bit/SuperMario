@@ -61,6 +61,21 @@ public class LevelPanel extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
         drawBackground(g);
         for (UIComponent component : components) {
+            if (component instanceof UIPowerup){
+                if (((Powerup)component.getGameObject()).getTaken()){
+                    continue;
+                }
+            }
+            else if (component instanceof UIEnemy){
+                if (!((Enemy)component.getGameObject()).getAlive()){
+                    continue;
+                }
+            }
+            else if (component instanceof UICoin){
+                if (((Coin)component.getGameObject()).getTaken()){
+                    continue;
+                }
+            }
             component.paint(g);
         }
         uiPlayer.paint(g);
@@ -74,15 +89,16 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     // updates UI positions of components
     public void updateUIPositions() {
-        for (UIComponent component : components) {
-            if (component instanceof UIPlayer) {
+        for (int i = 0; i < components.size(); i++) {
+            if (components.get(i) instanceof UIPlayer) {
                 // TODO: deal with moving player on screen
-            } else {
-                if (component == null) {
+            }
+            else {
+                if (components.get(i) == null) {
                     throw new NullPointerException("component is null");
                 }
-                UIPosition relPos = relToPlayer(component);
-                component.setUIPosition(relPos);
+                UIPosition relPos = relToPlayer(components.get(i));
+                components.get(i).setUIPosition(relPos);
             }
         }
     }
