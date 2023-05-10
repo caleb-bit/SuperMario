@@ -147,7 +147,6 @@ public class BackendManager {
             if (obj instanceof Coin){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 1
                         && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
-                    System.out.println("yes");
                     getPlayer().setCoins(getPlayer().getCoins() + 1);
                     ((Coin) obj).setTaken(true);
                 }
