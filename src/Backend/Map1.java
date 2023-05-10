@@ -18,7 +18,7 @@ public class Map1 extends Map {
         gameObjects.add(new Ledge(new GamePosition(20, 3), 3));
         gameObjects.add(new Trap(new GamePosition(43, 3), 1));
         gameObjects.add(new Cliff(new GamePosition(50, 0), 4));
-        gameObjects.add(new Coin(new GamePosition(6, 0)));
+        gameObjects.add(new Coin(new GamePosition(8, 0)));
         gameObjects.add(new Coin(new GamePosition(21, 3)));
         gameObjects.add(new Coin(new GamePosition(32, 0)));
         gameObjects.add(new Coin(new GamePosition(47, 0)));

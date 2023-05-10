@@ -16,8 +16,10 @@ public class FrontendManager {
     // matches key code with pressed status
     private HashMap<Integer, Boolean> keysPressed;
     public static final int SCALE = 20;
+    private int[] screenSize;
 
     public FrontendManager(GameAPI api) {
+        screenSize = new int[]{500,500};
         levelPanels = new ArrayList<>();
         keysPressed = new HashMap<>();
         keysPressed.put(KeyEvent.VK_LEFT, false);
@@ -34,7 +36,7 @@ public class FrontendManager {
         frame = new JFrame("SuperMario");
         frame.setContentPane(currPanel);
 //        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));
         frame.pack();
         frame.setVisible(true);
         frame.addKeyListener(currPanel);
@@ -70,5 +72,9 @@ public class FrontendManager {
 
     public HashMap<Integer, Boolean> getKeysPressed(){
         return keysPressed;
+    }
+
+    public int[] getScreenSize() {
+        return screenSize;
     }
 }

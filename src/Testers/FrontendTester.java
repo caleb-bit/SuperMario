@@ -19,7 +19,8 @@ public class FrontendTester {
         components.add(new UIFlower(new Flower(new GamePosition(10, 0))));
         components.add(new UILand(new Land(-60, 60, 0, -50)));
         components.add(new UIMushroom(new Mushroom(new GamePosition(-3, 0))));
-        components.add(new UIInvincibility(new Invincibility(new GamePosition(-5,0))));
+        components.add(new UIInvincibility(new Invincibility(new GamePosition(-5, 0))));
+        components.add(new UIGoomba(new Goomba(new GamePosition(0, 4))));
         for (UIComponent component : components) {
             if (!(component instanceof UIPlayer)) {
                 GamePosition pos = component.getGameObject().getPosition();
@@ -28,12 +29,9 @@ public class FrontendTester {
             }
         }
         frame.setContentPane(currPanel);
-//        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         frame.setPreferredSize(new Dimension(500, 500));
         frame.pack();
-
         frame.setVisible(true);
-
         frame.getContentPane().repaint();
     }
 }

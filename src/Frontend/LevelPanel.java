@@ -55,15 +55,21 @@ public class LevelPanel extends JPanel implements KeyListener {
             }
             components.add(uiComponent);
         }
-//        components.add(new )
         updateUIPositions();
     }
 
     public void paintComponent(Graphics g) {
+        drawBackground(g);
         for (UIComponent component : components) {
             component.paint(g);
         }
         uiPlayer.paint(g);
+    }
+
+    private void drawBackground(Graphics g) {
+        g.setColor(new Color(48, 220, 255));
+        int[] screenSize = gameAPI.getScreenSize();
+        g.fillRect(0,0,screenSize[0], screenSize[1]);
     }
 
     // updates UI positions of components

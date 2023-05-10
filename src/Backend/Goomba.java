@@ -1,7 +1,7 @@
 package Backend;
 
 public class Goomba extends Enemy{
-    Goomba(GamePosition position){
+    public Goomba(GamePosition position){
         super(position, 0, 0);
     }
 }

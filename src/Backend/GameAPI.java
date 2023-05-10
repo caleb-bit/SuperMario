@@ -12,6 +12,10 @@ public class GameAPI {
     private BackendManager backend;
     private FrontendManager frontend;
 
+    public int[] getScreenSize() {
+        return frontend.getScreenSize();
+    }
+
     enum GameState {MENU, GAME, GAMEOVER}
 
     private GameState gameState;
