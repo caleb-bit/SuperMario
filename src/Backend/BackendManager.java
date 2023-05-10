@@ -140,7 +140,7 @@ public class BackendManager {
                         (getPlayer().getPower() != null && !getPlayer().getPower().getName().equals("Invincibility"))){
                     getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                 }
-                ((Trap)obj).setAngle(((Trap) obj).getAngle() + 10*Math.PI/180);
+                ((Trap)obj).setAngle(((Trap) obj).getAngle() + 5*Math.PI/180);
             }
             if (obj instanceof Coin){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
