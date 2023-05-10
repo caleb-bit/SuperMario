@@ -96,46 +96,8 @@ public class BackendManager {
     }
 
     public void play(){
-        for (int i = 0; i < getPlayer().getBalls().size(); i++){
-            getPlayer().getBalls().get(i).move();
-            for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
-                if (obj.getX() == getPlayer().getBalls().get(i).getX() && obj.getY() == getPlayer().getBalls().get(i).getY()){
-                    if (obj instanceof Enemy && ((Enemy) obj).getAlive()){
-                        ((Enemy)obj).setAlive(false);
-                        getPlayer().getBalls().remove(i);
-                        i--;
-                    }
-                    if (obj instanceof Obstacle){
-                        getPlayer().getBalls().remove(i);
-                        i--;
-                    }
-                }
-            }
-        }
-        for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
-            if (enem.getAlive()) {
-                for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
-                    if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
-                            && enem.getY() == obs.getY() + 1) {
-                        if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
-                            enem.setVelX(-0.5);
-                        }
-                        if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5) {
-                            enem.setVelX(0.5);
-                        }
-                    }
-                    if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() >= obs.getX() + obs.getLength())) {
-                        if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
-                            enem.setVelX(-0.5);
-                        }
-                        if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
-                            enem.setVelX(0.5);
-                        }
-                    }
-                }
-                enem.move();
-            }
-        }
+        moveBalls();
+        moveEnemies();
         for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
             if (obj instanceof Enemy){
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && ((Enemy) obj).getAlive()){
@@ -183,6 +145,52 @@ public class BackendManager {
                 if (getPlayer().getX() == obj.getX() && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
                     getPlayer().setCoins(getPlayer().getCoins() + 1);
                     ((Coin) obj).setTaken(true);
+                }
+            }
+        }
+    }
+
+    private void moveEnemies() {
+        for (Enemy enem: getLevel(getCurr()).getMap().getEnemies()){
+            if (enem.getAlive()) {
+                for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
+                    if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
+                            && enem.getY() == obs.getY() + 1) {
+                        if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
+                            enem.setVelX(-0.5);
+                        }
+                        if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5) {
+                            enem.setVelX(0.5);
+                        }
+                    }
+                    if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() >= obs.getX() + obs.getLength())) {
+                        if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
+                            enem.setVelX(-0.5);
+                        }
+                        if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
+                            enem.setVelX(0.5);
+                        }
+                    }
+                }
+                enem.move();
+            }
+        }
+    }
+
+    private void moveBalls() {
+        for (int i = 0; i < getPlayer().getBalls().size(); i++){
+            getPlayer().getBalls().get(i).move();
+            for (GameObject obj: getLevel(getCurr()).getMap().getAllGameObjects()){
+                if (obj.getX() == getPlayer().getBalls().get(i).getX() && obj.getY() == getPlayer().getBalls().get(i).getY()){
+                    if (obj instanceof Enemy && ((Enemy) obj).getAlive()){
+                        ((Enemy)obj).setAlive(false);
+                        getPlayer().getBalls().remove(i);
+                        i--;
+                    }
+                    if (obj instanceof Obstacle){
+                        getPlayer().getBalls().remove(i);
+                        i--;
+                    }
                 }
             }
         }
