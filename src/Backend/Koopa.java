@@ -1,7 +1,7 @@
 package Backend;
 
 public class Koopa extends Enemy{
-    Koopa(GamePosition position){
+    public Koopa(GamePosition position){
         super(position, 0, 0);
     }
 }

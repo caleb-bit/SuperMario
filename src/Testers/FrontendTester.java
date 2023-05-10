@@ -21,6 +21,7 @@ public class FrontendTester {
         components.add(new UIMushroom(new Mushroom(new GamePosition(-3, 0))));
         components.add(new UIInvincibility(new Invincibility(new GamePosition(-5, 0))));
         components.add(new UIGoomba(new Goomba(new GamePosition(0, 4))));
+        components.add(new UIKoopa(new Koopa(new GamePosition(-5,5))));
         for (UIComponent component : components) {
             if (!(component instanceof UIPlayer)) {
                 GamePosition pos = component.getGameObject().getPosition();
