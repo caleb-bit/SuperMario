@@ -9,6 +9,6 @@ public class GameOverPanel extends JPanel {
         g.fillRect(0,0,500,500);
         g.setColor(Color.white);
         g.setFont(new Font("SansSerif", Font.BOLD, 30));
-        g.drawString("Game Over!", 200,200);
+        g.drawString("Game Over!", 175,200);
     }
 }
