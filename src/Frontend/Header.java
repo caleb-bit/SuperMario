@@ -14,7 +14,7 @@ public class Header{
         graphics.setColor(new Color(0,0,0,255));
         graphics.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,18));
         graphics.drawString("Time Left: " + (timeLeft),10,22);
-        graphics.drawString("Coins: " + coins, 300, 22);
-        graphics.drawString("Powerup: "+ (power == null ? "None": power.getName()), 570,22);
+        graphics.drawString("Coins: " + coins, 150, 22);
+        graphics.drawString("Powerup: "+ (power == null ? "None": power.getName()), 300,22);
     }
 }

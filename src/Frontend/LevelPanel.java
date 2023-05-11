@@ -6,11 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.*;
-
+import Backend.BackendManager;
 
 public class LevelPanel extends JPanel implements KeyListener {
+    private BackendManager backendManager;
     private ArrayList<UIComponent> components;
+    private BufferedImage headerImage = new BufferedImage(720,30,BufferedImage.TYPE_INT_ARGB);
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;
     public static Color BACKGROUND_COLOR = new Color(48, 220, 255);
@@ -18,7 +21,8 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
-    LevelPanel(ArrayList<GameObject> gameObjects, GameAPI gameAPI) {
+    LevelPanel(ArrayList<GameObject> gameObjects, GameAPI gameAPI, BackendManager backend) {
+        this.backendManager = backend;
         this.gameAPI = gameAPI;
         components = new ArrayList<>();
         uiPlayer = new UIPlayer(gameAPI.getPlayer());
@@ -65,6 +69,8 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     public void paintComponent(Graphics g) {
         drawBackground(g);
+        Header.drawHeader(headerImage, (int)(backendManager.getTimeLeft() / 1000), backendManager.getPlayer().getCoins(),
+                backendManager.getPlayer().getPower());
         components.addAll(ballsToBeFired);
         for (UIFire fire : ballsToBeFired) {
             fire.setUIPosition(relToPlayer(fire));
@@ -86,6 +92,7 @@ public class LevelPanel extends JPanel implements KeyListener {
             }
             component.paint(g);
         }
+        g.drawImage(headerImage, 0, 0, null);
         uiPlayer.paint(g);
     }
 

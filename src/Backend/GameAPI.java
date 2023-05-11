@@ -106,4 +106,7 @@ public class GameAPI {
     public void fireballFired(Fireball fireball) {
         frontend.fireballFired(fireball);
     }
+    public BackendManager getBackend(){
+        return backend;
+    }
 }

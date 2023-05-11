@@ -26,7 +26,6 @@ public class Map2 extends Map{
         gameObjects.add(new Goomba(new GamePosition(60, 0)));
         gameObjects.add(new Goomba(new GamePosition(61, 0)));
         gameObjects.add(new Flower(new GamePosition(4, 3.5)));
-        gameObjects.add(new Mushroom(new GamePosition(20, 3.5)));
         gameObjects.add(new Mushroom(new GamePosition(24, 3.5)));
         gameObjects.add(new Invincibility(new GamePosition(36, 3.5)));
         gameObjects.add(new Land(3, 8,3.5 ,3));
