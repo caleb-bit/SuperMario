@@ -186,7 +186,8 @@ public class BackendManager {
         for (int i = 0; i < getPlayer().getBalls().size(); i++) {
             getPlayer().getBalls().get(i).move();
             for (GameObject obj : getLevel(getCurr()).getMap().getAllGameObjects()) {
-                if (obj.getX() == getPlayer().getBalls().get(i).getX() && obj.getY() == getPlayer().getBalls().get(i).getY()) {
+                if (getPlayer().getBalls().get(i).getX() >= obj.getX() && getPlayer().getBalls().get(i).getX() <= obj.getX() + 1
+                        && getPlayer().getBalls().get(i).getY() <= obj.getY()) {
                     if (obj instanceof Enemy && ((Enemy) obj).getAlive()) {
                         ((Enemy) obj).setAlive(false);
                         getPlayer().getBalls().remove(i);
