@@ -26,6 +26,7 @@ public class Land extends GameObject{
     }
 
     public int getStartY() {return startY;}
+    public int getEndY() {return endY;}
 
     public int getUIWidth() {
         return (endX-startX)* FrontendManager.SCALE;

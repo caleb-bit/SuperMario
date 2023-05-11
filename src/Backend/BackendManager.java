@@ -14,7 +14,7 @@ public class BackendManager {
         timeLeft = 300;
         players = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            players.add(new Player(new GamePosition(0, 0), 0, 0));
+            players.add(new Player(new GamePosition(0,0), 0, 0));
         }
         maps = new ArrayList<>();
         maps.add(new Map1());
@@ -77,10 +77,10 @@ public class BackendManager {
         for (Land land : lands) {
             if (land.getStartX() <= getPlayer().getX()
                     && getPlayer().getX() < land.getEndX()
-                    && land.getY() <= getPlayer().getY()) {
+                    && land.getEndY() <= getPlayer().getY()) {
                 if (correctLand == null)
                     correctLand = land;
-                else if (land.getY() > correctLand.getY())
+                else if (land.getStartY() > correctLand.getStartY())
                     correctLand = land;
             }
         }

@@ -44,6 +44,9 @@ public class Player extends GameObject {
     }
 
     public void die(ArrayList<GamePosition> points) {
+        setVelX(0);
+        setVelY(0);
+        setAccelY(0);
         if (getPower() != null && getPower().getName().equals("Mushroom")) {
             setPower(null);
         }
@@ -84,7 +87,8 @@ public class Player extends GameObject {
         // if player will sink into ground, bring it up.
         if (land != null && getY() + getVelY() < land.getStartY()) {
             setAccelY(0);
-            setVelY(land.getStartY() - getY());
+            setVelY(0);
+            setPosition(new GamePosition(getX(), land.getStartY()));
         }
         if (land == null) {
             setAccelY(-Y_ACCEL);
@@ -119,26 +123,26 @@ public class Player extends GameObject {
         return fireballs;
     }
 
-    public void move(HashMap<Integer, Boolean> keysPressed) {
-        // update speeds
-        if (keysPressed.get(KeyEvent.VK_RIGHT)) {
-            setVelX(1);
-        } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
-            setVelX(-1);
-        } else if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
-                setVelY(2.5);
-                setAccelY(-0.5);
-            }
-        } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
-            fireballs.add(new Fireball(getPosition()));
-        }
-        if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
-            setVelX(0);
-        }
-        setVelY(getVelY() + getAccelY());
-        setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
-    }
+//    public void move(HashMap<Integer, Boolean> keysPressed) {
+//        // update speeds
+//        if (keysPressed.get(KeyEvent.VK_RIGHT)) {
+//            setVelX(1);
+//        } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
+//            setVelX(-1);
+//        } else if (keysPressed.get(KeyEvent.VK_UP)) {
+//            if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
+//                setVelY(2.5);
+//                setAccelY(-0.5);
+//            }
+//        } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
+//            fireballs.add(new Fireball(getPosition()));
+//        }
+//        if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
+//            setVelX(0);
+//        }
+//        setVelY(getVelY() + getAccelY());
+//        setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
+//    }
 
     public double getWidth() {
         return width;
