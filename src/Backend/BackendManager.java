@@ -10,7 +10,7 @@ public class BackendManager {
     private double timeLeft;
 
     BackendManager() {
-        timeLeft = 300;
+        timeLeft = 180 * 1000;
         players = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             players.add(new Player(new GamePosition(0,0), 0, 0));
@@ -103,7 +103,7 @@ public class BackendManager {
     private void updateTrap(Trap trap) {
         if ((trap.leftX() <= getPlayer().getX()+getPlayer().getWidth()&& getPlayer().getX() <= trap.rightX())
                 && (trap.bottomY() <= getPlayer().getY()+getPlayer().getHeight() && getPlayer().getY() <= trap.topY())
-                && (getPlayer().getPower() == null || (getPlayer().getPower() instanceof Invincibility))) {
+                && (getPlayer().getPower() == null || !(getPlayer().getPower().getName().equals("Invincibility")))) {
             getPlayer().die(getLevel(getCurr()).getMap().getPoints());
         }
         trap.setAngle(trap.getAngle() + 5 * Math.PI / 180);
@@ -133,6 +133,7 @@ public class BackendManager {
                 && getPlayer().getY() == powerup.getY() && !powerup.getTaken()){
             getPlayer().setPower(powerup);
             powerup.setTaken(true);
+            System.out.println(getPlayer().getPower().getName());
         }
     }
 
@@ -183,10 +184,12 @@ public class BackendManager {
                         ((Enemy) obj).setAlive(false);
                         getPlayer().getBalls().remove(i);
                         i--;
+                        break;
                     }
-                    if (obj instanceof Obstacle) {
+                    else if (obj instanceof Obstacle) {
                         getPlayer().getBalls().remove(i);
                         i--;
+                        break;
                     }
                 }
             }
