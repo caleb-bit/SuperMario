@@ -22,6 +22,7 @@ public class FrontendManager {
     private int[] screenSize;
     private MenuPanel menuPanel;
     private GameOverPanel overPanel;
+    private WinPanel winPanel;
 
     public FrontendManager(GameAPI api) {
         cardLayout = new CardLayout();

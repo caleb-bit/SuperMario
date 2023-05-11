@@ -57,7 +57,7 @@ public class BackendManager {
             double land_x2 = land.getEndX();
             double player_x1 = getPlayer().getX();
             double player_x2 = getPlayer().getX() + getPlayer().getWidth();
-            if (((land_x1 <= player_x1 && player_x1 <= land_x1) || (land_x1 <= player_x2 && player_x2 <= land_x2))
+            if (((land_x1 <= player_x1 && player_x1 <= land_x1 + 1) || (land_x1 <= player_x2 && player_x2 <= land_x2 + 1))
                     && land.getBottomY() <= getPlayer().getY()) {
                 if (correctLand == null)
                     correctLand = land;
@@ -156,7 +156,7 @@ public class BackendManager {
     }
 
     private void updateEnemy(Enemy enemy) {
-        if (getPlayer().getX() >= enemy.getX() && getPlayer().getX() <= enemy.getX() + 1
+        if (getPlayer().getX() >= enemy.getX() && getPlayer().getX() <= enemy.getX() + 2
                 && getPlayer().getY() <= enemy.getY() + enemy.getHeight() && enemy.getAlive()) {
             if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))) {
                 enemy.setAlive(false);
