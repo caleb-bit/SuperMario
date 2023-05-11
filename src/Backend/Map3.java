@@ -57,6 +57,8 @@ public class Map3 extends Map{
         gameObjects.add(new Coin(new GamePosition(57, 6)));
         gamePositions.add(new GamePosition(30, 0));
         gamePositions.add(new GamePosition(65, 0));
+        gameObjects.add(new Flag(new GamePosition(30,0), false));
+        gameObjects.add(new Flag(new GamePosition(65,0),true));
         initObjects(gameObjects, gamePositions);
     }
 }
