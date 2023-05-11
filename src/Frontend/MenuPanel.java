@@ -65,7 +65,7 @@ public class MenuPanel extends JPanel {
         g.fillRect(0, 260, windowSize[0], windowSize[1]);
         g.setColor(Color.black);
         g.setFont(new Font("SansSerif", Font.BOLD, 35));
-        g.drawString("Shim Zou Super Javario", 45, 100);
+        g.drawString("Super Javario", 45, 100);
 
         drawMario(g);
 
