@@ -67,7 +67,7 @@ public class Player extends GameObject {
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
-            Fireball fireball = new Fireball(new GamePosition(getX(), getY()+height/2));
+            Fireball fireball = new Fireball(getPosition());
             fireballs.add(fireball);
             gameAPI.fireballFired(fireball);
         }

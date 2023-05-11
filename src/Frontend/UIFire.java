@@ -13,7 +13,7 @@ public class UIFire extends UIComponent {
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(255, 0, 0));
-        g.fillOval(getIntX(), getIntY(), 10, 10);
+        g.fillOval(getIntX(), getIntY()-20, 10, 10);
     }
 
     @Override
