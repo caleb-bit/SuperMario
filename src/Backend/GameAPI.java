@@ -50,7 +50,7 @@ public class GameAPI {
                 if (backend.getTimeLeft() <= 0) {
                     frontend.gameOver();
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -61,7 +61,7 @@ public class GameAPI {
                     backend.getLevel(backend.getLevel()).setComplete(true);
                     frontend.win();
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
