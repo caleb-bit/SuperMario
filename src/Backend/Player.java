@@ -79,7 +79,11 @@ public class Player extends GameObject {
             setVelX(-1);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (land != null && getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
+            if ((getPower() != null && getPower().getName().equals("Yoshi"))){
+                setVelY(1);
+                setAccelY(-Y_ACCEL);
+            }
+            else if (land != null && getY() == land.getStartY()) {
                 setVelY(2);
                 setAccelY(-Y_ACCEL);
             }
