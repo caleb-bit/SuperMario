@@ -223,6 +223,17 @@ public class BackendManager {
             }
         }
     }
+    public void resetLevels(){
+        maps = new ArrayList<>();
+        maps.add(new Map1());
+        maps.add(new Map2());
+        maps.add(new Map3());
+        maps.add(new Map4());
+        levels.clear();
+        for (int i = 0; i < 4; i++){
+            levels.add(new Level(i, maps.get(i), players.get(i)));
+        }
+    }
 
     public void setLevel(int level) {
         this.currLevel = level;

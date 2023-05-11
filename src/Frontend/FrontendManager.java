@@ -125,7 +125,6 @@ public class FrontendManager {
         frame.setContentPane(overPanel);
         frame.repaint();
         frame.setVisible(true);
-        frame.requestFocus();
     }
     public void win(){
         for (KeyListener k : frame.getKeyListeners()) {
@@ -134,6 +133,5 @@ public class FrontendManager {
         frame.setContentPane(winPanel);
         frame.repaint();
         frame.setVisible(true);
-        frame.requestFocus();
     }
 }
