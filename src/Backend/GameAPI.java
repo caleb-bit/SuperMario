@@ -49,12 +49,22 @@ public class GameAPI {
                 }
                 if (backend.getTimeLeft() <= 0) {
                     frontend.gameOver();
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     openGame();
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
                         backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
                     backend.getLevel(backend.getLevel()).setComplete(true);
                     frontend.win();
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     openGame();
                 }
                 if (getPlayer().getPower() != null) {
