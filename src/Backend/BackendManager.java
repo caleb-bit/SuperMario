@@ -102,9 +102,6 @@ public class BackendManager {
             }
             else if (obj instanceof Ledge) {
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Ledge) obj).getLength()) {
-                    if (getPlayer().getY() == obj.getY() - 1 && getPlayer().getVelY() >= 0) {
-                        getPlayer().setVelY(-1);
-                    }
                     if (getPlayer().getY() == obj.getY() && getPlayer().getVelY() < 0) {
                         getPlayer().setVelY(0);
                     }
