@@ -103,7 +103,7 @@ public class BackendManager {
     private void updateTrap(Trap trap) {
         if ((trap.leftX() <= getPlayer().getX()+getPlayer().getWidth()&& getPlayer().getX() <= trap.rightX())
                 && (trap.bottomY() <= getPlayer().getY()+getPlayer().getHeight() && getPlayer().getY() <= trap.topY())
-                || (getPlayer().getPower() != null && !(getPlayer().getPower() instanceof Invincibility))) {
+                && (getPlayer().getPower() == null || (getPlayer().getPower() instanceof Invincibility))) {
             getPlayer().die(getLevel(getCurr()).getMap().getPoints());
         }
         trap.setAngle(trap.getAngle() + 5 * Math.PI / 180);
