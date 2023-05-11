@@ -9,7 +9,7 @@ public abstract class GameObject {
         this.position = position;
         this.velX = velX;
         this.velY = velY;
-        accelY =0;
+        accelY = 0;
     }
     GameObject(int xPos, int yPos, int velX, int velY) {
         this.position = new GamePosition(xPos, yPos);

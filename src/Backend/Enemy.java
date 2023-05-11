@@ -2,8 +2,10 @@ package Backend;
 
 public abstract class Enemy extends GameObject{
     private boolean alive;
-    Enemy(GamePosition position, int velX, int velY){
+    private final GamePosition initialPos;
+    Enemy(GamePosition position, double velX, double velY){
         super(position, velX, velY);
+        initialPos = position;
         alive = true;
     }
     public boolean getAlive(){
@@ -15,7 +17,9 @@ public abstract class Enemy extends GameObject{
     public void move(){
         setPosition(new GamePosition(getPosition().getX() + getVelX(), getPosition().getY()));
     }
-
+    public GamePosition getInitial(){
+        return initialPos;
+    }
     abstract public double getHeight();
 
 }

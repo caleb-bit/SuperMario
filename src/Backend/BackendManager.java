@@ -154,22 +154,28 @@ public class BackendManager {
                 for (Obstacle obs : getLevel(getCurr()).getMap().getObstacles()) {
                     if (obs instanceof Ledge && enem.getX() >= obs.getX() && enem.getX() < obs.getX() + obs.getLength()
                             && enem.getY() == obs.getY()) {
-                        if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.5) {
-                            enem.setVelX(-0.5);
+                        if (enem.getX() + enem.getVelX() > obs.getX() + obs.getLength() && enem.getVelX() == 0.1) {
+                            enem.setVelX(-0.1);
                         }
-                        if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.5) {
-                            enem.setVelX(0.5);
+                        if (enem.getX() + enem.getVelX() < obs.getX() && enem.getVelX() == -0.1) {
+                            enem.setVelX(0.1);
                         }
                     }
                     if (obs instanceof Cliff) {
-                        if (enem.getX() < obs.getX() && enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
-                            enem.setVelX(-0.5);
+                        if (enem.getX() < obs.getX() && enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.1) {
+                            enem.setVelX(-0.1);
                         }
                         if (enem.getX() >= obs.getX() + obs.getLength() &&
-                        enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
-                            enem.setVelX(0.5);
+                        enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.1) {
+                            enem.setVelX(0.1);
                         }
                     }
+                }
+                if (enem.getX() + enem.getVelX() >= enem.getInitial().getX() + 3 && enem.getVelX() == 0.1){
+                    enem.setVelX(-0.1);
+                }
+                if (enem.getX() + enem.getVelX() <= enem.getInitial().getX() - 3 && enem.getVelX() == -0.1){
+                    enem.setVelX(0.1);
                 }
                 enem.move();
             }
