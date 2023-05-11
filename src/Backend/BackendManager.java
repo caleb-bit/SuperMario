@@ -23,8 +23,8 @@ public class BackendManager {
         maps.add(new Map3());
         maps.add(new Map4());
         levels = new ArrayList<>();
-        for (int i = 1; i <= 4; i++) {
-            levels.add(new Level(i, maps.get(0), players.get(0)));
+        for (int i = 0; i < 4; i++) {
+            levels.add(new Level(i, maps.get(i), players.get(i)));
         }
         currLevel = 1;
     }

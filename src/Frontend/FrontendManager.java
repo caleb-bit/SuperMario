@@ -15,7 +15,7 @@ public class FrontendManager {
     private GameAPI api;
     // matches key code with pressed status
     private HashMap<Integer, Boolean> keysPressed;
-    public static final int SCALE = 20;
+    public static final int SCALE = 30;
     private int[] screenSize;
 
     public FrontendManager(GameAPI api) {
