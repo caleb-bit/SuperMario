@@ -46,8 +46,7 @@ public class GameAPI {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (backend.getPlayer().getLives() == 0) {
-
+                if (backend.getTimeLeft() <= 0) {
                     gameState = GameState.GAMEOVER;
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
