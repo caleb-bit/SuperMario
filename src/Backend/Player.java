@@ -45,6 +45,7 @@ public class Player extends GameObject {
         setAccelY(0);
         if (getPower() != null && getPower().getName().equals("Mushroom")) {
             setPower(null);
+            return;
         }
         GamePosition returnPoint = new GamePosition(0, 0);
         for (GamePosition pos : points) {

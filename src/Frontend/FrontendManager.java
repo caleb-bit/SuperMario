@@ -25,6 +25,8 @@ public class FrontendManager {
     private WinPanel winPanel;
 
     public FrontendManager(GameAPI api) {
+        overPanel = new GameOverPanel();
+        winPanel = new WinPanel();
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
         menuPanel = new MenuPanel(api);
@@ -121,5 +123,17 @@ public class FrontendManager {
             frame.removeKeyListener(k);
         }
         frame.setContentPane(overPanel);
+        frame.repaint();
+        frame.setVisible(true);
+        frame.requestFocus();
+    }
+    public void win(){
+        for (KeyListener k : frame.getKeyListeners()) {
+            frame.removeKeyListener(k);
+        }
+        frame.setContentPane(winPanel);
+        frame.repaint();
+        frame.setVisible(true);
+        frame.requestFocus();
     }
 }
