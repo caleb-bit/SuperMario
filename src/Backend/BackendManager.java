@@ -36,29 +36,6 @@ public class BackendManager {
         return timeLeft;
     }
 
-    public void onKeyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_RIGHT) {
-            getPlayer().setVelX(1);
-        } else if (keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(-1);
-        } else if (keyCode == KeyEvent.VK_UP) {
-            if (getPlayer().getVelY() == 0 || (getPlayer().getPower() != null &&
-                    getPlayer().getPower().getName().equals("Yoshi"))) {
-                getPlayer().setVelY(2.5);
-                getPlayer().setAccelY(-0.5);
-            }
-        } else if (keyCode == KeyEvent.VK_SPACE && (getPlayer().getPower() != null &&
-                getPlayer().getPower().getName().equals("Flower"))) {
-            Fireball fire = new Fireball(getPlayer().getPosition());
-        }
-    }
-
-    public void onKeyReleased(int keyCode) {
-        if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(0);
-        }
-    }
-
     public void updateTime(double increment) throws InterruptedException {
         timeLeft -= increment;
     }

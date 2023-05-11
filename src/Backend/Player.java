@@ -127,7 +127,7 @@ public class Player extends GameObject {
             setVelX(-1);
         } else if (keysPressed.get(KeyEvent.VK_UP)) {
             if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
-                setVelY(2.5);
+                setVelY(2);
                 setAccelY(-0.5);
             }
         } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
@@ -147,5 +147,4 @@ public class Player extends GameObject {
     public double getHeight() {
         return height;
     }
-
 }
