@@ -36,29 +36,6 @@ public class BackendManager {
         return timeLeft;
     }
 
-    public void onKeyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_RIGHT) {
-            getPlayer().setVelX(1);
-        } else if (keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(-1);
-        } else if (keyCode == KeyEvent.VK_UP) {
-            if (getPlayer().getVelY() == 0 || (getPlayer().getPower() != null &&
-                    getPlayer().getPower().getName().equals("Yoshi"))) {
-                getPlayer().setVelY(2.5);
-                getPlayer().setAccelY(-0.5);
-            }
-        } else if (keyCode == KeyEvent.VK_SPACE && (getPlayer().getPower() != null &&
-                getPlayer().getPower().getName().equals("Flower"))) {
-            Fireball fire = new Fireball(getPlayer().getPosition());
-        }
-    }
-
-    public void onKeyReleased(int keyCode) {
-        if (keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
-            getPlayer().setVelX(0);
-        }
-    }
-
     public void updateTime(double increment) throws InterruptedException {
         timeLeft -= increment;
     }
@@ -109,21 +86,21 @@ public class BackendManager {
                     }
                 }
             }
-            if (obj instanceof Powerup){
+            else if (obj instanceof Powerup){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 1
                         && getPlayer().getY() == obj.getY() && !((Powerup) obj).getTaken()){
                     getPlayer().setPower((Powerup) obj);
                     ((Powerup) obj).setTaken(true);
                 }
             }
-            if (obj instanceof Cliff) {
+            else if (obj instanceof Cliff) {
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Cliff) obj).getLength()) {
                     if (getPlayer().getY() == 0) {
                         getPlayer().die(getLevel(getCurr()).getMap().getPoints());
                     }
                 }
             }
-            if (obj instanceof Ledge) {
+            else if (obj instanceof Ledge) {
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() < obj.getX() + ((Ledge) obj).getLength()) {
                     if (getPlayer().getY() == obj.getY() - 1 && getPlayer().getVelY() >= 0) {
                         getPlayer().setVelY(-1);
@@ -133,7 +110,7 @@ public class BackendManager {
                     }
                 }
             }
-            if (obj instanceof Trap trap) {
+            else if (obj instanceof Trap trap) {
                 if ((trap.leftX() <= getPlayer().getX()+getPlayer().getWidth()&& getPlayer().getX() <= trap.rightX())
                         && (trap.bottomY() <= getPlayer().getY()+getPlayer().getHeight() && getPlayer().getY() <= trap.topY())
                         || (getPlayer().getPower() != null && !(getPlayer().getPower() instanceof Invincibility))) {
@@ -141,7 +118,7 @@ public class BackendManager {
                 }
                 ((Trap) obj).setAngle(((Trap) obj).getAngle() + 5 * Math.PI / 180);
             }
-            if (obj instanceof Coin){
+            else if (obj instanceof Coin){
                 if (getPlayer().getX() >= obj.getX() && getPlayer().getX() <= obj.getX() + 1
                         && getPlayer().getY() == obj.getY() && !((Coin) obj).getTaken()){
                     getPlayer().setCoins(getPlayer().getCoins() + 1);

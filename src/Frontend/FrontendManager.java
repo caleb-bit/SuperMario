@@ -33,7 +33,7 @@ public class FrontendManager {
     }
 
     public void openGame() {
-        frame = new JFrame("SuperMario");
+        frame = new JFrame("Super Mario");
         frame.setContentPane(currPanel);
 //        frame.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
         frame.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));

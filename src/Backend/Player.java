@@ -151,5 +151,4 @@ public class Player extends GameObject {
     public double getHeight() {
         return height;
     }
-
 }

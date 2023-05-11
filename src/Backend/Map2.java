@@ -7,7 +7,7 @@ public class Map2 extends Map{
     Map2(){
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
-        gameObjects.add(new Land(0,70,0,-5));
+        gameObjects.add(new Land(0,100,0,-5));
         gameObjects.add(new Goomba(new GamePosition(5, 0)));
         gameObjects.add(new Goomba(new GamePosition(10, 0)));
         gameObjects.add(new Goomba(new GamePosition(15, 0)));
