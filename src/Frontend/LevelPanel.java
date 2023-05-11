@@ -47,6 +47,8 @@ public class LevelPanel extends JPanel implements KeyListener {
                 uiComponent = new UICoin(gameObject);
             else if (gameObject instanceof Land)
                 uiComponent = new UILand(gameObject);
+            else if (gameObject instanceof Flag)
+                uiComponent = new UIFlag(gameObject);
             else {
                 if (gameObject == null) {
                     throw new NullPointerException("GameObject null");

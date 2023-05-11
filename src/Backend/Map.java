@@ -11,6 +11,7 @@ public abstract class Map {
     private ArrayList<Coin> coins;
     private ArrayList<GamePosition> checkPoints;
     private ArrayList<Land> lands;
+    private ArrayList<Flag> flags;
 
     public void initObjects(ArrayList<GameObject> objects, ArrayList<GamePosition> checkPoints) {
         allObjects = objects;
@@ -19,6 +20,7 @@ public abstract class Map {
         enemies = new ArrayList<>();
         coins = new ArrayList<>();
         lands = new ArrayList<>();
+        flags = new ArrayList<>();
         for (GameObject object : objects) {
             if (object instanceof Powerup)
                 powerups.add((Powerup) object);
@@ -30,6 +32,8 @@ public abstract class Map {
                 coins.add((Coin) object);
             else if (object instanceof Land)
                 lands.add((Land) object);
+            else if (object instanceof Flag)
+                flags.add((Flag) object);
             else
                 throw new IllegalArgumentException("object not classified");
         }
@@ -66,6 +70,10 @@ public abstract class Map {
 
     public void setCoins(ArrayList<Coin> coins) {
         this.coins = coins;
+    }
+
+    public ArrayList<Flag> getFlags() {
+        return flags;
     }
 
     public ArrayList<GamePosition> getPoints() {
