@@ -84,11 +84,16 @@ public class Player extends GameObject {
                 setAccelY(-Y_ACCEL);
             }
         }
-        // if player will sink into ground, bring it up.
-        if (land != null && getY() + getVelY() < land.getStartY()) {
-            setAccelY(0);
-            setVelY(0);
-            setPosition(new GamePosition(getX(), land.getStartY()));
+
+        if (land != null) {
+            if (getY() + getVelY() < land.getStartY()) {
+                // if player will sink into ground, bring it up.
+                setAccelY(0);
+                setVelY(0);
+                setPosition(new GamePosition(getX(), land.getStartY()));
+            } else if (getY() != land.getStartY()) {
+                setAccelY(-Y_ACCEL);
+            }
         }
         if (land == null) {
             setAccelY(-Y_ACCEL);
