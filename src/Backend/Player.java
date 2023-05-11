@@ -10,7 +10,7 @@ public class Player extends GameObject {
     private int coins;
     private double acceleration;
     private ArrayList<Fireball> fireballs;
-    private static double Y_ACCEL = 0.4;
+    private static final double Y_ACCEL = 0.4;
     private double width;
     private double height;
 
@@ -21,8 +21,8 @@ public class Player extends GameObject {
         coins = 0;
         acceleration = 0;
         fireballs = new ArrayList<>();
-        width = 0.75;
-        height = 1.25;
+        width = 1.15;
+        height = 2.7;
     }
 
     public Player(int xPos, int yPos, int velX, int velY) {
@@ -60,8 +60,8 @@ public class Player extends GameObject {
         setPosition(returnPoint);
     }
 
-    public void move(HashMap<Integer, Boolean> keysPressed, Land land) {
-        updateSpeeds(keysPressed, land);
+    public void move(HashMap<Integer, Boolean> keysPressed, Land landBelow, Land landAbove) {
+        updateSpeeds(keysPressed, landBelow, landAbove);
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
@@ -71,7 +71,7 @@ public class Player extends GameObject {
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
     }
 
-    private void updateSpeeds(HashMap<Integer, Boolean> keysPressed, Land land) {
+    private void updateSpeeds(HashMap<Integer, Boolean> keysPressed, Land landBelow, Land landAbove) {
         if (keysPressed.get(KeyEvent.VK_RIGHT)) {
             setVelX(1);
         }
@@ -79,24 +79,28 @@ public class Player extends GameObject {
             setVelX(-1);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if (land != null && getY() == land.getStartY() || (getPower() != null && getPower().getName().equals("Yoshi"))) {
+            if ((landBelow != null && getY() == landBelow.getTopY())
+                    || (getPower() != null && getPower().getName().equals("Yoshi"))) {
                 setVelY(2);
                 setAccelY(-Y_ACCEL);
             }
         }
 
-        if (land != null) {
-            if (getY() + getVelY() < land.getStartY()) {
+        if (landBelow != null) {
+            if (getY() + getVelY() < landBelow.getTopY()) {
                 // if player will sink into ground, bring it up.
                 setAccelY(0);
                 setVelY(0);
-                setPosition(new GamePosition(getX(), land.getStartY()));
-            } else if (getY() != land.getStartY()) {
+                setPosition(new GamePosition(getX(), landBelow.getTopY()));
+            } else if (getY() != landBelow.getTopY()) {
                 setAccelY(-Y_ACCEL);
             }
-        }
-        if (land == null) {
+        } else {
             setAccelY(-Y_ACCEL);
+        }
+        if (landAbove != null && getY() + getHeight() + getVelY() >= landAbove.getBottomY()) {
+            setPosition(new GamePosition(getX(), landAbove.getBottomY() - getHeight()+Y_ACCEL));
+            setVelY(0);
         }
     }
 
@@ -127,27 +131,6 @@ public class Player extends GameObject {
     public ArrayList<Fireball> getBalls() {
         return fireballs;
     }
-
-//    public void move(HashMap<Integer, Boolean> keysPressed) {
-//        // update speeds
-//        if (keysPressed.get(KeyEvent.VK_RIGHT)) {
-//            setVelX(1);
-//        } else if (keysPressed.get(KeyEvent.VK_LEFT)) {
-//            setVelX(-1);
-//        } else if (keysPressed.get(KeyEvent.VK_UP)) {
-//            if (getVelY() == 0 || (power != null && (getPower() != null && getPower().getName().equals("Yoshi")))) {
-//                setVelY(2.5);
-//                setAccelY(-0.5);
-//            }
-//        } else if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
-//            fireballs.add(new Fireball(getPosition()));
-//        }
-//        if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT))) {
-//            setVelX(0);
-//        }
-//        setVelY(getVelY() + getAccelY());
-//        setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
-//    }
 
     public double getWidth() {
         return width;

@@ -3,11 +3,11 @@ package Backend;
 import Frontend.FrontendManager;
 
 public class Land extends GameObject{
-    private int startX;
-    private int endX;
-    private int startY;
-    private int endY;
-    public Land(int startX, int endX, int startY, int endY) {
+    private double startX;
+    private double endX;
+    private double startY;
+    private double endY;
+    public Land(double startX, double endX, double startY, double endY) {
         super(new GamePosition(startX, startY),0,0);
         this.startX = startX;
         this.endX = endX;
@@ -17,22 +17,22 @@ public class Land extends GameObject{
     public void move() {
     }
 
-    public int getStartX() {
+    public double getStartX() {
         return startX;
     }
 
-    public int getEndX() {
+    public double getEndX() {
         return endX;
     }
 
-    public int getStartY() {return startY;}
-    public int getEndY() {return endY;}
+    public double getTopY() {return startY;}
+    public double getBottomY() {return endY;}
 
-    public int getUIWidth() {
+    public double getUIWidth() {
         return (endX-startX)* FrontendManager.SCALE;
     }
 
-    public int getUIHeight() {
+    public double getUIHeight() {
         return Math.abs(endY-startY)* FrontendManager.SCALE;
     }
 

@@ -17,7 +17,7 @@ public class UILand extends UIComponent{
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(170, 74, 68));
-        g.fillRect(getIntX(),getIntY(), ((Land) getGameObject()).getUIWidth(), ((Land) getGameObject()).getUIHeight());
+        g.fillRect(getIntX(),getIntY(), (int) ((Land) getGameObject()).getUIWidth(), (int) ((Land) getGameObject()).getUIHeight());
     }
 
     @Override

@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class UIPlayer extends UIComponent {
 
-    private int width = 15;
-    private int height = 25;
+    private final int width = 23;
+    private final int height = 54;
 
     // determines if the UIPlayer itself can move in these directions
     // if true, then the UIposition changes when player moves
@@ -27,20 +27,20 @@ public class UIPlayer extends UIComponent {
     public void paint(Graphics g) {
         //shoes
         g.setColor(new Color(255, 140, 17));
-        g.fillOval(getIntX() - width * 3 / 5, getIntY() - height / 5, width * 7 / 5, height / 5);
+        g.fillOval(getIntX() + 2, getIntY() - 5, 21, 5);
         //body
         g.setColor(Color.blue);
-        g.fillRect(getIntX() - width / 2, getIntY() - height / 2 - (height * 4 / 9 + height / 5), width, height);
+        g.fillRect(getIntX() + 4, getIntY() - 29, 15, 25);
         //head
         g.setColor(new Color(255, 189, 93));
-        g.fillRect(getIntX() - width * 2 / 3, getIntY() - height / 2 - width * 5 / 4 - (height * 4 / 9 + height / 5), width * 4 / 3, width * 5 / 4);
+        g.fillRect(getIntX() + 1, getIntY() - 48, 20, 19);
         //hat
         g.setColor(Color.red);
-        g.fillRect(getIntX() - width * 3 / 4, getIntY() - height / 2 - width * 5 / 4 - width * 3 / 7 - (height * 4 / 9 + height / 5), width * 3 / 2, width * 3 / 7);
+        g.fillRect(getIntX(), getIntY() - 54, 23, 6);
         //face
         g.setColor(Color.black);
-        g.fillRect(getIntX() + width / 8, getIntY() - height * 9 / 8 - (height * 4 / 9 + height / 5), width / 8, height / 6);
-        g.fillRect(getIntX() + width / 5, getIntY() - height * 7 / 8 - (height * 4 / 9 + height / 5), width * 3 / 10 + width / 6, height / 10);
+        g.fillRect(getIntX() + 13, getIntY() - 44, 2, 4);
+        g.fillRect(getIntX() + 14, getIntY() - 38, 7, 3);
     }
 
     @Override

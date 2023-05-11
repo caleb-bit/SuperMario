@@ -3,7 +3,6 @@ package Backend;
 import Frontend.FrontendManager;
 import Frontend.UIPosition;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -50,9 +49,9 @@ public class GameAPI {
                 if (backend.getPlayer().getLives() == 0) {
                     gameState = GameState.GAMEOVER;
                 }
-                if (getPlayer().getX() >= backend.getLevel(backend.getCurr()).getMap().getPoints().get(
-                        backend.getLevel(backend.getCurr()).getMap().getPoints().size() - 1).getX()) {
-                    backend.getLevel(backend.getCurr()).setComplete(true);
+                if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
+                        backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
+                    backend.getLevel(backend.getLevel()).setComplete(true);
                     gameState = GameState.MENU;
                 }
                 if (getPlayer().getPower() != null) {
