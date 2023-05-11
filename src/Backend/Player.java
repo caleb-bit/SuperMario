@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Player extends GameObject {
-    private int lives;
     private Powerup power;
     private int coins;
     private double acceleration;
@@ -17,7 +16,6 @@ public class Player extends GameObject {
 
     Player(GamePosition position, int velX, int velY, GameAPI gameAPI) {
         super(position, velX, velY);
-        lives = 3;
         power = null;
         coins = 0;
         acceleration = 0;
@@ -29,7 +27,6 @@ public class Player extends GameObject {
 
     public Player(int xPos, int yPos, int velX, int velY) {
         super(xPos, yPos, velX, velY);
-        lives = 3;
         power = null;
         coins = 0;
         acceleration = 0;
@@ -41,9 +38,6 @@ public class Player extends GameObject {
 
     }
 
-    public int getLives() {
-        return lives;
-    }
 
     public void die(ArrayList<GamePosition> points) {
         setVelX(0);
@@ -52,7 +46,6 @@ public class Player extends GameObject {
         if (getPower() != null && getPower().getName().equals("Mushroom")) {
             setPower(null);
         }
-        lives--;
         GamePosition returnPoint = new GamePosition(0, 0);
         for (GamePosition pos : points) {
             if (pos.getX() < getX()) {
