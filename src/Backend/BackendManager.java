@@ -161,6 +161,9 @@ public class BackendManager {
             if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))) {
                 enemy.setAlive(false);
             } else {
+                if (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Mushroom")){
+                    enemy.setAlive(false);
+                }
                 getPlayer().die(getLevel(getLevel()).getMap().getPoints());
             }
         }

@@ -48,6 +48,7 @@ public class GameAPI {
                     e.printStackTrace();
                 }
                 if (backend.getTimeLeft() <= 0) {
+                    frontend.gameOver();
                     gameState = GameState.GAMEOVER;
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(

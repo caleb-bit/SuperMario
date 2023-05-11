@@ -51,7 +51,7 @@ public class FrontendManager {
     }
 
     public void openGame() {
-        frame = new JFrame("Super Mario");
+        frame = new JFrame("Super Javario");
 //        frame.setContentPane(currPanel);
         frame.setContentPane(mainPanel);
         frame.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));
@@ -120,6 +120,6 @@ public class FrontendManager {
         for (KeyListener k : frame.getKeyListeners()) {
             frame.removeKeyListener(k);
         }
-
+        frame.setContentPane(overPanel);
     }
 }
