@@ -8,12 +8,14 @@ public class BackendManager {
     private ArrayList<Map> maps;
     private int currLevel;
     private double timeLeft;
+    private GameAPI gameAPI;
 
-    BackendManager() {
+    BackendManager(GameAPI gameAPI) {
+        this.gameAPI = gameAPI;
         timeLeft = 180 * 1000;
         players = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            players.add(new Player(new GamePosition(0, 0), 0, 0));
+            players.add(new Player(new GamePosition(0, 0), 0, 0, gameAPI));
         }
         maps = new ArrayList<>();
         maps.add(new Map1());

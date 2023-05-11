@@ -81,4 +81,8 @@ public class FrontendManager {
     public static int convertGameToUI(int x) {
         return x * SCALE;
     }
+
+    public void fireballFired(Fireball fireball) {
+        currPanel.getBallsToBeFired().add(new UIFire(fireball));
+    }
 }

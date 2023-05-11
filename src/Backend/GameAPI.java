@@ -26,7 +26,7 @@ public class GameAPI {
     }
 
     public void openGame() {
-        backend = new BackendManager();
+        backend = new BackendManager(this);
         frontend = new FrontendManager(this);
         frontend.openGame();
         gameState = GameState.MENU;
@@ -100,5 +100,9 @@ public class GameAPI {
 
     public UIPosition getPlayerUIPos() {
         return frontend.getPlayerUIPos();
+    }
+
+    public void fireballFired(Fireball fireball) {
+        frontend.fireballFired(fireball);
     }
 }

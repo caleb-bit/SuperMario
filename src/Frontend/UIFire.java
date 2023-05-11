@@ -5,7 +5,7 @@ import Backend.GameObject;
 
 import java.awt.*;
 
-public class UIFire extends UIComponent{
+public class UIFire extends UIComponent {
     public UIFire(GameObject gameObject) {
         super(gameObject);
     }
@@ -13,7 +13,7 @@ public class UIFire extends UIComponent{
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(255, 0, 0));
-        g.fillOval(getIntX(), getIntY(), 2, 2);
+        g.fillOval(getIntX(), getIntY(), 10, 10);
     }
 
     @Override

@@ -14,6 +14,7 @@ public class LevelPanel extends JPanel implements KeyListener {
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;
     public static Color BACKGROUND_COLOR = new Color(48, 220, 255);
+    private ArrayList<UIFire> ballsToBeFired;
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
@@ -21,6 +22,7 @@ public class LevelPanel extends JPanel implements KeyListener {
         this.gameAPI = gameAPI;
         components = new ArrayList<>();
         uiPlayer = new UIPlayer(gameAPI.getPlayer());
+        ballsToBeFired = new ArrayList<>();
 
         // create corresponding components for each game object in the level
         for (GameObject gameObject : gameObjects) {
@@ -63,6 +65,11 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     public void paintComponent(Graphics g) {
         drawBackground(g);
+        components.addAll(ballsToBeFired);
+        for (UIFire fire : ballsToBeFired) {
+            fire.setUIPosition(relToPlayer(fire));
+        }
+        ballsToBeFired = new ArrayList<>();
         for (UIComponent component : components) {
             if (component instanceof UIPowerup) {
                 if (((Powerup) component.getGameObject()).getTaken()) {
@@ -133,5 +140,9 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     public UIPlayer getUiPlayer() {
         return uiPlayer;
+    }
+
+    public ArrayList<UIFire> getBallsToBeFired() {
+        return ballsToBeFired;
     }
 }

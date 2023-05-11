@@ -13,8 +13,9 @@ public class Player extends GameObject {
     private static final double Y_ACCEL = 0.4;
     private double width;
     private double height;
+    private GameAPI gameAPI;
 
-    Player(GamePosition position, int velX, int velY) {
+    Player(GamePosition position, int velX, int velY, GameAPI gameAPI) {
         super(position, velX, velY);
         lives = 3;
         power = null;
@@ -23,6 +24,7 @@ public class Player extends GameObject {
         fireballs = new ArrayList<>();
         width = 1.15;
         height = 2.7;
+        this.gameAPI = gameAPI;
     }
 
     public Player(int xPos, int yPos, int velX, int velY) {
@@ -65,7 +67,9 @@ public class Player extends GameObject {
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
-            fireballs.add(new Fireball(getPosition()));
+            Fireball fireball = new Fireball(new GamePosition(getX(), getY()+height/2));
+            fireballs.add(fireball);
+            gameAPI.fireballFired(fireball);
         }
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
