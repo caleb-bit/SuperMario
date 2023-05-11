@@ -60,7 +60,6 @@ public class GameAPI {
                     if (getPlayer().getPower().getDuration() <= 0) {
                         getPlayer().setPower(null);
                     }
-                    System.out.println(getPlayer().getPower().getDuration());
                 }
                 backend.updatePlayerPos(frontend.getKeysPressed());
             }
