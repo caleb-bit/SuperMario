@@ -13,52 +13,63 @@ public class FrontendManager {
     private JFrame frame;
     private ArrayList<LevelPanel> levelPanels;
     private CardLayout cardLayout;
+
+    // contains all panels
     private JPanel mainPanel;
+
     private LevelPanel currPanel;
     private GameAPI api;
+
     // matches key code with pressed status
     private HashMap<Integer, Boolean> keysPressed;
+
     public static final int SCALE = 20;
-    private int[] screenSize;
+    private final int[] screenSize;
     private MenuPanel menuPanel;
     private GameOverPanel overPanel;
     private WinPanel winPanel;
 
     public FrontendManager(GameAPI api) {
-        overPanel = new GameOverPanel();
-        winPanel = new WinPanel();
+        this.api = api;
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
-        menuPanel = new MenuPanel(api);
-        levelPanels = new ArrayList<>();
-        levelPanels.add(new LevelPanel(api.getGameObjects(1), api, api.getBackend()));
-        levelPanels.add(new LevelPanel(api.getGameObjects(2), api, api.getBackend()));
-        levelPanels.add(new LevelPanel(api.getGameObjects(3), api, api.getBackend()));
-        levelPanels.add(new LevelPanel(api.getGameObjects(4), api, api.getBackend()));
-        currPanel = levelPanels.get(0);
-        mainPanel.add(menuPanel, "menu");
-        for (int i=1; i<=4; i++) {
-            mainPanel.add(levelPanels.get(i-1), "level"+i);
-        }
-        cardLayout.show(mainPanel, "menu");
         screenSize = new int[]{500, 500};
         keysPressed = new HashMap<>();
+        initPanels();
+        resetKeysPressed();
+    }
+
+    private void resetKeysPressed() {
         keysPressed.put(KeyEvent.VK_LEFT, false);
         keysPressed.put(KeyEvent.VK_RIGHT, false);
         keysPressed.put(KeyEvent.VK_UP, false);
         keysPressed.put(KeyEvent.VK_DOWN, false);
         keysPressed.put(KeyEvent.VK_SPACE, false);
-        this.api = api;
+    }
+
+    public void initPanels() {
+        overPanel = new GameOverPanel();
+        winPanel = new WinPanel();
+        menuPanel = new MenuPanel(api);
+        levelPanels = new ArrayList<>();
+        mainPanel.add(menuPanel, "menu");
+        for (int i = 1; i <= 4; i++) {
+            LevelPanel lp = new LevelPanel(api.getGameObjects(i), api, api.getBackend());
+            levelPanels.add(lp);
+            mainPanel.add(lp, "level" + i);
+        }
+        currPanel = levelPanels.get(0);
+        mainPanel.add(overPanel, "over");
+        mainPanel.add(winPanel, "win");
+        cardLayout.show(mainPanel, "menu");
     }
 
     public void openGame() {
         frame = new JFrame("Super Javario");
-//        frame.setContentPane(currPanel);
         frame.setContentPane(mainPanel);
         frame.setPreferredSize(new Dimension(screenSize[0], screenSize[1]));
         frame.pack();
         frame.setVisible(true);
-//        frame.addKeyListener(currPanel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -107,32 +118,34 @@ public class FrontendManager {
 
     public void changeScreen(int level) {
         currPanel = levelPanels.get(level - 1);
-        cardLayout.show(mainPanel, "level"+level);
-//        frame.setContentPane(currPanel);
-        for (KeyListener k : frame.getKeyListeners()) {
-            frame.removeKeyListener(k);
-        }
+        cardLayout.show(mainPanel, "level" + level);
+        resetFrame();
         frame.addKeyListener(currPanel);
-        frame.repaint();
-        frame.setVisible(true);
-        frame.requestFocus();
     }
-    public void gameOver(){
+
+    public void gameOver() {
+        cardLayout.show(mainPanel, "over");
+        resetFrame();
+    }
+
+    private void resetFrame() {
         for (KeyListener k : frame.getKeyListeners()) {
             frame.removeKeyListener(k);
         }
-        frame.setContentPane(overPanel);
         frame.repaint();
         frame.setVisible(true);
         frame.requestFocusInWindow();
     }
-    public void win(){
-        for (KeyListener k : frame.getKeyListeners()) {
-            frame.removeKeyListener(k);
-        }
-        frame.setContentPane(winPanel);
-        frame.repaint();
-        frame.setVisible(true);
-        frame.requestFocusInWindow();
+
+    public void win() {
+        cardLayout.show(mainPanel, "win");
+        resetFrame();
+    }
+
+
+    public void reset() {
+        initPanels();
+        resetKeysPressed();
+        resetFrame();
     }
 }

@@ -10,6 +10,7 @@ import java.util.TimerTask;
 public class GameAPI {
     private BackendManager backend;
     private FrontendManager frontend;
+    private Timer timer;
 
     public int[] getScreenSize() {
         return frontend.getScreenSize();
@@ -31,11 +32,19 @@ public class GameAPI {
         gameState = GameState.MENU;
     }
 
+    public void restart() {
+        timer.cancel();
+        timer.purge();
+        backend = new BackendManager(this);
+        frontend.reset();
+        gameState = GameState.MENU;
+    }
+
     public void startGame(int level) {
         gameState = GameState.GAME;
         backend.setLevel(level);
         frontend.changeScreen(level);
-        Timer timer = new Timer();
+        timer = new Timer();
         int delay = 60;
         timer.schedule(new TimerTask() {
             @Override
@@ -54,7 +63,7 @@ public class GameAPI {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    openGame();
+                    restart();
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
                         backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
@@ -65,7 +74,7 @@ public class GameAPI {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    openGame();
+                    restart();
                     return;
                 }
                 if (getPlayer().getPower() != null) {
@@ -119,7 +128,8 @@ public class GameAPI {
     public void fireballFired(Fireball fireball) {
         frontend.fireballFired(fireball);
     }
-    public BackendManager getBackend(){
+
+    public BackendManager getBackend() {
         return backend;
     }
 }
