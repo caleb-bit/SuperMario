@@ -20,13 +20,13 @@ public class Map4 extends Map{
         gameObjects.add(new Trap(new GamePosition(53, 0), 3));
         gameObjects.add(new Trap(new GamePosition(56, 3), 3));
         gameObjects.add(new Cliff(new GamePosition(65, 0), 10));
-        gameObjects.add(new Ledge(new GamePosition(68, 3), 1));
-        gameObjects.add(new Ledge(new GamePosition(71, 3), 1));
-        gameObjects.add(new Ledge(new GamePosition(74, 3), 1));
+        gameObjects.add(new Land(68, 70,3.5 ,3));
+        gameObjects.add(new Land(72, 74,3.5 ,3));
+        gameObjects.add(new Land(76, 78,3.5 ,3));
         gameObjects.add(new Cliff(new GamePosition(80, 0), 3));
         gameObjects.add(new Coin(new GamePosition(68, 3)));
-        gameObjects.add(new Coin(new GamePosition(71, 3)));
-        gameObjects.add(new Coin(new GamePosition(74, 3)));
+        gameObjects.add(new Coin(new GamePosition(72, 3)));
+        gameObjects.add(new Coin(new GamePosition(76, 3)));
         gamePositions.add(new GamePosition(23, 0));
         gamePositions.add(new GamePosition(85, 0));
         gameObjects.add(new Flag(new GamePosition(23,0), false));

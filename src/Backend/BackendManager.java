@@ -26,7 +26,7 @@ public class BackendManager {
         for (int i = 0; i < 4; i++) {
             levels.add(new Level(i, maps.get(i), players.get(i)));
         }
-        currLevel = 1;
+        currLevel = 3;
     }
 
     public Player getPlayer() {
@@ -125,7 +125,7 @@ public class BackendManager {
                 && (getPlayer().getPower() == null || !(getPlayer().getPower() instanceof Invincibility))) {
             getPlayer().die(getLevel(getLevel()).getMap().getPoints());
         }
-        trap.setAngle(trap.getAngle() + 5 * Math.PI / 180);
+        trap.setAngle(trap.getAngle() + 2 * Math.PI / 180);
     }
 
     private void updateLedge(Ledge ledge) {

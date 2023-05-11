@@ -15,7 +15,7 @@ public class FrontendManager {
     private GameAPI api;
     // matches key code with pressed status
     private HashMap<Integer, Boolean> keysPressed;
-    public static final int SCALE = 30;
+    public static final int SCALE = 20;
     private int[] screenSize;
 
     public FrontendManager(GameAPI api) {
@@ -27,7 +27,7 @@ public class FrontendManager {
         keysPressed.put(KeyEvent.VK_UP, false);
         keysPressed.put(KeyEvent.VK_DOWN, false);
         keysPressed.put(KeyEvent.VK_SPACE, false);
-        levelPanels.add(new LevelPanel(api.getGameObjects(1), api));
+        levelPanels.add(new LevelPanel(api.getGameObjects(3), api));
         currPanel = levelPanels.get(0);
         this.api = api;
     }
