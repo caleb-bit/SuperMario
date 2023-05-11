@@ -47,6 +47,7 @@ public class GameAPI {
                     e.printStackTrace();
                 }
                 if (backend.getPlayer().getLives() == 0) {
+
                     gameState = GameState.GAMEOVER;
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
