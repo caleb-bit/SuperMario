@@ -43,7 +43,6 @@ public class Map2 extends Map{
         gameObjects.add(new Cliff(new GamePosition(53, 0), 1));
         gameObjects.add(new Land(56, 59,3.5 ,3));
         gameObjects.add(new Coin(new GamePosition(3, 3.5)));
-        gameObjects.add(new Coin(new GamePosition(4, 6.5)));
         gameObjects.add(new Coin(new GamePosition(5, 3.5)));
         gameObjects.add(new Coin(new GamePosition(32, 3.5)));
         gameObjects.add(new Coin(new GamePosition(38, 3.5)));

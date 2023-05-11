@@ -21,6 +21,7 @@ public class FrontendManager {
     public static final int SCALE = 20;
     private int[] screenSize;
     private MenuPanel menuPanel;
+    private GameOverPanel overPanel;
 
     public FrontendManager(GameAPI api) {
         cardLayout = new CardLayout();
@@ -31,6 +32,7 @@ public class FrontendManager {
         levelPanels.add(new LevelPanel(api.getGameObjects(2), api));
         levelPanels.add(new LevelPanel(api.getGameObjects(3), api));
         levelPanels.add(new LevelPanel(api.getGameObjects(4), api));
+        overPanel = new GameOverPanel();
         currPanel = levelPanels.get(0);
         mainPanel.add(menuPanel, "menu");
         for (int i=1; i<=4; i++) {
