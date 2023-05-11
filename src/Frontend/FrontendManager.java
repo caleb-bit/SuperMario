@@ -35,7 +35,6 @@ public class FrontendManager {
         levelPanels.add(new LevelPanel(api.getGameObjects(2), api, api.getBackend()));
         levelPanels.add(new LevelPanel(api.getGameObjects(3), api, api.getBackend()));
         levelPanels.add(new LevelPanel(api.getGameObjects(4), api, api.getBackend()));
-        overPanel = new GameOverPanel();
         currPanel = levelPanels.get(0);
         mainPanel.add(menuPanel, "menu");
         for (int i=1; i<=4; i++) {

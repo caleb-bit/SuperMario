@@ -49,13 +49,13 @@ public class GameAPI {
                 }
                 if (backend.getTimeLeft() <= 0) {
                     frontend.gameOver();
-                    gameState = GameState.MENU;
+                    openGame();
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
                         backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
                     backend.getLevel(backend.getLevel()).setComplete(true);
                     frontend.win();
-                    gameState = GameState.MENU;
+                    openGame();
                 }
                 if (getPlayer().getPower() != null) {
                     getPlayer().getPower().setDuration(getPlayer().getPower().getDuration() - delay);
