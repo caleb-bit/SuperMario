@@ -66,6 +66,7 @@ public class GameAPI {
                         throw new RuntimeException(e);
                     }
                     openGame();
+                    return;
                 }
                 if (getPlayer().getPower() != null) {
                     getPlayer().getPower().setDuration(getPlayer().getPower().getDuration() - delay);
