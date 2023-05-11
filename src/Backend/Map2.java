@@ -51,6 +51,8 @@ public class Map2 extends Map{
         gameObjects.add(new Coin(new GamePosition(57, 3)));
         gamePositions.add(new GamePosition(19, 0));
         gamePositions.add(new GamePosition(65, 0));
+        gameObjects.add(new Flag(new GamePosition(19,0), false));
+        gameObjects.add(new Flag(new GamePosition(65,0),true));
         initObjects(gameObjects, gamePositions);
     }
 }
