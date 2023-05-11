@@ -15,4 +15,7 @@ public abstract class Enemy extends GameObject{
     public void move(){
         setPosition(new GamePosition(getPosition().getX() + getVelX(), getPosition().getY()));
     }
+
+    abstract public double getHeight();
+
 }
