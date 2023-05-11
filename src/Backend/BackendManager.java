@@ -26,7 +26,7 @@ public class BackendManager {
         for (int i = 0; i < 4; i++) {
             levels.add(new Level(i, maps.get(i), players.get(i)));
         }
-        currLevel = 3;
+        currLevel = 1;
     }
 
     public Player getPlayer() {
@@ -77,7 +77,7 @@ public class BackendManager {
             double player_x1 = getPlayer().getX();
             double player_x2 = getPlayer().getX() + getPlayer().getWidth();
             if (((land_x1 <= player_x1 && player_x1 <= land_x2) || (land_x1 <= player_x2 && player_x2 <= land_x2))
-                    && land.getBottomY() >= getPlayer().getY()+getPlayer().getHeight()) {
+                    && land.getBottomY() >= getPlayer().getY() + getPlayer().getHeight()) {
                 if (correctLand == null)
                     correctLand = land;
                 else if (land.getBottomY() < correctLand.getBottomY())
@@ -184,15 +184,15 @@ public class BackendManager {
                             enem.setVelX(-0.1);
                         }
                         if (enem.getX() >= obs.getX() + obs.getLength() &&
-                        enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.1) {
+                                enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.1) {
                             enem.setVelX(0.1);
                         }
                     }
                 }
-                if (enem.getX() + enem.getVelX() >= enem.getInitial().getX() + 3 && enem.getVelX() == 0.1){
+                if (enem.getX() + enem.getVelX() >= enem.getInitial().getX() + 3 && enem.getVelX() == 0.1) {
                     enem.setVelX(-0.1);
                 }
-                if (enem.getX() + enem.getVelX() <= enem.getInitial().getX() - 3 && enem.getVelX() == -0.1){
+                if (enem.getX() + enem.getVelX() <= enem.getInitial().getX() - 3 && enem.getVelX() == -0.1) {
                     enem.setVelX(0.1);
                 }
                 enem.move();
@@ -211,8 +211,7 @@ public class BackendManager {
                         getPlayer().getBalls().remove(i);
                         i--;
                         break;
-                    }
-                    else if (obj instanceof Obstacle) {
+                    } else if (obj instanceof Obstacle) {
                         getPlayer().getBalls().remove(i);
                         i--;
                         break;
@@ -220,5 +219,9 @@ public class BackendManager {
                 }
             }
         }
+    }
+
+    public void setLevel(int level) {
+        this.currLevel = level;
     }
 }

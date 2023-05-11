@@ -22,7 +22,6 @@ public class GameAPI {
     public static void main(String[] args) {
         GameAPI gameAPI = new GameAPI();
         gameAPI.openGame();
-        gameAPI.startGame();
     }
 
     public void openGame() {
@@ -32,8 +31,10 @@ public class GameAPI {
         gameState = GameState.MENU;
     }
 
-    public void startGame() {
+    public void startGame(int level) {
         gameState = GameState.GAME;
+        backend.setLevel(level);
+        frontend.changeScreen(level);
         Timer timer = new Timer();
         int delay = 60;
         timer.schedule(new TimerTask() {
