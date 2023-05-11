@@ -161,11 +161,12 @@ public class BackendManager {
                             enem.setVelX(0.5);
                         }
                     }
-                    if (obs instanceof Cliff && (enem.getX() < obs.getX() || enem.getX() >= obs.getX() + obs.getLength())) {
-                        if (enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
+                    if (obs instanceof Cliff) {
+                        if (enem.getX() < obs.getX() && enem.getX() + enem.getVelX() >= obs.getX() && enem.getVelX() == 0.5) {
                             enem.setVelX(-0.5);
                         }
-                        if (enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
+                        if (enem.getX() >= obs.getX() + obs.getLength() &&
+                        enem.getX() + enem.getVelX() < obs.getX() + obs.getLength() && enem.getVelX() == -0.5) {
                             enem.setVelX(0.5);
                         }
                     }
