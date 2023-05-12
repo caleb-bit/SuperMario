@@ -18,12 +18,12 @@ public class UIFlag extends UIComponent {
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(131, 39, 0));
-        g.fillRect(getIntX(), getIntY() - 30, width, 30);
+        g.fillRect(getIntX(), getIntY() - height*3/25, width, 30);
         g.setColor(Color.white);
-        g.fillRect(getIntX() + width / 4, getIntY() - height, width / 4, height - 30);
+        g.fillRect(getIntX() + width / 4, getIntY() - height, width / 4, height *22/25);
         g.setColor(Color.black);
-        g.fillPolygon(new Polygon(new int[]{getIntX() + width/4, getIntX() + width/4+30, getIntX() + width / 4},
-                new int[]{getIntY() - height, getIntY() - height + 15, getIntY() - height + 30}, 3));
+        g.fillPolygon(new Polygon(new int[]{getIntX() + width/4, getIntX() + width/4+width*3/2, getIntX() + width / 4},
+                new int[]{getIntY() - height, getIntY() - height *47/50, getIntY() - height *22/25}, 3));
     }
 
     @Override

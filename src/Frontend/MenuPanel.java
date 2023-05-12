@@ -1,19 +1,16 @@
 package Frontend;
 
 import Backend.GameAPI;
-import Backend.Land;
-import Backend.Player;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import static Frontend.LevelPanel.BACKGROUND_COLOR;
+import static Frontend.FrontendManager.BACKGROUND_COLOR;
 
 public class MenuPanel extends JPanel {
-    private GameAPI api;
+    private final GameAPI api;
 
     MenuPanel(GameAPI api) {
         this.api = api;

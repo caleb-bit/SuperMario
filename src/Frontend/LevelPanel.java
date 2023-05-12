@@ -16,7 +16,6 @@ public class LevelPanel extends JPanel implements KeyListener {
     private BufferedImage headerImage = new BufferedImage(720,30,BufferedImage.TYPE_INT_ARGB);
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;
-    public static Color BACKGROUND_COLOR = new Color(48, 220, 255);
     private ArrayList<UIFire> ballsToBeFired;
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
@@ -97,7 +96,7 @@ public class LevelPanel extends JPanel implements KeyListener {
     }
 
     private void drawBackground(Graphics g) {
-        g.setColor(BACKGROUND_COLOR);
+        g.setColor(FrontendManager.BACKGROUND_COLOR);
         int[] screenSize = gameAPI.getScreenSize();
         g.fillRect(0, 0, screenSize[0], screenSize[1]);
     }

@@ -42,8 +42,8 @@ public class UIInvincibility extends UIPowerup {
                 (int) (y - outerR * Math.sin(degToRad(306.0))),
                 (int) (y - innerR * Math.sin(degToRad(342.0)))};
         Polygon p = new Polygon(xCoords, yCoords, 10);
-        g.setColor(Color.black);
-        g.drawPolygon(p);
+//        g.setColor(Color.black);
+//        g.drawPolygon(p);
         g.setColor(Color.yellow);
         g.fillPolygon(p);
     }

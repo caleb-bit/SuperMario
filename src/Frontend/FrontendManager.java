@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FrontendManager {
+    public static Color BACKGROUND_COLOR = new Color(48, 220, 255);
     private JFrame frame;
     private ArrayList<LevelPanel> levelPanels;
     private CardLayout cardLayout;
@@ -28,6 +29,7 @@ public class FrontendManager {
     private MenuPanel menuPanel;
     private GameOverPanel overPanel;
     private WinPanel winPanel;
+    private TutorialPanel tutorialPanel;
 
     public FrontendManager(GameAPI api) {
         this.api = api;
@@ -51,6 +53,7 @@ public class FrontendManager {
         overPanel = new GameOverPanel();
         winPanel = new WinPanel();
         menuPanel = new MenuPanel(api);
+        tutorialPanel = new TutorialPanel(api.getScreenSize());
         levelPanels = new ArrayList<>();
         mainPanel.add(menuPanel, "menu");
         for (int i = 1; i <= 4; i++) {
@@ -61,6 +64,7 @@ public class FrontendManager {
         currPanel = levelPanels.get(0);
         mainPanel.add(overPanel, "over");
         mainPanel.add(winPanel, "win");
+        mainPanel.add(tutorialPanel, "tutorial");
         cardLayout.show(mainPanel, "menu");
     }
 
