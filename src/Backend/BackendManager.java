@@ -6,7 +6,10 @@ public class BackendManager {
     private ArrayList<Player> players;
     private ArrayList<Level> levels;
     private ArrayList<Map> maps;
+
+    // 1-indexed
     private int currLevel;
+
     private double timeLeft;
     private GameAPI gameAPI;
 
@@ -155,6 +158,10 @@ public class BackendManager {
         }
     }
 
+    public void die() {
+        getPlayer().die(getLevel(getLevel()).getMap().getPoints());
+    }
+
     private void updateEnemy(Enemy enemy) {
         if (getPlayer().getX() >= enemy.getX() && getPlayer().getX() <= enemy.getX() + 2
                 && getPlayer().getY() <= enemy.getY() + enemy.getHeight() && enemy.getAlive()) {
@@ -237,5 +244,9 @@ public class BackendManager {
 
     public void setLevel(int level) {
         this.currLevel = level;
+    }
+
+    public int lowestY() {
+        return maps.get(currLevel-1).lowestLandY();
     }
 }

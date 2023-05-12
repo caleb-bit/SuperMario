@@ -17,7 +17,6 @@ public class GameAPI {
     }
 
 
-
     enum GameState {MENU, GAME, TUTORIAL, GAMEOVER}
 
     private GameState gameState;
@@ -59,20 +58,14 @@ public class GameAPI {
                     e.printStackTrace();
                 }
                 if (backend.getTimeLeft() <= 0) {
-                    frontend.gameOver();
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                    restart();
+                    gameOver();
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
                         backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
                     backend.getLevel(backend.getLevel()).setComplete(true);
                     frontend.win();
                     try {
-                        Thread.sleep(3000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
@@ -90,15 +83,30 @@ public class GameAPI {
         }, delay, delay);
     }
 
+    public void die() {
+        backend.die();
+    }
+
+    public void gameOver() {
+        frontend.gameOver();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        restart();
+
+    }
+
 
     public void goToTutorial() {
-        gameState= GameState.TUTORIAL;
+        gameState = GameState.TUTORIAL;
         frontend.openTutorial();
     }
 
 
     public void goToMenu() {
-        gameState=GameState.MENU;
+        gameState = GameState.MENU;
         frontend.goToMenu();
     }
 

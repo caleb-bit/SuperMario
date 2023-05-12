@@ -7,14 +7,16 @@ public class Map3 extends Map{
     Map3(){
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
-        gameObjects.add(new Land(0,120,0,-5));
+        gameObjects.add(new Land(0,5,0,-5));
+        gameObjects.add(new Land(55,70,0,-5));
+        gameObjects.add(new Land(100,120,0,-5));
         gameObjects.add(new Koopa(new GamePosition(13, 6.5)));
         gameObjects.add(new Goomba(new GamePosition(20, 6.5)));
         gameObjects.add(new Goomba(new GamePosition(21, 6.5)));
         gameObjects.add(new Goomba(new GamePosition(35, 6.5)));
         gameObjects.add(new Koopa(new GamePosition(50, 3.5)));
         gameObjects.add(new Koopa(new GamePosition(62, 0)));
-        gameObjects.add(new Cliff(new GamePosition(5, 0), 50));
+//        gameObjects.add(new Cliff(new GamePosition(5, 0), 50));
         gameObjects.add(new Land(7, 9,0.5 ,0));
         gameObjects.add(new Land(10, 14,3.5 ,3));
         gameObjects.add(new Land(11, 14,6.5 ,6));
@@ -35,7 +37,7 @@ public class Map3 extends Map{
         gameObjects.add(new Land(51, 53,0.5 ,0));
         gameObjects.add(new Land(54, 56,3.5 ,3));
         gameObjects.add(new Land(57, 59,3.5 ,3));
-        gameObjects.add(new Cliff(new GamePosition(70, 0), 30));
+//        gameObjects.add(new Cliff(new GamePosition(70, 0), 30));
         gameObjects.add(new Land(71, 74,0.5 ,0));
         gameObjects.add(new Land(76, 79,3.5 ,3));
         gameObjects.add(new Land(81, 84,6.5 ,6));

@@ -12,6 +12,7 @@ public abstract class Map {
     private ArrayList<GamePosition> checkPoints;
     private ArrayList<Land> lands;
     private ArrayList<Flag> flags;
+    private int lowestLandY;
 
     public void initObjects(ArrayList<GameObject> objects, ArrayList<GamePosition> checkPoints) {
         allObjects = objects;
@@ -38,6 +39,11 @@ public abstract class Map {
                 throw new IllegalArgumentException("object not classified");
         }
         this.checkPoints = checkPoints;
+
+        lowestLandY=1000;
+        for (Land land : lands) {
+            lowestLandY=Math.min(lowestLandY,(int)land.getTopY());
+        }
     }
 
     public ArrayList<Powerup> getPowerups() {
@@ -94,5 +100,9 @@ public abstract class Map {
 
     public ArrayList<Land> getLands() {
         return lands;
+    }
+
+    public int lowestLandY() {
+        return lowestLandY;
     }
 }

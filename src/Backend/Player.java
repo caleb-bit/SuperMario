@@ -77,11 +77,10 @@ public class Player extends GameObject {
             setVelX(-1);
         }
         if (keysPressed.get(KeyEvent.VK_UP)) {
-            if ((getPower() != null && getPower().getName().equals("Yoshi"))){
+            if ((getPower() != null && getPower().getName().equals("Yoshi"))) {
                 setVelY(1);
                 setAccelY(-Y_ACCEL);
-            }
-            else if (landBelow != null && getY() == landBelow.getTopY()) {
+            } else if (landBelow != null && getY() == landBelow.getTopY()) {
                 setVelY(2);
                 setAccelY(-Y_ACCEL);
             }
@@ -97,13 +96,19 @@ public class Player extends GameObject {
                 setAccelY(-Y_ACCEL);
             }
         } else {
-            setAccelY(-Y_ACCEL);
+            if (getY() + getVelY() + getHeight() > gameAPI.getBackend().lowestY()) {
+                setAccelY(-Y_ACCEL);
+            } else {
+//                gameAPI.gameOver();
+                gameAPI.die();
+            }
         }
         if (landAbove != null && getY() + getHeight() + getVelY() >= landAbove.getBottomY()) {
-            setPosition(new GamePosition(getX(), landAbove.getBottomY() - getHeight()+Y_ACCEL));
+            setPosition(new GamePosition(getX(), landAbove.getBottomY() - getHeight() + Y_ACCEL));
             setVelY(0);
         }
     }
+
 
     public Powerup getPower() {
         return power;
