@@ -49,15 +49,15 @@ public class BackendManager {
         return currLevel;
     }
 
-    public Land getCurrLand() {
+    public Land getCurrLand(double x1,double x2) {
         ArrayList<Land> lands = getLevel(currLevel).getMap().getLands();
         Land correctLand = null;
         for (Land land : lands) {
             double land_x1 = land.getStartX();
             double land_x2 = land.getEndX();
-            double player_x1 = getPlayer().getX();
-            double player_x2 = getPlayer().getX() + getPlayer().getWidth();
-            if (((land_x1 <= player_x1 && player_x1 <= land_x1 + 1) || (land_x1 <= player_x2 && player_x2 <= land_x2 + 1))
+//            double x1 = getPlayer().getX();
+//            double x2 = getPlayer().getX() + getPlayer().getWidth();
+            if (((land_x1 <= x1 && x1 <= land_x1 + 1) || (land_x1 <= x2 && x2 <= land_x2 + 1))
                     && land.getBottomY() <= getPlayer().getY()) {
                 if (correctLand == null)
                     correctLand = land;
@@ -88,7 +88,7 @@ public class BackendManager {
     }
 
     public void updatePlayerPos(HashMap<Integer, Boolean> keysPressed) {
-        getPlayer().move(keysPressed, getCurrLand(), getLandAbove());
+        getPlayer().move(keysPressed, getCurrLand(getPlayer().getX(),getPlayer().getX() + getPlayer().getWidth()), getLandAbove());
     }
 
     public void play() {
@@ -133,14 +133,6 @@ public class BackendManager {
             }
             if (getPlayer().getY() == ledge.getY() && getPlayer().getVelY() < 0) {
                 getPlayer().setVelY(0);
-            }
-        }
-    }
-
-    private void updateCliff(Cliff cliff) {
-        if (getPlayer().getX() >= cliff.getX() && getPlayer().getX() < cliff.getX() + cliff.getLength()) {
-            if (getPlayer().getY() == 0) {
-                die();
             }
         }
     }
