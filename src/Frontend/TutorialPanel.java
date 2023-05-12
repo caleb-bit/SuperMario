@@ -76,7 +76,8 @@ public class TutorialPanel extends JPanel {
         g.setColor(Color.black);
         g.drawString("Yoshi - flight", 80, 400);
         drawMushroom(g,250,150);
-        g.drawString("Mushroom - Free life", 290,150);
+        g.drawString("Mushroom - One time", 290,150);
+        g.drawString("invincibility", 380, 170);
         drawTrap(g,250,400);
         g.setColor(Color.black);
         g.drawString("Moving Trap", 320,400);
