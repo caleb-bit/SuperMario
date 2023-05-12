@@ -18,7 +18,7 @@ public class Map1 extends Map {
         gameObjects.add(new Yoshi(new GamePosition(50, 0)));
         gameObjects.add(new Land(20, 25,3.5,3));
         gameObjects.add(new Trap(new GamePosition(45, 3), 3));
-//        gameObjects.add(new Cliff(new GamePosition(55, 0), 4));
+        gameObjects.add(new Cliff(new GamePosition(55, 0), 4));
         gameObjects.add(new Coin(new GamePosition(8, 0)));
         gameObjects.add(new Coin(new GamePosition(21, 3.5)));
         gameObjects.add(new Coin(new GamePosition(32, 0)));

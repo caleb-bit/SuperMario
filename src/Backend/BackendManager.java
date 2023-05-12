@@ -100,7 +100,7 @@ public class BackendManager {
             } else if (obj instanceof Powerup) {
                 updatePowerup((Powerup) obj);
             } else if (obj instanceof Cliff) {
-                updateCliff((Cliff) obj);
+//                updateCliff((Cliff) obj);
             } else if (obj instanceof Ledge) {
                 updateLedge((Ledge) obj);
             } else if (obj instanceof Trap trap) {
