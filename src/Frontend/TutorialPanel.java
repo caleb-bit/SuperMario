@@ -1,6 +1,7 @@
 package Frontend;
 
 import Backend.GameAPI;
+import Backend.Trap;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,7 +74,12 @@ public class TutorialPanel extends JPanel {
         g.drawString("Invincibility star - enemies cannot hurt you", 100, 370 - 40);
         drawYoshi(g, 30, 400);
         g.setColor(Color.black);
-        g.drawString("Yoshi", 80, 400);
+        g.drawString("Yoshi - flight", 80, 400);
+        drawMushroom(g,250,150);
+        g.drawString("Mushroom - Free life", 290,150);
+        drawTrap(g,250,400);
+        g.setColor(Color.black);
+        g.drawString("Moving Trap", 320,400);
     }
 
     private void drawCoin(Graphics g, int x, int y) {
@@ -227,6 +233,25 @@ public class TutorialPanel extends JPanel {
         //face
         g.setColor(Color.black);
         g.fillRect(x + width / 2 + width / 6 + width * 3 / 4, y - height / 2 + height / 15 - height * 13 / 20, width / 15, height / 8);
+    }
+    private void drawMushroom(Graphics g, int x, int y){
+        int width=30;
+        int height=30;
+        //body
+        g.setColor(new Color(224,201,158));
+        g.fillRect(x+width/4, y-height*3/4, width/2, height*3/4);
+        g.setColor(Color.black);
+        g.drawRect(x+width/4, y-height*3/4, width/2, height*3/4);
 
+        // head
+        g.setColor(new Color(230,10,10));
+        g.fillOval(x, y-height, width, height/2);
+        g.setColor(Color.black);
+        g.drawOval(x,y-height, width, height/2);
+    }
+    private void drawTrap(Graphics g, int x, int y) {
+        g.setColor(new Color(255, 0, 0));
+        ((Graphics2D)g).setStroke(new BasicStroke(10));
+        g.drawLine(x,y,x+50,y);
     }
 }

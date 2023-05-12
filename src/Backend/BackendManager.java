@@ -3,9 +3,10 @@ package Backend;
 import java.util.*;
 
 public class BackendManager {
-    private ArrayList<Player> players;
+//    private ArrayList<Player> players;
     private ArrayList<Level> levels;
     private ArrayList<Map> maps;
+    private Player player;
 
     // 1-indexed
     private int currLevel;
@@ -16,10 +17,11 @@ public class BackendManager {
     BackendManager(GameAPI gameAPI) {
         this.gameAPI = gameAPI;
         timeLeft = 180 * 1000;
-        players = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            players.add(new Player(new GamePosition(0, 0), 0, 0, gameAPI));
-        }
+//        players = new ArrayList<>();
+//        for (int i = 0; i < 4; i++) {
+//            players.add(new Player(new GamePosition(0, 0), 0, 0, gameAPI));
+//        }
+        player = new Player(new GamePosition(0, 0), 0, 0, gameAPI);
         maps = new ArrayList<>();
         maps.add(new Map1());
         maps.add(new Map2());
@@ -27,13 +29,15 @@ public class BackendManager {
         maps.add(new Map4());
         levels = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            levels.add(new Level(i, maps.get(i), players.get(i)));
+//            levels.add(new Level(i, maps.get(i), players.get(i)));
+            levels.add(new Level(i, maps.get(i), player));
         }
         currLevel = 1;
     }
 
     public Player getPlayer() {
-        return players.get(currLevel - 1);
+        return player;
+//        return players.get(currLevel - 1);
     }
 
     public double getTimeLeft() {
@@ -239,7 +243,8 @@ public class BackendManager {
         maps.add(new Map4());
         levels.clear();
         for (int i = 0; i < 4; i++) {
-            levels.add(new Level(i, maps.get(i), players.get(i)));
+//            levels.add(new Level(i, maps.get(i), players.get(i)));
+            levels.add(new Level(i, maps.get(i), player));
         }
     }
 

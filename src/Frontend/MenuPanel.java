@@ -60,9 +60,7 @@ public class MenuPanel extends JPanel {
         g.setColor(Color.black);
         g.setFont(new Font("SansSerif", Font.BOLD, 35));
         g.drawString("Super Javario", 45, 100);
-
         drawMario(g);
-
     }
 
     private void drawMario(Graphics g) {
