@@ -126,7 +126,7 @@ public class BackendManager {
         if ((trap.leftX() <= getPlayer().getX() + getPlayer().getWidth() && getPlayer().getX() <= trap.rightX())
                 && (trap.bottomY() <= getPlayer().getY() + getPlayer().getHeight() && getPlayer().getY() <= trap.topY())
                 && (getPlayer().getPower() == null || !(getPlayer().getPower() instanceof Invincibility))) {
-            getPlayer().die(getLevel(getLevel()).getMap().getPoints());
+            die();
         }
         trap.setAngle(trap.getAngle() + 2 * Math.PI / 180);
     }
@@ -145,7 +145,7 @@ public class BackendManager {
     private void updateCliff(Cliff cliff) {
         if (getPlayer().getX() >= cliff.getX() && getPlayer().getX() < cliff.getX() + cliff.getLength()) {
             if (getPlayer().getY() == 0) {
-                getPlayer().die(getLevel(getLevel()).getMap().getPoints());
+                die();
             }
         }
     }
@@ -168,10 +168,10 @@ public class BackendManager {
             if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))) {
                 enemy.setAlive(false);
             } else {
-                if (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Mushroom")){
+                if (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Mushroom")) {
                     enemy.setAlive(false);
                 }
-                getPlayer().die(getLevel(getLevel()).getMap().getPoints());
+                die();
             }
         }
     }
@@ -230,14 +230,15 @@ public class BackendManager {
             }
         }
     }
-    public void resetLevels(){
+
+    public void resetLevels() {
         maps = new ArrayList<>();
         maps.add(new Map1());
         maps.add(new Map2());
         maps.add(new Map3());
         maps.add(new Map4());
         levels.clear();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             levels.add(new Level(i, maps.get(i), players.get(i)));
         }
     }
@@ -247,6 +248,6 @@ public class BackendManager {
     }
 
     public int lowestY() {
-        return maps.get(currLevel-1).lowestLandY();
+        return maps.get(currLevel - 1).lowestLandY();
     }
 }

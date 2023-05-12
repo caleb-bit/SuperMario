@@ -14,6 +14,9 @@ public class Player extends GameObject {
     private double height;
     private GameAPI gameAPI;
 
+    // furthest player has reached (used for checkpoint)
+    private int maxX;
+
     Player(GamePosition position, int velX, int velY, GameAPI gameAPI) {
         super(position, velX, velY);
         power = null;
@@ -49,7 +52,7 @@ public class Player extends GameObject {
         }
         GamePosition returnPoint = new GamePosition(0, 0);
         for (GamePosition pos : points) {
-            if (pos.getX() < getX()) {
+            if (pos.getX() < maxX && pos.getX() > returnPoint.getX()) {
                 returnPoint = pos;
             }
         }
@@ -67,6 +70,7 @@ public class Player extends GameObject {
         }
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
+        maxX = Math.max(maxX, (int) getX());
     }
 
     private void updateSpeeds(HashMap<Integer, Boolean> keysPressed, Land landBelow, Land landAbove) {
@@ -99,7 +103,6 @@ public class Player extends GameObject {
             if (getY() + getVelY() + getHeight() > gameAPI.getBackend().lowestY()) {
                 setAccelY(-Y_ACCEL);
             } else {
-//                gameAPI.gameOver();
                 gameAPI.die();
             }
         }
