@@ -8,9 +8,9 @@ public class Map2 extends Map{
         ArrayList<GameObject> gameObjects = new ArrayList<>();
         ArrayList<GamePosition> gamePositions = new ArrayList<>();
         gameObjects.add(new Land(0,21,0,-5));
-        gameObjects.add(new Land(22,30,0,-5));
-        gameObjects.add(new Land(32,53,0,-5));
-        gameObjects.add(new Land(54,100,0,-5));
+        gameObjects.add(new Land(24,30,0,-5));
+        gameObjects.add(new Land(33,53,0,-5));
+        gameObjects.add(new Land(56,100,0,-5));
         gameObjects.add(new Goomba(new GamePosition(5, 0)));
         gameObjects.add(new Goomba(new GamePosition(10, 0)));
         gameObjects.add(new Goomba(new GamePosition(15, 0)));
