@@ -150,7 +150,7 @@ public class BackendManager {
     }
 
     private void updateEnemy(Enemy enemy) {
-        if (getPlayer().getX() >= enemy.getX() && getPlayer().getX() <= enemy.getX() + 2
+        if (getPlayer().getX() >= enemy.getX() - 1 && getPlayer().getX() <= enemy.getX() + 2
                 && getPlayer().getY() <= enemy.getY() + enemy.getHeight() && enemy.getAlive()) {
             if (getPlayer().getVelY() < 0 || (getPlayer().getPower() != null && getPlayer().getPower().getName().equals("Invincibility"))) {
                 enemy.setAlive(false);
@@ -219,7 +219,7 @@ public class BackendManager {
             }
         }
     }
-    
+
 
     public void setLevel(int level) {
         this.currLevel = level;
