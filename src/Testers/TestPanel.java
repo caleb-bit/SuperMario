@@ -1,5 +1,6 @@
 package Testers;
 
+import Frontend.FrontendManager;
 import Frontend.UIComponent;
 
 import javax.swing.*;
@@ -16,6 +17,8 @@ public class TestPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setColor(FrontendManager.BACKGROUND_COLOR);
+        g.fillRect(0,0,500,500);
         for (UIComponent go : gameObjects) {
             if (go != null) {
                 go.paint(g);
