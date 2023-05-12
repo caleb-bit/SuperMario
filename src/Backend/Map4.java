@@ -21,10 +21,10 @@ public class Map4 extends Map{
         gameObjects.add(new Land(75,80,0,-5));
         gameObjects.add(new Land(83,150,0,-5));
         gameObjects.add(new Yoshi(new GamePosition(19, 0)));
-        gameObjects.add(new Cliff(new GamePosition(5, 0), 2));
-        gameObjects.add(new Cliff(new GamePosition(16, 0), 2));
+        gameObjects.add(new Cliff(new GamePosition(5, 0), 3));
+        gameObjects.add(new Cliff(new GamePosition(16, 0), 3));
         gameObjects.add(new Trap(new GamePosition(20, 3.5), 3));
-        gameObjects.add(new Cliff(new GamePosition(21, 0), 2));
+        gameObjects.add(new Cliff(new GamePosition(21, 0), 3));
         gameObjects.add(new Cliff(new GamePosition(110, 0), 3));
         gameObjects.add(new Trap(new GamePosition(32, 3), 3));
         gameObjects.add(new Trap(new GamePosition(38, 3), 3));
