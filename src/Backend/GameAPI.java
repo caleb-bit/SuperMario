@@ -151,6 +151,11 @@ public class GameAPI {
         frontend.fireballFired(fireball);
     }
 
+    public void removeBall(Fireball fireball) {
+        frontend.removeBall(fireball);
+
+    }
+
     public BackendManager getBackend() {
         return backend;
     }

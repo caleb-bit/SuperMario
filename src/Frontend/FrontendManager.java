@@ -24,7 +24,7 @@ public class FrontendManager {
     // matches key code with pressed status
     private HashMap<Integer, Boolean> keysPressed;
 
-    public static final int SCALE = 20;
+    public static final double SCALE = 20.0;
     private final int[] screenSize;
     private MenuPanel menuPanel;
     private GameOverPanel overPanel;
@@ -112,12 +112,12 @@ public class FrontendManager {
         return screenSize;
     }
 
-    public static int convertGameToUI(int x) {
+    public static double convertGameToUI(double x) {
         return x * SCALE;
     }
 
     public void fireballFired(Fireball fireball) {
-        currPanel.getBallsToBeFired().add(new UIFire(fireball));
+        currPanel.getBallsToBeFired().add(new UIFire(fireball, currPanel));
     }
 
     public void changeScreen(int level) {
@@ -161,5 +161,9 @@ public class FrontendManager {
     public void goToMenu() {
         cardLayout.show(mainPanel, "menu");
         resetFrame();
+    }
+
+    public void removeBall(Fireball fireball) {
+        currPanel.removeBall(fireball);
     }
 }

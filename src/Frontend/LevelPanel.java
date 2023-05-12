@@ -8,15 +8,21 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.*;
+
 import Backend.BackendManager;
 
 public class LevelPanel extends JPanel implements KeyListener {
     private BackendManager backendManager;
     private ArrayList<UIComponent> components;
-    private BufferedImage headerImage = new BufferedImage(720,30,BufferedImage.TYPE_INT_ARGB);
+    private BufferedImage headerImage = new BufferedImage(720, 30, BufferedImage.TYPE_INT_ARGB);
     private UIPlayer uiPlayer;
     private GameAPI gameAPI;
     private ArrayList<UIFire> ballsToBeFired;
+
+    public void removeBall(Fireball fireball) {
+//        ArrayList<UIComponent> newComponents
+        components.removeIf(uiComponent -> uiComponent.getGameObject() == fireball);
+    }
 
     enum Direction {UP, DOWN, RIGHT, LEFT}
 
@@ -68,12 +74,12 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     public void paintComponent(Graphics g) {
         drawBackground(g);
-        Header.drawHeader(headerImage, (int)(backendManager.getTimeLeft() / 1000), backendManager.getPlayer().getCoins(),
+        Header.drawHeader(headerImage, (int) (backendManager.getTimeLeft() / 1000), backendManager.getPlayer().getCoins(),
                 backendManager.getPlayer().getPower());
         components.addAll(ballsToBeFired);
-        for (UIFire fire : ballsToBeFired) {
-            fire.setUIPosition(relToPlayer(fire));
-        }
+//        for (UIFire fire : ballsToBeFired) {
+//            fire.setUIPosition(relToPlayer(fire));
+//        }
         ballsToBeFired = new ArrayList<>();
         for (UIComponent component : components) {
             if (component instanceof UIPowerup) {
@@ -103,15 +109,15 @@ public class LevelPanel extends JPanel implements KeyListener {
 
     // updates UI positions of components
     public void updateUIPositions() {
-        for (int i = 0; i < components.size(); i++) {
-            if (components.get(i) instanceof UIPlayer) {
+        for (UIComponent component : components) {
+            if (component instanceof UIPlayer) {
                 // TODO: deal with moving player on screen
             } else {
-                if (components.get(i) == null) {
+                if (component == null) {
                     throw new NullPointerException("component is null");
                 }
-                UIPosition relPos = relToPlayer(components.get(i));
-                components.get(i).setUIPosition(relPos);
+                UIPosition relPos = relToPlayer(component);
+                component.setUIPosition(relPos);
             }
         }
     }
@@ -120,7 +126,7 @@ public class LevelPanel extends JPanel implements KeyListener {
         GamePosition playerGamePos = gameAPI.getPlayerGamePos();
         UIPosition playerUIPos = uiPlayer.getUIPosition();
         GameObject gameObject = uiComponent.getGameObject();
-        return new UIPosition((int) (gameObject.getPosition().getX() - playerGamePos.getX()) * FrontendManager.SCALE + playerUIPos.getX(),
+        return new UIPosition((gameObject.getPosition().getX() - playerGamePos.getX()) * FrontendManager.SCALE + playerUIPos.getX(),
                 -1 * (gameObject.getPosition().getY() - playerGamePos.getY()) * FrontendManager.SCALE + playerUIPos.getY());
     }
 

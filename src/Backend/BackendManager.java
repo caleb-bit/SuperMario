@@ -3,7 +3,6 @@ package Backend;
 import java.util.*;
 
 public class BackendManager {
-//    private ArrayList<Player> players;
     private ArrayList<Level> levels;
     private ArrayList<Map> maps;
     private Player player;
@@ -17,10 +16,6 @@ public class BackendManager {
     BackendManager(GameAPI gameAPI) {
         this.gameAPI = gameAPI;
         timeLeft = 180 * 1000;
-//        players = new ArrayList<>();
-//        for (int i = 0; i < 4; i++) {
-//            players.add(new Player(new GamePosition(0, 0), 0, 0, gameAPI));
-//        }
         player = new Player(new GamePosition(0, 0), 0, 0, gameAPI);
         maps = new ArrayList<>();
         maps.add(new Map1());
@@ -29,7 +24,6 @@ public class BackendManager {
         maps.add(new Map4());
         levels = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-//            levels.add(new Level(i, maps.get(i), players.get(i)));
             levels.add(new Level(i, maps.get(i), player));
         }
         currLevel = 1;
@@ -37,7 +31,6 @@ public class BackendManager {
 
     public Player getPlayer() {
         return player;
-//        return players.get(currLevel - 1);
     }
 
     public double getTimeLeft() {
@@ -216,13 +209,15 @@ public class BackendManager {
 
     private void moveBalls() {
         for (int i = 0; i < getPlayer().getBalls().size(); i++) {
-            getPlayer().getBalls().get(i).move();
+            Fireball ball = getPlayer().getBalls().get(i);
+            ball.move();
             for (GameObject obj : getLevel(getLevel()).getMap().getAllGameObjects()) {
-                if (getPlayer().getBalls().get(i).getX() >= obj.getX() && getPlayer().getBalls().get(i).getX() <= obj.getX() + 1
-                        && getPlayer().getBalls().get(i).getY() <= obj.getY()) {
+                if (ball.getX() >= obj.getX() && ball.getX() <= obj.getX() + 1
+                        && ball.getY() <= obj.getY()) {
                     if (obj instanceof Enemy && ((Enemy) obj).getAlive()) {
                         ((Enemy) obj).setAlive(false);
                         getPlayer().getBalls().remove(i);
+                        gameAPI.removeBall(ball);
                         i--;
                         break;
                     } else if (obj instanceof Obstacle) {
