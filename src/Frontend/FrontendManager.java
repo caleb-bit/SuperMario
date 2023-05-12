@@ -53,7 +53,7 @@ public class FrontendManager {
         overPanel = new GameOverPanel();
         winPanel = new WinPanel();
         menuPanel = new MenuPanel(api);
-        tutorialPanel = new TutorialPanel(api.getScreenSize());
+        tutorialPanel = new TutorialPanel(api);
         levelPanels = new ArrayList<>();
         mainPanel.add(menuPanel, "menu");
         for (int i = 1; i <= 4; i++) {
@@ -150,6 +150,16 @@ public class FrontendManager {
     public void reset() {
         initPanels();
         resetKeysPressed();
+        resetFrame();
+    }
+
+    public void openTutorial() {
+        cardLayout.show(mainPanel, "tutorial");
+        resetFrame();
+    }
+
+    public void goToMenu() {
+        cardLayout.show(mainPanel, "menu");
         resetFrame();
     }
 }

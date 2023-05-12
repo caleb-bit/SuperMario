@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static Frontend.FrontendManager.BACKGROUND_COLOR;
 
@@ -14,43 +15,39 @@ public class MenuPanel extends JPanel {
 
     MenuPanel(GameAPI api) {
         this.api = api;
+        initButtons(api);
+    }
+
+    private void initButtons(GameAPI api) {
         JPanel buttonPane = new JPanel();
         this.setLayout(new BorderLayout());
         buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
-        buttonPane.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 0));
+        buttonPane.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         buttonPane.add(Box.createHorizontalGlue());
-        JButton button1 = new JButton("Level 1");
-        JButton button2 = new JButton("Level 2");
-        JButton button3 = new JButton("Level 3");
-        JButton button4 = new JButton("Level 4");
-        buttonPane.add(button1);
-        buttonPane.add(button2);
-        buttonPane.add(button3);
-        buttonPane.add(button4);
-        button1.addActionListener(new ActionListener() {
+        ArrayList<JButton> buttons = new ArrayList<>();
+        JButton tutorialButton = new JButton("Tutorial");
+        buttons.add(tutorialButton);
+        tutorialButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                api.startGame(1);
+                api.goToTutorial();
             }
         });
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                api.startGame(2);
-            }
-        });
-        button3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                api.startGame(3);
-            }
-        });
-        button4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                api.startGame(4);
-            }
-        });
+        for (int i = 1; i <= 4; i++) {
+            JButton b = new JButton("Level " + i);
+            buttons.add(b);
+            int finalI = i;
+            b.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    api.startGame(finalI);
+                }
+            });
+        }
+        for (JButton b : buttons) {
+            b.setAlignmentX(LEFT_ALIGNMENT);
+            buttonPane.add(b);
+        }
         this.add(buttonPane, BorderLayout.PAGE_END);
     }
 

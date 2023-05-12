@@ -4,19 +4,47 @@ import Backend.GameAPI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TutorialPanel extends JPanel {
-    private final int[] screenSize;
+    private GameAPI api;
+    private int[] screenSize;
+
+    public TutorialPanel(GameAPI api) {
+        this.api = api;
+        initButton(api);
+    }
 
     public TutorialPanel(int[] screenSize) {
         this.screenSize = screenSize;
+    }
+
+    private void initButton(GameAPI api) {
+        JPanel buttonPane = new JPanel();
+        this.setLayout(new BorderLayout());
+        buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.PAGE_AXIS));
+        buttonPane.setBorder(BorderFactory.createEmptyBorder(0,10,10,0));
+        JButton button = new JButton("Return");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                api.goToMenu();
+            }
+        });
+        buttonPane.add(button);
+        this.add(button, BorderLayout.PAGE_END);
+
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(FrontendManager.BACKGROUND_COLOR);
-        g.fillRect(0, 0, screenSize[0], screenSize[1]);
+        if (api != null)
+            g.fillRect(0, 0, api.getScreenSize()[0], api.getScreenSize()[1]);
+        else
+            g.fillRect(0, 0, screenSize[0], screenSize[1]);
         g.setColor(Color.black);
         g.setFont(new Font("SansSerif", Font.BOLD, 28));
         g.drawString("Super Javario Tutorial", 60, 30);
@@ -43,7 +71,7 @@ public class TutorialPanel extends JPanel {
         drawInvincibility(g, 50, 360 - 40);
         g.setColor(Color.black);
         g.drawString("Invincibility star - enemies cannot hurt you", 100, 370 - 40);
-        drawYoshi(g,30,400);
+        drawYoshi(g, 30, 400);
         g.setColor(Color.black);
         g.drawString("Yoshi", 80, 400);
     }
@@ -179,8 +207,8 @@ public class TutorialPanel extends JPanel {
     }
 
     private void drawYoshi(Graphics g, int x, int y) {
-        int width=25;
-        int height=37;
+        int width = 25;
+        int height = 37;
         //shoes
         g.setColor(new Color(173, 95, 0));
         g.fillRect(x - width / 3 + width * 3 / 4, y + height / 2 - height * 13 / 20, width * 3 / 5, height * 3 / 20);

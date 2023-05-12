@@ -16,7 +16,9 @@ public class GameAPI {
         return frontend.getScreenSize();
     }
 
-    enum GameState {MENU, GAME, GAMEOVER}
+
+
+    enum GameState {MENU, GAME, TUTORIAL, GAMEOVER}
 
     private GameState gameState;
 
@@ -86,6 +88,18 @@ public class GameAPI {
                 backend.updatePlayerPos(frontend.getKeysPressed());
             }
         }, delay, delay);
+    }
+
+
+    public void goToTutorial() {
+        gameState= GameState.TUTORIAL;
+        frontend.openTutorial();
+    }
+
+
+    public void goToMenu() {
+        gameState=GameState.MENU;
+        frontend.goToMenu();
     }
 
     public void keyPressed(int keyCode) {
