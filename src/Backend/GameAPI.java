@@ -59,6 +59,13 @@ public class GameAPI {
                 }
                 if (backend.getTimeLeft() <= 0) {
                     gameOver();
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    restart();
+                    return;
                 }
                 if (getPlayer().getX() >= backend.getLevel(backend.getLevel()).getMap().getPoints().get(
                         backend.getLevel(backend.getLevel()).getMap().getPoints().size() - 1).getX()) {
