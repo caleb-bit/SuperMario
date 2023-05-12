@@ -13,6 +13,7 @@ public class Player extends GameObject {
     private double width;
     private double height;
     private GameAPI gameAPI;
+    private boolean facingRight;
 
     // furthest player has reached (used for checkpoint)
     private int maxX;
@@ -26,6 +27,7 @@ public class Player extends GameObject {
         width = 1.15;
         height = 2.7;
         this.gameAPI = gameAPI;
+        facingRight = true;
     }
 
     public Player(int xPos, int yPos, int velX, int velY) {
@@ -64,13 +66,15 @@ public class Player extends GameObject {
         if (!(keysPressed.get(KeyEvent.VK_RIGHT) || keysPressed.get(KeyEvent.VK_LEFT)))
             setVelX(0);
         if (keysPressed.get(KeyEvent.VK_SPACE) && (getPower() != null && getPower().getName().equals("Flower"))) {
-            Fireball fireball = new Fireball(getPosition());
+            Fireball fireball = new Fireball(getPosition(),facingRight);
             fireballs.add(fireball);
             gameAPI.fireballFired(fireball);
         }
         setVelY(getVelY() + getAccelY());
         setPosition(new GamePosition(getX() + getVelX(), getY() + getVelY()));
         maxX = Math.max(maxX, (int) getX());
+        if ((facingRight && getVelX() < 0) || (!facingRight && getVelX() > 0))
+            facingRight = !facingRight;
     }
 
     private void updateSpeeds(HashMap<Integer, Boolean> keysPressed, Land landBelow, Land landAbove) {
@@ -147,5 +151,9 @@ public class Player extends GameObject {
 
     public double getHeight() {
         return height;
+    }
+
+    public boolean isFacingRight() {
+        return facingRight;
     }
 }

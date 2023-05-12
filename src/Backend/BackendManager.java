@@ -99,8 +99,6 @@ public class BackendManager {
                 updateEnemy((Enemy) obj);
             } else if (obj instanceof Powerup) {
                 updatePowerup((Powerup) obj);
-            } else if (obj instanceof Cliff) {
-//                updateCliff((Cliff) obj);
             } else if (obj instanceof Ledge) {
                 updateLedge((Ledge) obj);
             } else if (obj instanceof Trap trap) {
