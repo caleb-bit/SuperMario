@@ -210,7 +210,7 @@ public class BackendManager {
                         gameAPI.removeBall(ball);
                         i--;
                         break;
-                    } else if (obj instanceof Obstacle) {
+                    } else if (obj instanceof Obstacle && !(obj instanceof Cliff)) {
                         getPlayer().getBalls().remove(i);
                         i--;
                         break;
